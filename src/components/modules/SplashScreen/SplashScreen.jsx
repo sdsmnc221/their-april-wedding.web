@@ -11,7 +11,7 @@ import React, { useContext, useEffect } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
 
-const SplashScreen: React.FC = () => {
+const SplashScreen = () => {
   const { data, setCurrentScene } = useContext(globalContext);
 
   const navigate = useNavigate();

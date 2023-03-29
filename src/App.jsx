@@ -3,12 +3,12 @@ import { RouterProvider } from 'react-router-dom';
 
 import router from './routes';
 
-import { globalContext, initialState } from './contexts/GlobalContext';
+import { globalContext, initialState } from '@contexts/GlobalContext';
 
 import dataFR from './data/fr.json';
 import dataVN from './data/vn.json';
 
-const App: React.FC = () => {
+const App = () => {
   const [lang, setLang] = useState(initialState.lang);
   const [data, setData] = useState(initialState.data);
   const [sound, setSound] = useState(initialState.sound);

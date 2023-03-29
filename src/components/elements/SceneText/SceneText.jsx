@@ -18,22 +18,22 @@ const createSplitText = (el, duration = 1.2, stagger = 0.1) => {
   });
 };
 
-interface Props {
-  sceneId: string;
-  text: string | string[];
-  isHeading?: boolean;
-}
+// interface Props {
+//   sceneId: string;
+//   text: string;
+//   isHeading?: boolean;
+// }
 
-interface PropsHeading {
-  text: string;
-}
+// interface PropsHeading {
+//   text: string;
+// }
 
-interface PropsParagraphs {
-  text: string[];
-  sceneId: string;
-}
+// interface PropsParagraphs {
+//   text: string;
+//   sceneId: string;
+// }
 
-const Heading: React.FC<PropsHeading> = ({ text }) => {
+const Heading = ({ text }) => {
   const textRef = useRef(null);
   useEffect(() => {
     if (textRef.current) createSplitText(textRef.current);
@@ -41,7 +41,7 @@ const Heading: React.FC<PropsHeading> = ({ text }) => {
   return <h2 className="scene-text" dangerouslySetInnerHTML={{ __html: text }} ref={textRef} />;
 };
 
-const Paragraphs: React.FC<PropsParagraphs> = ({ text, sceneId }) => {
+const Paragraphs = ({ text, sceneId }) => {
   const textRef = useRef(null);
 
   useEffect(() => {
@@ -50,19 +50,15 @@ const Paragraphs: React.FC<PropsParagraphs> = ({ text, sceneId }) => {
 
   return (
     <div className="scene-text" ref={textRef}>
-      {text.map((p: string, i: number) => (
+      {text.map((p, i) => (
         <p key={`scene-text-${sceneId}-${i}`} dangerouslySetInnerHTML={{ __html: p }} />
       ))}
     </div>
   );
 };
 
-const SceneText: React.FC<Props> = ({ sceneId, text, isHeading }) => {
-  return (
-    <Fragment>
-      {isHeading ? <Heading text={text} sceneId={sceneId} /> : <Paragraphs text={text} sceneId={sceneId} />}
-    </Fragment>
-  );
+const SceneText = ({ sceneId, text, isHeading }) => {
+  return <Fragment>{isHeading ? <Heading text={text} /> : <Paragraphs text={text} sceneId={sceneId} />}</Fragment>;
 };
 
 export default SceneText;

@@ -12,7 +12,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { globalContext } from '@contexts/GlobalContext';
 
-const SceneStory: React.FC = () => {
+const SceneStory = () => {
   const { data, setCurrentScene } = useContext(globalContext);
 
   const { sceneId } = useParams();
@@ -32,7 +32,7 @@ const SceneStory: React.FC = () => {
     if (sceneId !== '05-postface-wish') {
       setSubscenes([
         scene.title && { text: scene.title, bg: [...new Set(scene.bg)].filter((bg) => bg !== null), isHeading: true },
-        ...scene.content.map((subscene: string[], index: number) => ({
+        ...scene.content.map((subscene, index) => ({
           text: subscene,
           bg: [scene.bg[index]],
         })),

@@ -1,6 +1,6 @@
 import './SceneSettings.scss';
 
-import React, { Fragment, useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Background from '@elements/Background/Background';
@@ -11,12 +11,12 @@ import Subtitle from '@elements/Subtitle/Subtitle';
 
 import { globalContext } from '@contexts/GlobalContext';
 
-const SceneSettings: React.FC = () => {
+const SceneSettings = () => {
   const { setLang, data, setSound, setCurrentScene } = useContext(globalContext);
 
   const [settings, setSettings] = useState('lang');
 
-  const handleSetLang = (lang: string) => {
+  const handleSetLang = (lang) => {
     setLang(lang);
     setTimeout(() => {
       setSettings('sound');
@@ -24,7 +24,7 @@ const SceneSettings: React.FC = () => {
   };
 
   const navigate = useNavigate();
-  const handleSetSound = (soundState: string) => {
+  const handleSetSound = (soundState) => {
     setSound(soundState.includes('on'));
     setTimeout(() => {
       navigate('/splash-screen');
@@ -43,13 +43,13 @@ const SceneSettings: React.FC = () => {
       <Subtitle content={data.scenes['00-splash-screen-settings-lang'].subtitle} />
       <div className="lang-buttons">
         {settings === 'lang' &&
-          Object.entries(data.scenes['00-splash-screen-settings-lang'].cta).map((entry: [string, string]) => (
+          Object.entries(data.scenes['00-splash-screen-settings-lang'].cta).map((entry) => (
             <button className="unbutton" key={`btn-settings-lang-${entry[1]}`} onClick={() => handleSetLang(entry[0])}>
               {entry[1]}
             </button>
           ))}
         {settings === 'sound' &&
-          Object.entries(data.scenes['00-splash-screen-settings-sound'].cta).map((entry: [string, string]) => (
+          Object.entries(data.scenes['00-splash-screen-settings-sound'].cta).map((entry) => (
             <button className="unbutton" key={`btn-settings-lang-${entry[1]}`} onClick={() => handleSetSound(entry[1])}>
               {entry[1]}
             </button>
