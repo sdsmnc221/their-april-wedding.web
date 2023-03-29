@@ -17,11 +17,13 @@
     }
 
     &:last-of-type {
-      top: 13.5vh;
-      left: -30vw;
-      width: 100%;
+      top: -44.5vh;
+      left: -100vw;
+      width: 100vh;
+      height: 100vw;
       position: absolute;
       transform: rotate(90deg);
+      transform-origin: bottom left;
 
       padding-left: rem(8px);
 

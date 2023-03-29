@@ -31,6 +31,7 @@ export default defineConfig({
       '@modules': fileURLToPath(new URL('./src/components/modules', import.meta.url)),
       '@elements': fileURLToPath(new URL('./src/components/elements', import.meta.url)),
       '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
+      '@contexts': fileURLToPath(new URL('./src/contexts', import.meta.url)),
     },
   },
   css: {

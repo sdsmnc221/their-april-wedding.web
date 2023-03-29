@@ -1,13 +1,15 @@
 import './SceneSettings.scss';
 
+import React, { Fragment, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Background from '@elements/Background/Background';
 import Frame from '@elements/Frame/Frame';
 import Logo from '@elements/Logo/Logo';
 import Overlay from '@elements/Overlay/Overlay';
 import Subtitle from '@elements/Subtitle/Subtitle';
 
-import React, { Fragment, useContext, useState } from 'react';
-import { globalContext } from '../../../contexts/GlobalContext';
+import { globalContext } from '@contexts/GlobalContext';
 
 const SceneSettings: React.FC = () => {
   const { setLang, data, setSound } = useContext(globalContext);
@@ -18,6 +20,14 @@ const SceneSettings: React.FC = () => {
     setLang(lang);
     setTimeout(() => {
       setSettings('sound');
+    }, 1200);
+  };
+
+  const navigate = useNavigate();
+  const handleSetSound = (soundState: string) => {
+    setSound(soundState.includes('on'));
+    setTimeout(() => {
+      navigate('/splash-screen');
     }, 1200);
   };
 
@@ -44,7 +54,7 @@ const SceneSettings: React.FC = () => {
               <button
                 className="unbutton"
                 key={`btn-settings-lang-${entry[1]}`}
-                onClick={() => setSound(entry[0].includes('on'))}
+                onClick={() => handleSetSound(entry[1])}
               >
                 {entry[1]}
               </button>

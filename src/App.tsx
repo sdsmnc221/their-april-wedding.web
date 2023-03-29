@@ -1,5 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import SceneSettings from './components/modules/SceneSettings/SceneSettings';
+import { RouterProvider } from 'react-router-dom';
+
+import router from './routes';
 
 import { globalContext, initialState } from './contexts/GlobalContext';
 
@@ -20,7 +22,7 @@ const App: React.FC = () => {
   return (
     <globalContext.Provider value={value}>
       <main className="app">
-        <SceneSettings />
+        <RouterProvider router={router} />
       </main>
     </globalContext.Provider>
   );
