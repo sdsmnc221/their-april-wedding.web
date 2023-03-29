@@ -1,28 +1,28 @@
 {
   "meta": {
     "title": "P & D - Their April Wedding",
-    "description": "Une histoire d'amour, racontée et illustrée par les intelligences artificielles. / Một câu chuyện tình, được kể và minh họa bởi trí tuệ nhân tạo."
+    "description": "Une histoire d'amour, racontée et illustrée par les intelligences artificielles. / Một câu chuyện tình yêu, được kể và minh họa bởi trí tuệ nhân tạo."
   },
-  "noDesktop": "Scannez le <span>code QR</span> avec votre appareil mobile pour embarquer dans cette histoire d'amour.",
-  "noLandscape": "Veuillez , <span>tournez votre appareil</span> <br /> pour continuer l'expérience.",
+  "noDesktop": "Quét <span>mã QR</span> bằng thiết bị di động của bạn để bắt đầu câu chuyện tình yêu này.",
+  "noLandscape": "Veuillez <span>tournez votre appareil</span> <br /> pour continuer l'expérience.",
   "scenes": {
     "menu": {
       "chapters": [
-        "00. Splash Screen.",
-        "01. Préface.",
-        "02. Leur Passé.",
-        "03. Leur Présent.",
-        "04. Leur Futur.",
-        "05. Postface."
+        "00. Màn hình khởi động.",
+        "01. Lời tựa.",
+        "02. Quá khứ của họ.",
+        "03. Hiện tại của họ.",
+        "04. Tương lai của họ.",
+        "05. Lời kết."
       ],
-      "cta": "Envoyons nos vœux !",
+      "cta": "Gửi lời chúc phúc tới họ!",
       "bg": [
         "intro-video.mp4"
       ]
     },
     "credits": {
       "content": "<a target=\"_blank\" href=\"https://antr.tech\"><strong>TRUONG Thi Van An</strong></a> est l'autrice de l'œuvre qui est à l'origine de ce site web. <strong>ChatGPT</strong> est le narrateur qui a guidé le lecteur à travers l'histoire. <strong>Midjourney</strong> est l'illustrateur dont les images ont apporté une dimension visuelle à l'histoire.",
-      "cta": "Envoyons nos vœux !",
+      "cta": "Gửi lời chúc phúc tới họ!",
       "bg": [
         "intro-video.mp4"
       ]
@@ -135,7 +135,7 @@
     },
     "05-postface-wish": {
       "subtitle": "<strong>05.</strong> Postface - Envoi des vœux",
-      "cta": "Envoyons nos vœux !",
+      "cta": "Gửi lời chúc phúc tới họ!",
       "content": [
         "00. Nous sommes :",
         "01. Nos vœeux :"
