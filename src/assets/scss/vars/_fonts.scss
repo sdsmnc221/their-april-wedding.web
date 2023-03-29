@@ -1,5 +1,13 @@
-$montserrat: 'Montserrat', sans-serif;
-$major-mono: 'Major Mono Display', monospace;
-$yeseva-one: 'Yeseva One', serif;
-$ibm-plex: 'IBM Plex Mono', sans-serif;
-$pinyon: 'Pinyon Script', serif;
+@font-face {
+  font-family: 'Didot';
+  src: url(/public/fonts/Didot.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Didot Bold';
+  src: url(/public/fonts/DidotBold.otf) format('opentype');
+}
+
+$ale: 'Alegreya Sans SC', sans serif;
+$didot: 'Didot', serif;
+$didot-b: 'Didot Bold', serif;
