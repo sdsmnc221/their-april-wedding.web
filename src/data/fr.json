@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "title": "P & D - Their April Wedding",
+    "description": "Une histoire d'amour, racontée et illustrée par les intelligences artificielles",
+    "author": "Thi Van An TRUONG"
+  },
+  "noDesktop": "Scannez le <span>code QR</span> avec votre appareil mobile pour embarquer dans cette histoire d'amour.",
+  "noLandscape": "Veuillez , <span>tournez votre appareil</span> <br /> pour continuer l'expérience.",
+  "lang": {
+    "fr": "Français",
+    "vn": "Tiếng Việt."
+  },
+  "scenes": {
+    "menu": {
+      "chapters": [
+        "00. Splash Screen.",
+        "01. Préface.",
+        "02. Leur Passé.",
+        "03. Leur Présent.",
+        "04. Leur Futur.",
+        "05. Postface."
+      ],
+      "cta": "Envoyons nos vœux !",
+      "bg": [
+        "intro-video.mp4"
+      ]
+    },
+    "credits": {
+      "content": "<a target=\"_blank\" href=\"https://antr.tech\"><strong>TRUONG Thi Van An</strong></a> est l'autrice de l'œuvre qui est à l'origine de ce site web. <strong>ChatGPT</strong> est le narrateur qui a guidé le lecteur à travers l'histoire. <strong>Midjourney</strong> est l'illustrateur dont les images ont apporté une dimension visuelle à l'histoire.",
+      "cta": "Envoyons nos vœux !",
+      "bg": [
+        "intro-video.mp4"
+      ]
+    },
+    "00-splash-screen": {
+      "subtitle": "00. Splash Screen",
+      "cta": "Découvrons",
+      "bg": [
+        "intro-video.mp4"
+      ]
+    },
+    "01-preface": {
+      "subtitle": "01. Préface",
+      "title": "“Préface.",
+      "content:": [
+        "Chers amis et <br/> membres de la famille,",
+        "Nous sommes réunis aujourd'hui pour célébrer l'union de deux âmes qui se sont trouvées dans un monde chaotique.",
+        "<strong>Leur amour est comme un rayon de soleil qui éclaire cette journée d'avril, illuminant tout autour de nous.<strong>"
+      ],
+      "bg": [
+        "01-preface-0.jpg"
+      ]
+    },
+    "02-past": {
+      "title": "“Sachons d'<strong>un passé</strong>, où émergeait la résilience unie contre des tempêtes.",
+      "content": [
+        [
+          "<strong>Bien que le couple ait dû faire face à des tempêtes, ils ont navigué avec courage, résilience et détermination pour parvenir à ce moment magique.</strong>",
+          "Leur amour, telle une fleur qui bourgeonne sous le soleil printanier, est prêt à s'épanouir dans cette nouvelle étape de leur vie."
+        ],
+        [
+          "Le mariage est une union sacrée, un symbole de l'engagement, de la confiance et de la loyauté. C'est une promesse d'aimer, de respecter et de soutenir l'un l'autre dans les moments heureux comme dans les moments difficiles.",
+          "<strong>Aujourd'hui, nous célébrons l'amour de ces deux personnes extraordinaires qui ont choisi de s'unir pour toujours.<strong>"
+        ]
+      ],
+      "bg": [
+        "02-past-0.jpg",
+        "02-past-1.jpg"
+      ]
+    },
+    "03-present": {
+      "title": "“Réjouissons-nous de <strong>ce présent</strong> avec cette union ensoleillée.",
+      "content": [
+        "Nous sommes convaincus que <strong>leur amour, comme le vent qui fait danser les feuilles dans les arbres, sera une force puissante qui les guidera à travers les hauts et les bas de leur vie de couple.</strong> Ils sont prêts à se tenir la main et à avancer ensemble sur le chemin de l'amour, de la compréhension, de la patience et de la tolérance."
+      ],
+      "bg": [
+        "03-present-0.jpg"
+      ]
+    },
+    "04-future": {
+      "title": "“Vers <strong>un futur</strong> incertain, avec un amour certain.",
+      "content": [
+        [
+          "Enfin, <strong>nous voudrons dire aux mariés combien nous sommes fiers d'eux et de leur union.</strong> Leur amour est beau, émouvant et inspire l'espoir en chacun de nous. Nous leur souhaitons un mariage heureux, épanouissant et rempli d'amour et de bonheur pour l'éternité."
+        ],
+        [
+          "<strong>Félicitations et meilleurs vœux pour votre mariage ensoleillé !</strong>",
+          "Que votre amour soit éternel et votre vie de couple remplie de joie et de prospérité."
+        ]
+      ],
+      "bg": [
+        "04-future-0.jpg",
+        "04-future-1.jpg"
+      ]
+    },
+    "05-postface": {
+      "title": "“Postface",
+      "content": [
+        [
+          "<strong>En ce jour spécial, n'oublions pas de leur envoyer des vœux encore plus beaux</strong>, afin de leur témoigner notre amour et notre gratitude. Que notre amitié les accompagne tout au long de leur voyage, qu'ils sachent que nous sommes là pour les soutenir et les aimer."
+        ],
+        [
+          "Car l'amour, comme une fleur délicate, a besoin d'être arrosé et nourri chaque jour. Et <strong>nos amis</strong>, comme deux âmes sœurs, <strong>ont besoin de notre amour et de notre bienveillance pour continuer à grandir et à fleurir.</strong>"
+        ],
+        "05-postface-wish",
+        [
+          "Alors, que nos vœux les plus sincères les accompagnent dans cette nouvelle étape de leur vie, que leur amour brille toujours aussi fort que le soleil de ce jour d'avril, et que leur avenir soit rempli de joie, de bonheur et de prospérité."
+        ]
+      ],
+      "bg": [
+        "05-postface-0.jpg",
+        "05-postface-0.jpg",
+        null,
+        "05-postface-2.jpg"
+      ]
+    },
+    "05-postface-wish": {
+      "cta": "Envoyons nos vœux !",
+      "content": [
+        "00. Nous sommes :",
+        "01. Nos vœeux :"
+      ],
+      "bg": [
+        "05-postface-1.jpg"
+      ]
+    }
+  }
+}
