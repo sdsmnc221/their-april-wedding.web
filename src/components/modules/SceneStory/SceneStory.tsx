@@ -37,8 +37,6 @@ const SceneStory: React.FC = () => {
           bg: [scene.bg[index]],
         })),
       ]);
-
-      // if (sceneId === '05-postface-last') setSubscenes(subscenes.shift());
     }
   }, [scene.nextScene]);
 
