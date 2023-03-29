@@ -37,7 +37,7 @@ const SceneSettings: React.FC = () => {
 
   return (
     <div className="scene-settings">
-      <Background type="video" src="/images/intro-video.mp4" />
+      <Background type="video" src={['/images/intro-video.mp4']} />
       <Overlay />
       <Frame isLogo />
       <Subtitle content={data.scenes['00-splash-screen-settings-lang'].subtitle} />

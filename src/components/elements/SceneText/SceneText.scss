@@ -1,0 +1,30 @@
+.scene-text {
+  position: absolute;
+  z-index: 2;
+
+  &:is(h2) {
+    width: 100%;
+    padding: 0 16vw;
+    font-family: $didot-b;
+    font-size: $ft-s-xlarge;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+  }
+
+  &:is(div) {
+    width: 100%;
+    padding: 0 12vw;
+    font-family: $didot;
+    font-size: $ft-s-small;
+    left: 50%;
+    top: 56%;
+    transform: translateX(-50%);
+
+    p {
+      text-align: center;
+      margin-bottom: rem(16px);
+      line-height: rem(25px);
+    }
+  }
+}

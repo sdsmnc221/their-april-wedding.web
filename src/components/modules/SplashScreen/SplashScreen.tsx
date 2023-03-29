@@ -16,18 +16,20 @@ const SplashScreen: React.FC = () => {
 
   const navigate = useNavigate();
 
+  const scene = data.scenes['00-splash-screen'];
+
   useEffect(() => {
     setCurrentScene('00-splash-screen');
   }, []);
 
   return (
     <div className="splash-screen">
-      <Background type="video" src="/images/intro-video.mp4" />
+      <Background type="video" src={scene.bg} />
       <Overlay />
       <Frame isLogo />
-      <Subtitle content={data.scenes['00-splash-screen'].subtitle} />
+      <Subtitle content={scene.subtitle} />
       <Logo />
-      <ScrollDown text={data.scenes['00-splash-screen'].cta} onClick={() => navigate('/scene/01-preface')} />
+      <ScrollDown text={scene.cta} onClick={() => navigate(`/scene/${scene.nextScene}`)} />
     </div>
   );
 };

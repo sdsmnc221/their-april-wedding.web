@@ -1,8 +1,15 @@
 .background {
+  --img-count: 1;
+
   width: 100vw;
   height: 100vh;
   position: fixed;
+  display: flex;
   z-index: -1;
+
+  &.--blurred {
+    filter: blur(4px);
+  }
 
   &.--right-bottom {
     top: 32px;
@@ -17,7 +24,7 @@
   video,
   img {
     display: inline-block;
-    width: 100%;
+    width: calc(100% / var(--img-count));
     height: 100%;
     object-fit: cover;
   }

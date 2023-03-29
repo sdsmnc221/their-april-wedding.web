@@ -6,6 +6,8 @@
   left: 0;
   z-index: 0;
 
+  pointer-events: none;
+
   background: linear-gradient(180deg, #faf6f3 0%, rgba(250, 246, 243, 0.58) 70.31%, rgba(250, 246, 243, 0) 100%);
   mix-blend-mode: normal;
   transform: rotate(-180deg);

@@ -52,19 +52,23 @@
       "cta": "Découvrons",
       "bg": [
         "intro-video.mp4"
-      ]
+      ],
+      "nextScene": "01-preface"
     },
     "01-preface": {
       "subtitle": "<strong>01.</strong> Préface.",
       "title": "“Préface.",
-      "content:": [
-        "Chers amis et <br/> membres de la famille,",
-        "Nous sommes réunis aujourd'hui pour célébrer l'union de deux âmes qui se sont trouvées dans un monde chaotique.",
-        "<strong>Leur amour est comme un rayon de soleil qui éclaire cette journée d'avril, illuminant tout autour de nous.<strong>"
+      "content": [
+        [
+          "Chers amis et <br/> membres de la famille,",
+          "Nous sommes réunis aujourd'hui pour célébrer l'union de deux âmes qui se sont trouvées dans un monde chaotique.",
+          "<strong>Leur amour est comme un rayon de soleil qui éclaire cette journée d'avril, illuminant tout autour de nous.<strong>"
+        ]
       ],
       "bg": [
         "01-preface-0.jpg"
-      ]
+      ],
+      "nextScene": "02-past"
     },
     "02-past": {
       "subtitle": "<strong>02.</strong> Passé.",
@@ -82,17 +86,21 @@
       "bg": [
         "02-past-0.jpg",
         "02-past-1.jpg"
-      ]
+      ],
+      "nextScene": "03-present"
     },
     "03-present": {
       "subtitle": "<strong>03.</strong> Présent.",
       "title": "“Réjouissons-nous de <strong>ce présent</strong> avec cette union ensoleillée.",
       "content": [
-        "Nous sommes convaincus que <strong>leur amour, comme le vent qui fait danser les feuilles dans les arbres, sera une force puissante qui les guidera à travers les hauts et les bas de leur vie de couple.</strong> Ils sont prêts à se tenir la main et à avancer ensemble sur le chemin de l'amour, de la compréhension, de la patience et de la tolérance."
+        [
+          "Nous sommes convaincus que <strong>leur amour, comme le vent qui fait danser les feuilles dans les arbres, sera une force puissante qui les guidera à travers les hauts et les bas de leur vie de couple.</strong> Ils sont prêts à se tenir la main et à avancer ensemble sur le chemin de l'amour, de la compréhension, de la patience et de la tolérance."
+        ]
       ],
       "bg": [
         "03-present-0.jpg"
-      ]
+      ],
+      "nextScene": "04-future"
     },
     "04-future": {
       "subtitle": "<strong>04.</strong> Futur.",
@@ -109,39 +117,48 @@
       "bg": [
         "04-future-0.jpg",
         "04-future-1.jpg"
-      ]
+      ],
+      "nextScene": "05-postface"
     },
     "05-postface": {
       "subtitle": "<strong>05.</strong> Postface.",
-      "title": "“Postface",
+      "title": "“Postface.",
       "content": [
         [
           "<strong>En ce jour spécial, n'oublions pas de leur envoyer des vœux encore plus beaux</strong>, afin de leur témoigner notre amour et notre gratitude. Que notre amitié les accompagne tout au long de leur voyage, qu'ils sachent que nous sommes là pour les soutenir et les aimer."
         ],
         [
           "Car l'amour, comme une fleur délicate, a besoin d'être arrosé et nourri chaque jour. Et <strong>nos amis</strong>, comme deux âmes sœurs, <strong>ont besoin de notre amour et de notre bienveillance pour continuer à grandir et à fleurir.</strong>"
-        ],
-        "05-postface-wish",
-        [
-          "Alors, que nos vœux les plus sincères les accompagnent dans cette nouvelle étape de leur vie, que leur amour brille toujours aussi fort que le soleil de ce jour d'avril, et que leur avenir soit rempli de joie, de bonheur et de prospérité."
         ]
       ],
       "bg": [
         "05-postface-0.jpg",
         "05-postface-0.jpg",
-        null,
         "05-postface-2.jpg"
-      ]
+      ],
+      "nextScene": "05-postface-wish"
     },
     "05-postface-wish": {
       "subtitle": "<strong>05.</strong> Postface - Envoi des vœux.",
       "cta": "Envoyons nos vœux !",
-      "content": [
+      "labels": [
         "00. Nous sommes :",
         "01. Nos vœeux :"
       ],
       "bg": [
         "05-postface-1.jpg"
+      ],
+      "nextScene": "05-postface-last"
+    },
+    "05-postface-last": {
+      "subtitle": "<strong>05.</strong> Postface.",
+      "content": [
+        [
+          "Alors, que nos vœux les plus sincères les accompagnent dans cette nouvelle étape de leur vie, que leur amour brille toujours aussi fort que le soleil de ce jour d'avril, et que leur avenir soit rempli de joie, de bonheur et de prospérité."
+        ]
+      ],
+      "bg": [
+        "05-postface-2.jpg"
       ]
     }
   }
