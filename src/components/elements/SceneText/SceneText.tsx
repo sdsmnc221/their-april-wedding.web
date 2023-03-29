@@ -3,7 +3,6 @@ import './SceneText.scss';
 import React, { Fragment, useEffect, useRef } from 'react';
 import gsap from 'gsap-bonus';
 import { SplitText } from 'gsap-bonus/SplitText';
-import { useParams } from 'react-router-dom';
 
 const createSplitText = (el, duration = 1.2, stagger = 0.1) => {
   const splitInstance = new SplitText(el, { type: 'chars,words', wordsClass: 'word', charsClass: 'char' });
@@ -35,7 +34,11 @@ interface PropsParagraphs {
 }
 
 const Heading: React.FC<PropsHeading> = ({ text }) => {
-  return <h2 className="scene-text" dangerouslySetInnerHTML={{ __html: text }} />;
+  const textRef = useRef(null);
+  useEffect(() => {
+    if (textRef.current) createSplitText(textRef.current);
+  });
+  return <h2 className="scene-text" dangerouslySetInnerHTML={{ __html: text }} ref={textRef} />;
 };
 
 const Paragraphs: React.FC<PropsParagraphs> = ({ text, sceneId }) => {
@@ -43,7 +46,7 @@ const Paragraphs: React.FC<PropsParagraphs> = ({ text, sceneId }) => {
 
   useEffect(() => {
     if (textRef.current) createSplitText(textRef.current, 0.6, 0.032);
-  }, [sceneId]);
+  });
 
   return (
     <div className="scene-text" ref={textRef}>
@@ -55,7 +58,11 @@ const Paragraphs: React.FC<PropsParagraphs> = ({ text, sceneId }) => {
 };
 
 const SceneText: React.FC<Props> = ({ sceneId, text, isHeading }) => {
-  return <Fragment>{isHeading ? <Heading text={text} /> : <Paragraphs text={text} sceneId={sceneId} />}</Fragment>;
+  return (
+    <Fragment>
+      {isHeading ? <Heading text={text} sceneId={sceneId} /> : <Paragraphs text={text} sceneId={sceneId} />}
+    </Fragment>
+  );
 };
 
 export default SceneText;
