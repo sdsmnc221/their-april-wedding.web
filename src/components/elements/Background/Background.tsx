@@ -16,23 +16,19 @@ const Background: React.FC<Props> = ({ sceneId, type, src, isRightBottom = true,
 
   useEffect(() => {
     if (backgroundRef.current) {
-      gsap.set(backgroundRef.current, {
-        opacity: 0,
-        yPercent: 48,
-        scale: 0.48,
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (backgroundRef.current) {
-      gsap.to(backgroundRef.current, {
-        opacity: 1,
-        scale: 1,
-        yPercent: 0,
-        duration: 1.2,
-        ease: 'Power4.easeOut',
-      });
+      gsap.fromTo(
+        backgroundRef.current,
+        {
+          opacity: 0,
+          yPercent: 4,
+        },
+        {
+          opacity: 1,
+          yPercent: 0,
+          duration: 3.2,
+          ease: 'Power4.InOut',
+        }
+      );
     }
   }, [sceneId]);
 
