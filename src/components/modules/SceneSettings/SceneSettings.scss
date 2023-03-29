@@ -33,11 +33,12 @@
       text-transform: uppercase;
       color: $color-text;
       font-size: $ft-s-xsmall;
-      padding: rem(6px) rem(48px);
       background: rgba(250, 246, 243, 0.24);
       mix-blend-mode: hard-light;
       border: 1px solid #315f09;
       margin-bottom: rem(24px);
+      width: 50vw;
+      padding: rem(6px) rem(12px);
     }
   }
 }

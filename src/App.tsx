@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import SceneSettings from './components/modules/SceneSettings/SceneSettings';
 
-import data from './data/fr.json';
+import { globalContext, initialState } from './contexts/GlobalContext';
+
+import dataFR from './data/fr.json';
+import dataVN from './data/vn.json';
 
 const App: React.FC = () => {
+  const [lang, setLang] = useState(initialState.lang);
+  const [data, setData] = useState(initialState.data);
+  const [sound, setSound] = useState(initialState.sound);
+  const value = useMemo(() => ({ lang, setLang, data, setData, sound, setSound }), [lang, data]);
+
+  useEffect(() => {
+    if (lang === 'fr') setData(dataFR);
+    else setData(dataVN);
+  }, [lang]);
+
   return (
-    <main className="app">
-      <SceneSettings data={data} />
-    </main>
+    <globalContext.Provider value={value}>
+      <main className="app">
+        <SceneSettings />
+      </main>
+    </globalContext.Provider>
   );
 };
 

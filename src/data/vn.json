@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "P & D - Their April Wedding",
-    "description": "Một câu chuyện tình, được kể và minh họa bởi trí tuệ nhân tạo. / Une histoire d'amour, racontée et illustrée par les intelligences artificielles."
+    "description": "Une histoire d'amour, racontée et illustrée par les intelligences artificielles. / Một câu chuyện tình, được kể và minh họa bởi trí tuệ nhân tạo."
   },
   "noDesktop": "Scannez le <span>code QR</span> avec votre appareil mobile pour embarquer dans cette histoire d'amour.",
   "noLandscape": "Veuillez , <span>tournez votre appareil</span> <br /> pour continuer l'expérience.",
@@ -43,8 +43,8 @@
         "intro-video.mp4"
       ],
       "cta": {
-        "sound-on": "Mettons le son.",
-        "sound-off": "Mutons le son."
+        "sound-on": "Bật tiếng.",
+        "sound-off": "Tắt tiếng."
       }
     },
     "00-splash-screen": {
