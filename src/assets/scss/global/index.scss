@@ -15,7 +15,7 @@ body {
   background-color: $color-bg;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow: hidden;
   font-family: $ale;
   font-weight: 400;
   font-size: $ft-s-small;
@@ -42,6 +42,17 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     mix-blend-mode: multiply;
+  }
+
+  .app {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
 }
 

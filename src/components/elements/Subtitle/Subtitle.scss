@@ -1,0 +1,44 @@
+.subtitle {
+  position: fixed;
+  top: 16px;
+  left: 32px;
+
+  p {
+    font-size: $ft-s-xsmall;
+    font-weight: 400;
+    line-height: rem(19px);
+    text-transform: uppercase;
+    position: relative;
+    padding-left: rem(8px);
+    top: -4px;
+
+    strong {
+      font-weight: 700;
+    }
+
+    &:last-of-type {
+      top: 13.5vh;
+      left: -30vw;
+      width: 100%;
+      position: absolute;
+      transform: rotate(90deg);
+
+      padding-left: rem(8px);
+
+      &::after {
+        top: 4px;
+      }
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -2px;
+      left: 0;
+      width: 1px;
+      height: $ft-s-xsmall;
+      background-color: $color-text-green;
+    }
+  }
+}
