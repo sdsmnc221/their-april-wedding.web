@@ -7,7 +7,11 @@ interface Props {
 }
 
 const Frame: React.FC<Props> = ({ isLogo = false }) => {
-  return <div className={`frame ${isLogo ? '--logo' : ''}`}>{isLogo && <div className="frame__logo" />}</div>;
+  return (
+    <div className={`frame ${isLogo ? '--logo' : ''}`}>
+      {isLogo ? <div className="frame__logo" /> : <div className="frame__menu" />}
+    </div>
+  );
 };
 
 export default Frame;

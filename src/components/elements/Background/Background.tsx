@@ -16,8 +16,14 @@ const Background: React.FC<Props> = ({ type, src, isRightBottom = true }) => {
           <video src={src} loop muted autoPlay></video>
         </figure>
       );
-      break;
 
+    case 'image':
+      return (
+        <figure className={`background ${isRightBottom ? '--right-bottom' : '--left-top'}`}>
+          <img src={src} />
+        </figure>
+      );
+      break;
     default:
       return <></>;
   }

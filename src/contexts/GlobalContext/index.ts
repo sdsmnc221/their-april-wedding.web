@@ -9,6 +9,8 @@ interface Props {
   setData: React.Dispatch<React.SetStateAction<object>> | (() => void);
   sound: boolean;
   setSound: React.Dispatch<React.SetStateAction<boolean>> | (() => void);
+  currentScene: string;
+  setCurrentScene: React.Dispatch<React.SetStateAction<string>> | (() => void);
 }
 
 const initialState = {
@@ -18,6 +20,8 @@ const initialState = {
   setData: () => undefined,
   sound: true,
   setSound: () => undefined,
+  currentScene: '00-splash-screen',
+  setCurrentScene: () => undefined,
 };
 
 const globalContext: React.Context<Props> = React.createContext(initialState);

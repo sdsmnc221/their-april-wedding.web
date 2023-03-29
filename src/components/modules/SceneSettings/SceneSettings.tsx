@@ -1,6 +1,6 @@
 import './SceneSettings.scss';
 
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Background from '@elements/Background/Background';
@@ -12,7 +12,7 @@ import Subtitle from '@elements/Subtitle/Subtitle';
 import { globalContext } from '@contexts/GlobalContext';
 
 const SceneSettings: React.FC = () => {
-  const { setLang, data, setSound } = useContext(globalContext);
+  const { setLang, data, setSound, setCurrentScene } = useContext(globalContext);
 
   const [settings, setSettings] = useState('lang');
 
@@ -31,36 +31,31 @@ const SceneSettings: React.FC = () => {
     }, 1200);
   };
 
+  useEffect(() => {
+    setCurrentScene('00-splash-screen');
+  }, []);
+
   return (
     <div className="scene-settings">
       <Background type="video" src="/images/intro-video.mp4" />
       <Overlay />
       <Frame isLogo />
-      <Fragment>
-        <Subtitle content={data.scenes['00-splash-screen-settings-lang'].subtitle} />
-        <div className="lang-buttons">
-          {settings === 'lang' &&
-            Object.entries(data.scenes['00-splash-screen-settings-lang'].cta).map((entry: [string, string]) => (
-              <button
-                className="unbutton"
-                key={`btn-settings-lang-${entry[1]}`}
-                onClick={() => handleSetLang(entry[0])}
-              >
-                {entry[1]}
-              </button>
-            ))}
-          {settings === 'sound' &&
-            Object.entries(data.scenes['00-splash-screen-settings-sound'].cta).map((entry: [string, string]) => (
-              <button
-                className="unbutton"
-                key={`btn-settings-lang-${entry[1]}`}
-                onClick={() => handleSetSound(entry[1])}
-              >
-                {entry[1]}
-              </button>
-            ))}
-        </div>
-      </Fragment>
+      <Subtitle content={data.scenes['00-splash-screen-settings-lang'].subtitle} />
+      <div className="lang-buttons">
+        {settings === 'lang' &&
+          Object.entries(data.scenes['00-splash-screen-settings-lang'].cta).map((entry: [string, string]) => (
+            <button className="unbutton" key={`btn-settings-lang-${entry[1]}`} onClick={() => handleSetLang(entry[0])}>
+              {entry[1]}
+            </button>
+          ))}
+        {settings === 'sound' &&
+          Object.entries(data.scenes['00-splash-screen-settings-sound'].cta).map((entry: [string, string]) => (
+            <button className="unbutton" key={`btn-settings-lang-${entry[1]}`} onClick={() => handleSetSound(entry[1])}>
+              {entry[1]}
+            </button>
+          ))}
+      </div>
+
       <Logo />
     </div>
   );

@@ -55,7 +55,7 @@
       ]
     },
     "01-preface": {
-      "subtitle": "<strong>01.</strong> Préface",
+      "subtitle": "<strong>01.</strong> Préface.",
       "title": "“Préface.",
       "content:": [
         "Chers amis et <br/> membres de la famille,",
@@ -67,7 +67,7 @@
       ]
     },
     "02-past": {
-      "subtitle": "<strong>02.</strong> Passé",
+      "subtitle": "<strong>02.</strong> Passé.",
       "title": "“Sachons d'<strong>un passé</strong>, où émergeait la résilience unie contre des tempêtes.",
       "content": [
         [
@@ -85,7 +85,7 @@
       ]
     },
     "03-present": {
-      "subtitle": "<strong>03.</strong> Présent",
+      "subtitle": "<strong>03.</strong> Présent.",
       "title": "“Réjouissons-nous de <strong>ce présent</strong> avec cette union ensoleillée.",
       "content": [
         "Nous sommes convaincus que <strong>leur amour, comme le vent qui fait danser les feuilles dans les arbres, sera une force puissante qui les guidera à travers les hauts et les bas de leur vie de couple.</strong> Ils sont prêts à se tenir la main et à avancer ensemble sur le chemin de l'amour, de la compréhension, de la patience et de la tolérance."
@@ -95,7 +95,7 @@
       ]
     },
     "04-future": {
-      "subtitle": "<strong>04.</strong> Futur",
+      "subtitle": "<strong>04.</strong> Futur.",
       "title": "“Vers <strong>un futur</strong> incertain, avec un amour certain.",
       "content": [
         [
@@ -112,7 +112,7 @@
       ]
     },
     "05-postface": {
-      "subtitle": "<strong>05.</strong> Postface",
+      "subtitle": "<strong>05.</strong> Postface.",
       "title": "“Postface",
       "content": [
         [
@@ -134,7 +134,7 @@
       ]
     },
     "05-postface-wish": {
-      "subtitle": "<strong>05.</strong> Postface - Envoi des vœux",
+      "subtitle": "<strong>05.</strong> Postface - Envoi des vœux.",
       "cta": "Envoyons nos vœux !",
       "content": [
         "00. Nous sommes :",

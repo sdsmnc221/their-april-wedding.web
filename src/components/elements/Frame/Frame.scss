@@ -1,10 +1,11 @@
 .frame {
   width: 100vw;
   height: 100vh;
+  top: 32px;
+  left: 32px;
   position: fixed;
   pointer-events: none;
-  top: 48px;
-  left: 48px;
+
   mix-blend-mode: hard-light;
 
   &::after {
@@ -25,8 +26,17 @@
     top: 0;
     left: 0;
     width: 1px;
-    height: 50%;
+    height: calc(100vh - 32px * 2);
     background-color: $color-text-green;
+  }
+
+  &.--logo {
+    top: 48px;
+    left: 48px;
+
+    &::before {
+      height: 50%;
+    }
   }
 
   &__logo {
@@ -36,6 +46,16 @@
     left: 0;
     width: 1px;
     height: 40%;
+    background-color: $color-text-green;
+  }
+
+  &__menu {
+    display: block;
+    position: absolute;
+    top: calc(100vh - 32px * 2);
+    left: 0;
+    width: 72%;
+    height: 1px;
     background-color: $color-text-green;
   }
 }

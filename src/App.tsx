@@ -12,7 +12,11 @@ const App: React.FC = () => {
   const [lang, setLang] = useState(initialState.lang);
   const [data, setData] = useState(initialState.data);
   const [sound, setSound] = useState(initialState.sound);
-  const value = useMemo(() => ({ lang, setLang, data, setData, sound, setSound }), [lang, data]);
+  const [currentScene, setCurrentScene] = useState(initialState.currentScene);
+  const value = useMemo(
+    () => ({ lang, setLang, data, setData, sound, setSound, currentScene, setCurrentScene }),
+    [lang, data]
+  );
 
   useEffect(() => {
     if (lang === 'fr') setData(dataFR);
