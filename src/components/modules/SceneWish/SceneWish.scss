@@ -1,0 +1,69 @@
+.scene-wish {
+  width: calc(100vw - 32px);
+  height: calc(100vh - 64px);
+  right: 0;
+  top: 32px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div {
+    margin-top: 16vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: $color-text;
+      font-weight: 500;
+      font-size: $ft-s-small;
+      line-height: rem(24px);
+      text-align: center;
+      padding: rem(5px) rem(10px);
+      background: rgba(250, 246, 243, 0.24);
+      mix-blend-mode: hard-light;
+      border: 1px solid $color-text-green;
+      text-transform: uppercase;
+    }
+
+    textarea {
+      resize: none;
+      width: 120%;
+      margin-top: rem(24px);
+      margin-bottom: rem(48px);
+      border: none;
+      padding: rem(8px);
+      font-size: $ft-s-small;
+      color: $color-text-green;
+      font-family: $didot;
+
+      &:last-of-type {
+        height: 18vh;
+        font-size: $ft-s-xsmall;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    display: inline-block;
+    bottom: -4vh;
+
+    span {
+      display: inline-block;
+      position: relative;
+      top: -24px;
+      background-color: $color-cta-bg;
+      color: $color-white;
+      font-weight: 900;
+      font-size: $ft-s-xsmall;
+      line-height: rem(17px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: rem(6px) rem(10px);
+    }
+  }
+}

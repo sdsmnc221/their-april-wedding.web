@@ -3,8 +3,9 @@
   z-index: 2;
 
   &:is(h2) {
-    width: 100%;
-    padding: 0 16vw;
+    width: calc(100vw - 32px);
+    margin-left: 32px;
+    padding: 0 32px;
     font-family: $didot-b;
     font-size: $ft-s-xlarge;
     top: 50%;
@@ -13,12 +14,13 @@
   }
 
   &:is(div) {
-    width: 100%;
-    padding: 0 12vw;
+    width: calc(100vw - 32px);
+    margin-left: 32px;
+    padding-right: 48px;
     font-family: $didot;
     font-size: $ft-s-small;
     left: 50%;
-    top: 56%;
+    top: 64%;
     transform: translateX(-50%);
 
     p {

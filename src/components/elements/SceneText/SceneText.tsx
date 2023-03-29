@@ -32,7 +32,7 @@ const Paragraphs: React.FC<PropsParagraphs> = ({ text, sceneId }) => {
 };
 
 const SceneText: React.FC<Props> = ({ sceneId, text, isHeading }) => {
-  return <Fragment>{isHeading ? <Heading text={text} /> : <Paragraphs text={text} sceneId={sceneId} />};</Fragment>;
+  return <Fragment>{isHeading ? <Heading text={text} /> : <Paragraphs text={text} sceneId={sceneId} />}</Fragment>;
 };
 
 export default SceneText;

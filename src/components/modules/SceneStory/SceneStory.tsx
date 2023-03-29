@@ -5,10 +5,12 @@ import Frame from '@elements/Frame/Frame';
 import Overlay from '@elements/Overlay/Overlay';
 import Subtitle from '@elements/Subtitle/Subtitle';
 import SceneText from '@elements/SceneText/SceneText';
+import SceneWish from '../SceneWish/SceneWish';
 
 import React, { useContext, useEffect, useState, Fragment } from 'react';
-import { globalContext } from '@contexts/GlobalContext';
 import { useNavigate, useParams } from 'react-router-dom';
+
+import { globalContext } from '@contexts/GlobalContext';
 
 const SceneStory: React.FC = () => {
   const { data, setCurrentScene } = useContext(globalContext);
@@ -20,33 +22,37 @@ const SceneStory: React.FC = () => {
   const [subscenes, setSubscenes] = useState([]);
 
   useEffect(() => {
-    setSubsceneId(0);
+    setSubsceneId(sceneId !== '05-postface-last' ? 0 : 1);
     setCurrentScene(sceneId);
 
     setScene(data.scenes[sceneId]);
   }, [sceneId]);
 
   useEffect(() => {
-    if (sceneId !== '05-postface-wish' && sceneId !== '05-postface-last') {
+    if (sceneId !== '05-postface-wish') {
       setSubscenes([
-        { text: scene.title, bg: [...new Set(scene.bg)].filter((bg) => bg !== null), isHeading: true },
+        scene.title && { text: scene.title, bg: [...new Set(scene.bg)].filter((bg) => bg !== null), isHeading: true },
         ...scene.content.map((subscene: string[], index: number) => ({
           text: subscene,
           bg: [scene.bg[index]],
         })),
       ]);
+
+      // if (sceneId === '05-postface-last') setSubscenes(subscenes.shift());
     }
   }, [scene.nextScene]);
 
   const navigate = useNavigate();
   const handleSwitchScene = () => {
-    if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
-    else if (scene.nextScene) navigate(`/scene/${scene.nextScene}`);
+    if (sceneId !== '05-postface-wish') {
+      if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
+      else if (scene.nextScene) navigate(`/scene/${scene.nextScene}`);
+    }
   };
 
   return (
     <div className="scene-story" onClick={handleSwitchScene}>
-      {subscenes.length > 0 && (
+      {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
           <Background
             sceneId={`${sceneId}-${subsceneId}`}
@@ -62,6 +68,19 @@ const SceneStory: React.FC = () => {
             isHeading={subsceneId === 0}
             text={subscenes[subsceneId].text}
           />
+        </Fragment>
+      )}
+      {sceneId === '05-postface-wish' && !!scene.labels && (
+        <Fragment>
+          <Background
+            sceneId={`${sceneId}-${subsceneId}`}
+            type={scene.bg[0].includes('mp4') ? 'video' : 'image'}
+            src={scene.bg}
+          />
+          <Overlay />
+          <Frame />
+          <Subtitle content={scene.subtitle} />
+          <SceneWish labels={scene.labels} cta={scene.cta} nextScene={scene.nextScene} />
         </Fragment>
       )}
     </div>

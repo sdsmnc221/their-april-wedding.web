@@ -22,7 +22,6 @@ const Background: React.FC<Props> = ({ sceneId, type, src, isRightBottom = true,
       );
 
     case 'image':
-      console.log(src);
       return (
         <figure
           className={`background ${isRightBottom ? '--right-bottom' : '--left-top'} ${blur ? '--blurred' : ''}`}
@@ -33,7 +32,6 @@ const Background: React.FC<Props> = ({ sceneId, type, src, isRightBottom = true,
           ))}
         </figure>
       );
-      break;
     default:
       return <></>;
   }
