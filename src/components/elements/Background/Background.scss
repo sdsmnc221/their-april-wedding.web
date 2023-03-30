@@ -28,5 +28,6 @@
     width: calc(100% / var(--img-count));
     height: 100%;
     object-fit: cover;
+    pointer-events: none;
   }
 }
