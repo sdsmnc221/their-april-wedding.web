@@ -64,7 +64,7 @@ const SceneStory = () => {
             blur={subsceneId === 0}
           />
           <Overlay />
-          <Frame />
+          <Frame hasMenu />
           <Subtitle content={scene.subtitle} />
           {!loadingScene && (
             <SceneText
@@ -83,7 +83,7 @@ const SceneStory = () => {
             src={scene.bg}
           />
           <Overlay />
-          <Frame />
+          <Frame hasMenu />
           <Subtitle content={scene.subtitle} />
           <SceneWish labels={scene.labels} cta={scene.cta} nextScene={scene.nextScene} />
         </Fragment>

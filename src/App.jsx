@@ -17,6 +17,7 @@ const App = () => {
   const [currentScene, setCurrentScene] = useState(initialState.currentScene);
   const [isMobile, setIsMobile] = useState(initialState.setIsMobile());
   const [isLandscape, setIsLandscape] = useState(initialState.setIsLandscape());
+  const [menuOpened, setMenuOpened] = useState(false);
   const value = useMemo(
     () => ({
       lang,
@@ -31,8 +32,10 @@ const App = () => {
       setIsMobile,
       isLandscape,
       setIsLandscape,
+      menuOpened,
+      setMenuOpened,
     }),
-    [lang, data]
+    [lang, data, sound, currentScene, isMobile, isLandscape, menuOpened]
   );
 
   useEffect(() => {

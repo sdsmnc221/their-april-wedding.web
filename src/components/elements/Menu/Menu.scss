@@ -1,0 +1,38 @@
+.menu {
+  mix-blend-mode: hard-light;
+  position: fixed;
+  bottom: 7.5vh;
+  right: 32px;
+  z-index: 99;
+  pointer-events: all;
+  transition: all ease-in-out 1.2s;
+
+  div {
+    width: rem(28px);
+    height: 1px;
+    background-color: $color-text-green;
+    margin-bottom: rem(8px);
+    transition: all ease-in-out 1.2s;
+  }
+
+  &.--closed {
+    transform: scaleY(1.5);
+    bottom: 6.5vh;
+
+    div {
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:first-child {
+        transform-origin: top center;
+        transform: rotate(32deg) translateY(4px);
+      }
+
+      &:last-child {
+        transform-origin: top center;
+        transform: rotate(-32deg) translateY(-14px) translateX(6px);
+      }
+    }
+  }
+}

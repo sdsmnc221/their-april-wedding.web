@@ -26,6 +26,8 @@ const initialState = {
   setIsMobile: () => /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
   isLandscape: false,
   setIsLandscape: () => window.innerWidth > window.innerHeight,
+  menuOpened: false,
+  setMenuOpened: () => undefined,
 };
 
 const globalContext = React.createContext(initialState);
