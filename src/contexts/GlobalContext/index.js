@@ -22,6 +22,8 @@ const initialState = {
   setSound: () => undefined,
   currentScene: '00-splash-screen',
   setCurrentScene: () => undefined,
+  isMobile: false,
+  setIsMobile: () => /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
 };
 
 const globalContext = React.createContext(initialState);

@@ -23,6 +23,10 @@ body {
   width: 100%;
   height: $vh;
 
+  @media #{$mq-medium} {
+    height: 100vh;
+  }
+
   > * {
     z-index: 1;
   }
