@@ -15,11 +15,28 @@ const SplashScreen = () => {
   const { data, setCurrentScene } = useContext(globalContext);
 
   const navigate = useNavigate();
+  const nextScene = () => navigate(`/scene/${scene.nextScene}`);
 
   const scene = data.scenes['00-splash-screen'];
 
   useEffect(() => {
     setCurrentScene('00-splash-screen');
+
+    let touchstartY = 0;
+    let touchendY = 0;
+
+    const checkDirection = () => {
+      if (touchstartY < touchendY) setTimeout(() => nextScene(), 600);
+    };
+
+    document.addEventListener('touchstart', (e) => {
+      touchstartY = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', (e) => {
+      touchendY = e.changedTouches[0].screenX;
+      checkDirection();
+    });
   }, []);
 
   return (
@@ -29,7 +46,7 @@ const SplashScreen = () => {
       <Frame isLogo />
       <Subtitle content={scene.subtitle} />
       <Logo />
-      <ScrollDown text={scene.cta} onClick={() => navigate(`/scene/${scene.nextScene}`)} />
+      <ScrollDown text={scene.cta} onClick={nextScene} />
     </div>
   );
 };
