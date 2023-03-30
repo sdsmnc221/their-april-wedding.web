@@ -8,6 +8,7 @@ import { globalContext, initialState } from '@contexts/GlobalContext';
 import dataFR from './data/fr.json';
 import dataVN from './data/vn.json';
 import NoDesktop from './components/modules/NoDesktop/NoDesktop';
+import NoLandscape from './components/modules/NoLandscape/NoLandscape';
 
 const App = () => {
   const [lang, setLang] = useState(initialState.lang);
@@ -15,8 +16,22 @@ const App = () => {
   const [sound, setSound] = useState(initialState.sound);
   const [currentScene, setCurrentScene] = useState(initialState.currentScene);
   const [isMobile, setIsMobile] = useState(initialState.setIsMobile());
+  const [isLandscape, setIsLandscape] = useState(initialState.setIsLandscape());
   const value = useMemo(
-    () => ({ lang, setLang, data, setData, sound, setSound, currentScene, setCurrentScene, isMobile, setIsMobile }),
+    () => ({
+      lang,
+      setLang,
+      data,
+      setData,
+      sound,
+      setSound,
+      currentScene,
+      setCurrentScene,
+      isMobile,
+      setIsMobile,
+      isLandscape,
+      setIsLandscape,
+    }),
     [lang, data]
   );
 
@@ -26,7 +41,10 @@ const App = () => {
   }, [lang]);
 
   useEffect(() => {
-    const onResize = () => setIsMobile(initialState.setIsMobile());
+    const onResize = () => {
+      setIsMobile(initialState.setIsMobile());
+      setIsLandscape(initialState.setIsLandscape());
+    };
 
     window.addEventListener('resize', onResize);
 
@@ -37,7 +55,9 @@ const App = () => {
 
   return (
     <globalContext.Provider value={value}>
-      <main className="app">{isMobile ? <RouterProvider router={router} /> : <NoDesktop />}</main>
+      <main className="app">
+        {isMobile ? isLandscape ? <NoLandscape /> : <RouterProvider router={router} /> : <NoDesktop />}
+      </main>
     </globalContext.Provider>
   );
 };

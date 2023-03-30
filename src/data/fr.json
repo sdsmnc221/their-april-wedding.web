@@ -4,7 +4,7 @@
     "description": "Une histoire d'amour, racontée et illustrée par les intelligences artificielles. / Một câu chuyện tình, được kể và minh họa bởi trí tuệ nhân tạo."
   },
   "noDesktop": "Scannez le <span>code QR</span> avec votre appareil mobile pour embarquer dans cette histoire d'amour. <br/><br/> Quét <span>mã QR</span> bằng thiết bị di động của bạn để bắt đầu câu chuyện tình yêu này.",
-  "noLandscape": "Veuillez <span>tournez votre appareil</span> <br /> pour continuer l'expérience.",
+  "noLandscape": "Veuillez <span>tournez votre appareil</span> <br /> pour continuer l'expérience. <br/> <br/> Hãy <span>quay thiết bị của bạn lại</span> <br /> để tiếp tục trải nghiệm.",
   "scenes": {
     "menu": {
       "chapters": [

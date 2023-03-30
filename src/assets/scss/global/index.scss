@@ -27,6 +27,10 @@ body {
     height: 100vh;
   }
 
+  @media (orientation: landscape) {
+    height: 100vh;
+  }
+
   > * {
     z-index: 1;
   }
