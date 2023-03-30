@@ -17,14 +17,14 @@
     }
 
     &:last-of-type {
-      top: -46vh;
-      left: -100.5vw;
+      top: 0;
+      left: -2px;
       width: $vh;
       height: 100vw;
       position: absolute;
       transform: rotate(90deg);
-      transform-origin: bottom left;
-
+      transform-origin: top left;
+      margin-top: 1rem;
       padding-left: rem(8px);
 
       &::after {
