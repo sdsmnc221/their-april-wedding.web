@@ -36,7 +36,7 @@ const createSplitText = (el, duration = 1.2, stagger = 0.1) => {
 const Heading = ({ text }) => {
   const textRef = useRef(null);
   useEffect(() => {
-    if (textRef.current) createSplitText(textRef.current);
+    if (textRef.current) createSplitText(textRef.current, 3.2, 0);
   });
   return <h2 className="scene-text" dangerouslySetInnerHTML={{ __html: text }} ref={textRef} />;
 };
