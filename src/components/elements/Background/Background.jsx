@@ -39,11 +39,11 @@ const Background = ({ sceneId, type, src, isRightBottom = true, blur = false }) 
       style={{ ['--img-count']: src.length }}
     >
       {src.map((source, index) => (
-        <Fragment>
+        <Fragment key={`${sceneId}-video-image-${index}`}>
           {source.includes('mp4') ? (
-            <video key={`${sceneId}-video-${index}`} src={`/images/${source}`} loop muted autoPlay />
+            <video src={`/images/${source}`} loop muted autoPlay />
           ) : (
-            <img key={`${sceneId}-img-${index}`} src={`/images/${source}`} />
+            <img src={`/images/${source}`} />
           )}
         </Fragment>
       ))}
