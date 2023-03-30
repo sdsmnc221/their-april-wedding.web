@@ -21,7 +21,7 @@ body {
   font-size: $ft-s-small;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: $vh;
 
   > * {
     z-index: 1;
@@ -47,7 +47,7 @@ body {
   .app {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: $vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -17,9 +17,9 @@
     }
 
     &:last-of-type {
-      top: -44.5vh;
+      top: -46vh;
       left: -100.5vw;
-      width: 100vh;
+      width: $vh;
       height: 100vw;
       position: absolute;
       transform: rotate(90deg);
