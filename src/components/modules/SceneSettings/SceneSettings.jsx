@@ -18,6 +18,8 @@ const SceneSettings = () => {
 
   const handleSetLang = (lang) => {
     setLang(lang);
+    document.body.removeAttribute('class');
+    document.body.classList.add(`--${lang}`);
     setTimeout(() => {
       setSettings('sound');
     }, 1200);

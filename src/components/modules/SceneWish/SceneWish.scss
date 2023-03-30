@@ -67,3 +67,13 @@
     }
   }
 }
+
+.--vn {
+  .scene-wish {
+    & > div {
+      textarea {
+        width: 100%;
+      }
+    }
+  }
+}

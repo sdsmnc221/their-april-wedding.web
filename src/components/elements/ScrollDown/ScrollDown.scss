@@ -22,5 +22,14 @@
     color: $color-text-green;
     top: 48px;
     left: -8px;
+    white-space: nowrap;
+  }
+}
+
+.--vn {
+  .scroll-down {
+    span {
+      left: 2px;
+    }
   }
 }
