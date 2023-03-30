@@ -20,12 +20,15 @@ const SceneStory = () => {
   const [scene, setScene] = useState(data.scenes[sceneId]);
   const [subsceneId, setSubsceneId] = useState(0);
   const [subscenes, setSubscenes] = useState([]);
+  const [loadingScene, setLoadingScene] = useState(true);
 
   useEffect(() => {
-    setSubsceneId(sceneId !== '05-postface-last' ? 0 : 1);
+    setSubsceneId(0);
     setCurrentScene(sceneId);
 
     setScene(data.scenes[sceneId]);
+
+    setLoadingScene(true);
   }, [sceneId]);
 
   useEffect(() => {
@@ -37,6 +40,8 @@ const SceneStory = () => {
           bg: [scene.bg[index]],
         })),
       ]);
+
+      setTimeout(() => setLoadingScene(false), 400);
     }
   }, [scene.nextScene]);
 
@@ -61,11 +66,13 @@ const SceneStory = () => {
           <Overlay />
           <Frame />
           <Subtitle content={scene.subtitle} />
-          <SceneText
-            sceneId={`${sceneId}-${subsceneId}`}
-            isHeading={subsceneId === 0}
-            text={subscenes[subsceneId].text}
-          />
+          {!loadingScene && (
+            <SceneText
+              sceneId={`${sceneId}-${subsceneId}`}
+              isHeading={subsceneId === 0}
+              text={subscenes[subsceneId].text}
+            />
+          )}
         </Fragment>
       )}
       {sceneId === '05-postface-wish' && !!scene.labels && (
