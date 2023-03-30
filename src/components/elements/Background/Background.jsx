@@ -1,6 +1,6 @@
 import './Background.scss';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, Fragment } from 'react';
 import gsap from 'gsap-bonus';
 
 // interface Props {
@@ -32,34 +32,23 @@ const Background = ({ sceneId, type, src, isRightBottom = true, blur = false }) 
     }
   }, [sceneId]);
 
-  switch (type) {
-    case 'video':
-      return (
-        <figure
-          className={`background ${isRightBottom ? '--right-bottom' : '--left-top'} ${blur ? '--blurred' : ''}`}
-          ref={backgroundRef}
-        >
-          {src.map((video, index) => (
-            <video key={`${sceneId}-video-${index}`} src={`/images/${video}`} loop muted autoPlay></video>
-          ))}
-        </figure>
-      );
-
-    case 'image':
-      return (
-        <figure
-          className={`background ${isRightBottom ? '--right-bottom' : '--left-top'} ${blur ? '--blurred' : ''}`}
-          style={{ ['--img-count']: src.length }}
-          ref={backgroundRef}
-        >
-          {src.map((img, index) => (
-            <img key={`${sceneId}-img-${index}`} src={`/images/${img}`} />
-          ))}
-        </figure>
-      );
-    default:
-      return <></>;
-  }
+  return (
+    <figure
+      className={`background ${isRightBottom ? '--right-bottom' : '--left-top'} ${blur ? '--blurred' : ''}`}
+      ref={backgroundRef}
+      style={{ ['--img-count']: src.length }}
+    >
+      {src.map((source, index) => (
+        <Fragment>
+          {source.includes('mp4') ? (
+            <video key={`${sceneId}-video-${index}`} src={`/images/${source}`} loop muted autoPlay />
+          ) : (
+            <img key={`${sceneId}-img-${index}`} src={`/images/${source}`} />
+          )}
+        </Fragment>
+      ))}
+    </figure>
+  );
 };
 
 export default Background;

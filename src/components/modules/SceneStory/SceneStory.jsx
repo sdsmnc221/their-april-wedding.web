@@ -59,7 +59,7 @@ const SceneStory = () => {
         <Fragment>
           <Background
             sceneId={`${sceneId}-${subsceneId}`}
-            type={scene.bg[0].includes('mp4') ? 'video' : 'image'}
+            type={subscenes[subsceneId].bg[0].includes('mp4') ? 'video' : 'image'}
             src={subscenes[subsceneId].bg}
             blur={subsceneId === 0}
           />
