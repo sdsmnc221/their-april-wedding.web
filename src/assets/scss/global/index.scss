@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   color: $color-text-green;
@@ -53,7 +57,7 @@ body {
   }
 
   .app {
-    position: relative;
+    position: fixed;
     width: 100%;
     height: $vh;
     display: flex;

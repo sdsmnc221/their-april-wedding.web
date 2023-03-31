@@ -1,7 +1,7 @@
 .menu {
   mix-blend-mode: hard-light;
   position: fixed;
-  bottom: 1vh;
+  bottom: 2vh;
   right: 40px;
   z-index: 99;
   pointer-events: all;
@@ -17,7 +17,7 @@
 
   &.--closed {
     transform: scaleY(1.5);
-    bottom: 6.5vh;
+    bottom: 3.2vh;
 
     div {
       &:nth-child(2) {

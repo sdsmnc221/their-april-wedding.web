@@ -46,14 +46,15 @@
     right: 48px;
 
     &::after {
-      top: calc($vh - 35px);
+      top: $vh;
       left: 0;
-      width: 93%;
+      width: 90%;
     }
 
     &::before {
       right: 0;
       left: auto;
+      height: calc($vh - 32px);
     }
   }
 
@@ -70,7 +71,7 @@
   &__menu {
     display: block;
     position: absolute;
-    top: calc($vh - 32px * 2);
+    top: calc($vh - 32px);
     left: 0;
     width: 72%;
     height: 1px;
