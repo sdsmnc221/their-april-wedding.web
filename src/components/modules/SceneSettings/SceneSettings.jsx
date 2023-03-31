@@ -30,7 +30,7 @@ const SceneSettings = () => {
     setSound(soundState.includes('on'));
     setTimeout(() => {
       navigate('/splash-screen');
-    }, 1200);
+    }, 600);
   };
 
   useEffect(() => {
