@@ -7,20 +7,21 @@
   "noLandscape": "Veuillez <span>tournez votre appareil</span> <br /> pour continuer l'expérience. <br/> <br/> Hãy <span>quay thiết bị của bạn lại</span> <br /> để tiếp tục trải nghiệm.",
   "scenes": {
     "menu": {
-      "chapters": [
-        "00. Màn hình khởi động.",
-        "01. Lời tựa.",
-        "02. Quá khứ của họ.",
-        "03. Hiện tại của họ.",
-        "04. Tương lai của họ.",
-        "05. Lời kết."
-      ],
+      "chapters": {
+        "00-splash-screen": "<strong>00.</strong> Màn hình khởi động.",
+        "01-preface": "<strong>01.</strong> Lời tựa.",
+        "02-past": "<strong>02.</strong> Quá khứ của họ.",
+        "03-present": "<strong>03.</strong> Hiện tại của họ.",
+        "04-future": "<strong>04.</strong> Tương lai của họ.",
+        "05-postface": "<strong>05.</strong> Lời kết."
+      },
       "cta": "Gửi lời chúc phúc tới họ!",
       "bg": [
         "intro-video.mp4"
       ]
     },
     "credits": {
+      "label": "Credits.",
       "content": "<a target=\"_blank\" href=\"https://antr.tech\"><strong>TRƯƠNG Thị Vân An</strong></a> là tác giả của trang web này. <strong>ChatGPT</strong> chắp bút cho nội dung, góp phần dẫn dắt người đọc qua câu chuyện. <strong>Midjourney</strong> là họa sĩ minh họa, đã tạo ra và mang lại chiều sâu hình ảnh cho câu chuyện.",
       "cta": "Gửi lời chúc phúc tới họ!",
       "bg": [

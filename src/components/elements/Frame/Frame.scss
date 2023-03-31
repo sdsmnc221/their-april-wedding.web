@@ -5,7 +5,6 @@
   left: 32px;
   position: fixed;
   pointer-events: none;
-  z-index: 99;
 
   mix-blend-mode: hard-light;
 
@@ -37,6 +36,24 @@
 
     &::before {
       height: 50%;
+    }
+  }
+
+  &.--menu {
+    top: auto;
+    left: auto;
+    bottom: 48px;
+    right: 48px;
+
+    &::after {
+      top: calc($vh - 35px);
+      left: 0;
+      width: 93%;
+    }
+
+    &::before {
+      right: 0;
+      left: auto;
     }
   }
 

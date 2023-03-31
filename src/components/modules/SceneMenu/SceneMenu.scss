@@ -1,0 +1,71 @@
+.scene-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  z-index: 98;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: $color-bg;
+
+  .chapters {
+    position: relative;
+    left: -4vw;
+    top: -8vh;
+
+    a {
+      display: block;
+      font-weight: 500;
+      font-size: $ft-s-xsmall;
+      line-height: 1rem;
+      color: $color-text-green;
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 24px;
+
+      &.--current {
+        padding: rem(5px) rem(10px);
+        background: rgba(250, 246, 243, 0.24);
+        mix-blend-mode: hard-light;
+        border: 1px solid $color-text-green;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    display: inline-block;
+    bottom: 6vh;
+    left: -14vw;
+
+    span {
+      display: inline-block;
+      position: relative;
+      top: -24px;
+      background-color: $color-cta-bg;
+      color: $color-white;
+      font-weight: 900;
+      font-size: $ft-s-xsmall;
+      line-height: rem(17px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: rem(6px) rem(10px);
+    }
+  }
+
+  .credits {
+    position: absolute;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: $ft-s-xsmall;
+    line-height: 24px;
+    color: $color-text-green;
+    mix-blend-mode: hard-light;
+    transform: rotate(90deg);
+    top: 32px;
+    right: -8px;
+  }
+}

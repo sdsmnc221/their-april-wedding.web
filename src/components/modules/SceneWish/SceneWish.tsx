@@ -27,7 +27,7 @@ const SceneWish: React.FC<Props> = ({ labels, cta, nextScene }) => {
           </Fragment>
         ))}
       </div>
-      <button className="unbutton">
+      <button className="unbutton" type="submit">
         <img src="/images/logo.svg" alt="" />
         <span>{cta}</span>
       </button>

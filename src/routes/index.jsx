@@ -1,9 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom';
-import React from 'react';
+import React, { Fragment, useContext } from 'react';
 
 import SceneSettings from '@modules/SceneSettings/SceneSettings';
 import SplashScreen from '@modules/SplashScreen/SplashScreen';
 import SceneStory from '@modules/SceneStory/SceneStory';
+import SceneMenu from '@modules/SceneMenu/SceneMenu';
+
+import { globalContext } from '../contexts/GlobalContext';
+
+const Wrapper = ({ children }) => {
+  const { menuOpened } = useContext(globalContext);
+  return (
+    <Fragment>
+      {children}
+      {menuOpened && <SceneMenu />}
+    </Fragment>
+  );
+};
 
 const router = createBrowserRouter([
   {
@@ -12,11 +25,19 @@ const router = createBrowserRouter([
   },
   {
     path: '/splash-screen',
-    element: <SplashScreen />,
+    element: (
+      <Wrapper>
+        <SplashScreen />
+      </Wrapper>
+    ),
   },
   {
     path: '/scene/:sceneId',
-    element: <SceneStory />,
+    element: (
+      <Wrapper>
+        <SceneStory />
+      </Wrapper>
+    ),
   },
 ]);
 
