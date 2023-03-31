@@ -49,7 +49,6 @@ const SceneStory = () => {
   }, [scene?.nextScene]);
 
   useEffect(() => {
-    console.log(sceneId, subsceneId, `vo_${sceneId.slice(3)}_0${subsceneId}`);
     if (sound) {
       const audio = Resources.getItem(`vo_${sceneId.slice(3)}_0${subsceneId}`);
       if (audio) fadeIn(audio.file);
