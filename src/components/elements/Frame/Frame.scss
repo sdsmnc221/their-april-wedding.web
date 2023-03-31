@@ -71,7 +71,7 @@
   &__menu {
     display: block;
     position: absolute;
-    top: calc($vh - 32px);
+    top: calc($vh - 32px * 2);
     left: 0;
     width: 72%;
     height: 1px;
