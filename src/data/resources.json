@@ -9,14 +9,6 @@
         }
     },
     {
-        "name": "vo_preface_00",
-        "type": "audio",
-        "path": "sounds/vo_preface_00.mp3",
-        "options": {
-            "volume": 1
-        }
-    },
-    {
         "name": "vo_preface_01",
         "type": "audio",
         "path": "sounds/vo_preface_01.mp3",
@@ -33,9 +25,9 @@
         }
     },
     {
-        "name": "vo_past_00",
+        "name": "vo_preface_03",
         "type": "audio",
-        "path": "sounds/vo_past_00.mp3",
+        "path": "sounds/vo_preface_03.mp3",
         "options": {
             "volume": 1
         }
@@ -65,17 +57,17 @@
         }
     },
     {
-        "name": "vo_present_00",
+        "name": "vo_past_04",
         "type": "audio",
-        "path": "sounds/vo_present_00.mp3",
+        "path": "sounds/vo_past_04.mp3",
         "options": {
             "volume": 1
         }
     },
     {
-        "name": "vo_future_00",
+        "name": "vo_present_01",
         "type": "audio",
-        "path": "sounds/vo_future_00.mp3",
+        "path": "sounds/vo_present_01.mp3",
         "options": {
             "volume": 1
         }
@@ -89,9 +81,9 @@
         }
     },
     {
-        "name": "vo_postface_00",
+        "name": "vo_future_02",
         "type": "audio",
-        "path": "sounds/vo_postface_00.mp3",
+        "path": "sounds/vo_future_02.mp3",
         "options": {
             "volume": 1
         }
@@ -116,6 +108,14 @@
         "name": "vo_postface_03",
         "type": "audio",
         "path": "sounds/vo_postface_03.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_postface_04",
+        "type": "audio",
+        "path": "sounds/vo_postface_04.mp3",
         "options": {
             "volume": 1
         }

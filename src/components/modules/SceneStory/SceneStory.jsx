@@ -12,9 +12,11 @@ import React, { useContext, useEffect, useState, Fragment } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { globalContext } from '@contexts/GlobalContext';
+import Resources from '../../../utils/Resources';
+import { fadeIn } from '../../../utils/howler';
 
 const SceneStory = () => {
-  const { data, setCurrentScene } = useContext(globalContext);
+  const { data, setCurrentScene, sound } = useContext(globalContext);
 
   const { sceneId } = useParams();
 
@@ -45,6 +47,13 @@ const SceneStory = () => {
       setTimeout(() => setLoadingScene(false), 400);
     }
   }, [scene?.nextScene]);
+
+  useEffect(() => {
+    if (sound) {
+      const audio = Resources.getItem(`vo_${sceneId.slice(3)}_0${subsceneId}`);
+      if (audio) fadeIn(audio.file);
+    }
+  }, [subsceneId]);
 
   const navigate = useNavigate();
   const handleSwitchScene = () => {

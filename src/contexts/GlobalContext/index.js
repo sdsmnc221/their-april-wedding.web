@@ -31,6 +31,8 @@ const initialState = {
   setMenuOpened: () => undefined,
   resources: null,
   setResources: () => new Loaders(),
+  resourcesIsReady: false,
+  setResourcesIsReady: () => undefined,
 };
 
 const globalContext = React.createContext(initialState);

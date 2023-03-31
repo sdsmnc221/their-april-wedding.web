@@ -21,6 +21,7 @@ const App = () => {
   const [isLandscape, setIsLandscape] = useState(initialState.setIsLandscape());
   const [menuOpened, setMenuOpened] = useState(false);
   const [resources, setResources] = useState(initialState.setResources());
+  const [resourcesIsReady, setResourcesIsReady] = useState(false);
   const value = useMemo(
     () => ({
       lang,
@@ -39,8 +40,10 @@ const App = () => {
       setMenuOpened,
       resources,
       setResources,
+      resourcesIsReady,
+      setResourcesIsReady,
     }),
-    [lang, data, sound, currentScene, isMobile, isLandscape, menuOpened, resources]
+    [lang, data, sound, currentScene, isMobile, isLandscape, menuOpened]
   );
 
   useEffect(() => {
@@ -49,7 +52,10 @@ const App = () => {
   }, [lang]);
 
   useEffect(() => {
+    // window.addEventListener('resourcesIsReady', () => {
+    // });
     if (sound) fadeIn(Resources.getItem('ambiance').file);
+    else Resources.getAudios().forEach((audio) => fadeOut(audio.file));
   }, [sound]);
 
   useEffect(() => {
@@ -58,11 +64,16 @@ const App = () => {
       setIsLandscape(initialState.setIsLandscape());
     };
 
+    const onLoaded = () => {
+      // if (!resourcesIsReady) setResourcesIsReady(true);
+    };
+
     window.addEventListener('resize', onResize);
-    window.addEventListener('resourcesIsReady', () => console.log(Resources));
+    window.addEventListener('resourcesIsReady', onLoaded);
 
     return () => {
       window.removeEventListener('resize', onResize);
+      window.removeEventListener('resourcesIsReady', onLoaded);
     };
   }, []);
 
