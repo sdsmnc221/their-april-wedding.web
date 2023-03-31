@@ -24,7 +24,12 @@ export default class Loaders {
 
     const sourceLoaded = (source, file) => {
       if (!Resources.getItem(source.name))
-        Resources.addItem(source.name, { file: file, options: source.options || null, type: source.type });
+        Resources.addItem(source.name, {
+          file: file,
+          options: source.options || null,
+          type: source.type,
+          name: source.name,
+        });
 
       this.loaded++;
       if (this.loaded === this.toLoad) {

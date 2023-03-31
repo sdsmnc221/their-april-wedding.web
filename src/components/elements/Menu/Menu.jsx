@@ -3,14 +3,22 @@ import './Menu.scss';
 import React, { useContext } from 'react';
 
 import { globalContext } from '@contexts/GlobalContext';
+import Resources from '../../../utils/Resources';
+import { fadeOut } from '../../../utils/howler';
 
 const Menu = () => {
-  const { menuOpened, setMenuOpened, creditsOpened, setCreditsOpened } = useContext(globalContext);
+  const { menuOpened, setMenuOpened, creditsOpened, setCreditsOpened, sound } = useContext(globalContext);
 
   const handleClick = (e) => {
     e.stopPropagation();
     if (creditsOpened) setCreditsOpened(!creditsOpened);
     else setMenuOpened(!menuOpened);
+
+    if (sound) {
+      Resources.getAudios().forEach((audio) => {
+        if (!audio.name.includes('ambiance')) fadeOut(audio.file);
+      });
+    }
   };
 
   return (
