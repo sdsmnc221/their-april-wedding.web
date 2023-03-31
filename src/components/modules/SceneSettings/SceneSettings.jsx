@@ -52,7 +52,7 @@ const SceneSettings = () => {
           ))}
         {settings === 'sound' &&
           Object.entries(data.scenes['00-splash-screen-settings-sound'].cta).map((entry) => (
-            <button className="unbutton" key={`btn-settings-lang-${entry[1]}`} onClick={() => handleSetSound(entry[1])}>
+            <button className="unbutton" key={`btn-settings-lang-${entry[1]}`} onClick={() => handleSetSound(entry[0])}>
               {entry[1]}
             </button>
           ))}

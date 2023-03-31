@@ -4,7 +4,7 @@
         "type": "audio",
         "path": "sounds/intro-piano-loop.mp3",
         "options": {
-            "volume": 0.8,
+            "volume": 0.48,
             "loop": true
         }
     },
