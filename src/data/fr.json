@@ -82,16 +82,22 @@
       "title": "“Sachons d'<strong>un passé</strong>, où émergeait la résilience unie contre des tempêtes.",
       "content": [
         [
-          "<strong>Bien que le couple ait dû faire face à des tempêtes, ils ont navigué avec courage, résilience et détermination pour parvenir à ce moment magique.</strong>",
-          "Leur amour, telle une fleur qui bourgeonne sous le soleil printanier, est prêt à s'épanouir dans cette nouvelle étape de leur vie."
+          "<strong>Bien que le couple ait dû faire face à des tempêtes, ils ont navigué avec courage, résilience et détermination pour parvenir à ce moment magique.</strong>"
         ],
         [
-          "Le mariage est une union sacrée, un symbole de l'engagement, de la confiance et de la loyauté. C'est une promesse d'aimer, de respecter et de soutenir l'un l'autre dans les moments heureux comme dans les moments difficiles.",
+          "Leur amour, telle une fleur qui bourgeonne sous le soleil printanier, est prêt à s'épanouir dans cette nouvelle étape de leur vie."
+        ]
+        [
+          "Le mariage est une union sacrée, un symbole de l'engagement, de la confiance et de la loyauté. C'est une promesse d'aimer, de respecter et de soutenir l'un l'autre dans les moments heureux comme dans les moments difficiles."
+        ],
+        [
           "<strong>Aujourd'hui, nous célébrons l'amour de ces deux personnes extraordinaires qui ont choisi de s'unir pour toujours.<strong>"
         ]
       ],
       "bg": [
         "02-past-0.jpg",
+        "02-past-0.jpg",
+        "02-past-1.jpg",
         "02-past-1.jpg"
       ],
       "nextScene": "03-present"

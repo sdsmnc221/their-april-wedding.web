@@ -82,16 +82,22 @@
       "title": "“Hãy nhớ về một <strong>quá khứ</strong>, nơi có sự kiên cường đoàn kết nổi lên chống lại bão tố của cuộc đời.",
       "content": [
         [
-          "<strong>Mặc dù cặp đôi phải đối mặt với những cơn bão, nhưng họ đã điều khiển tàu với lòng dũng cảm, sự kiên cường và quyết tâm để đạt được khoảnh khắc kỳ diệu này.</strong>",
+          "<strong>Mặc dù cặp đôi phải đối mặt với những cơn bão, nhưng họ đã điều khiển tàu với lòng dũng cảm, sự kiên cường và quyết tâm để đạt được khoảnh khắc kỳ diệu này.</strong>"
+        ],
+        [
           "Tình yêu của họ, như một bông hoa nảy nở dưới ánh nắng mùa xuân, sẵn sàng nở rộ trong giai đoạn mới của cuộc đời."
         ],
         [
-          "Hôn nhân là sự kết hợp thiêng liêng, là biểu tượng của sự cam kết, sự tin tưởng và lòng trung thành. Đó là lời hứa yêu thương, tôn trọng và hỗ trợ lẫn nhau trong những thời khắc hạnh phúc cũng như những khoảnh khắc khó khăn.",
+          "Hôn nhân là sự kết hợp thiêng liêng, là biểu tượng của sự cam kết, sự tin tưởng và lòng trung thành. Đó là lời hứa yêu thương, tôn trọng và hỗ trợ lẫn nhau trong những thời khắc hạnh phúc cũng như những khoảnh khắc khó khăn."
+        ],
+        [
           "<strong>Hôm nay, chúng ta chào đón tình yêu của hai người đặc biệt đã chọn đồng hành cùng nhau mãi mãi.<strong>"
         ]
       ],
       "bg": [
         "02-past-0.jpg",
+        "02-past-0.jpg",
+        "02-past-1.jpg",
         "02-past-1.jpg"
       ],
       "nextScene": "03-present"
