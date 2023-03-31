@@ -2,7 +2,7 @@
     {
         "name": "ambiance",
         "type": "audio",
-        "path": "sounds/intro-piano-loop.mp3",
+        "path": "sounds/summer-night-piano.mp3",
         "options": {
             "volume": 0.48,
             "loop": true
@@ -105,7 +105,7 @@
         }
     },
     {
-        "name": "vo_postface_03",
+        "name": "vo_postface-last_01",
         "type": "audio",
         "path": "sounds/vo_postface_03.mp3",
         "options": {
@@ -113,7 +113,7 @@
         }
     },
     {
-        "name": "vo_postface_04",
+        "name": "vo_postface-last_02",
         "type": "audio",
         "path": "sounds/vo_postface_04.mp3",
         "options": {
