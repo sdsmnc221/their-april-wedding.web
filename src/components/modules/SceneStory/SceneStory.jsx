@@ -34,7 +34,15 @@ const SceneStory = () => {
     setScene(data.scenes[sceneId]);
 
     setLoadingScene(true);
-  }, [sceneId]);
+
+    if (sound) {
+      const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
+      if (vo) {
+        setAudio(vo);
+        fadeIn(vo.file);
+      }
+    }
+  }, [sceneId, sound]);
 
   useEffect(() => {
     if (sceneId !== '05-postface-wish') {
@@ -58,7 +66,7 @@ const SceneStory = () => {
         fadeIn(vo.file);
       }
     }
-  }, [sceneId, subsceneId, sound]);
+  }, [subsceneId, sound]);
 
   const navigate = useNavigate();
   const handleSwitchScene = () => {
