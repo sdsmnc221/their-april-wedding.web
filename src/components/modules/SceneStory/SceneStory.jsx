@@ -89,7 +89,12 @@ const SceneStory = () => {
             src={subscenes[subsceneId].bg}
             blur={subsceneId === 0}
           />
-          <Overlay />
+          <Overlay
+            withSunshine={sceneId.includes('01') || sceneId.includes('05')}
+            withStorm={sceneId.includes('02') && subsceneId < 3}
+            withLeaf={sceneId.includes('03')}
+            withSunshine2={sceneId.includes('04') || (sceneId.includes('02') && subsceneId >= 3)}
+          />
           <Frame hasMenu />
           <Subtitle content={scene.subtitle} />
           {!loadingScene && (
