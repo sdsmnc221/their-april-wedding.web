@@ -48,7 +48,7 @@ const Paragraphs = ({ text, sceneId }) => {
   const textRef = useRef(null);
 
   useEffect(() => {
-    if (textRef.current) createSplitText(textRef.current, 0.6, 0.032);
+    if (textRef.current) createSplitText(textRef.current, 0.6, 0.056);
   });
 
   return (
