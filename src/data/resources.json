@@ -176,5 +176,20 @@
         "options": {
             "volume": 1
         }
+    },
+    {
+        "name": "gif-sunshine",
+        "type": "image",
+        "path": "images/sunshine.gif"
+    },
+    {
+        "name": "gif-sunshine2",
+        "type": "image",
+        "path": "images/sunshine2.gif"
+    },
+    {
+        "name": "gif-sunshine",
+        "type": "image",
+        "path": "images/sunshine.gif"
     }
 ]

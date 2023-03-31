@@ -45,13 +45,11 @@ export default class Loaders {
         //   this.gltfLoader.load(`${this.baseUrl}/${source.path}`, (file) => {
         //     sourceLoaded(source, file);
         //   });
-        // } else if (source.type === 'texture') {
-        //   const webpFile = this.supportsWebP()
-        //     ? source.path.replace('.png', '.webp').replace('.jpg', '.webp').replace('.jpeg', '.webp')
-        //     : source.path;
-        //   this.textureLoader.load(`${this.baseUrl}/${webpFile}`, (file) => {
-        //     sourceLoaded(source, file);
-        //   });
+      } else if (source.type === 'image') {
+        const file = this.supportsWebP()
+          ? source.path.replace('.png', '.webp').replace('.jpg', '.webp').replace('.jpeg', '.webp')
+          : source.path;
+        sourceLoaded(source, file);
         // } else if (source.type === 'cubeTexture') {
         //   this.cubeTextureLoader.load(`${this.baseUrl}/${source.path}`, (file) => {
         //     sourceLoaded(source, file);

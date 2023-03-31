@@ -39,6 +39,8 @@
       font-size: $ft-s-small;
       color: $color-text-green;
       font-family: $playfair;
+      background-color: transparentize($color-bg, 0.48);
+      outline: none;
 
       &:last-of-type {
         height: 18vh;

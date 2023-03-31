@@ -91,9 +91,9 @@ const SceneStory = () => {
           />
           <Overlay
             withSunshine={sceneId.includes('01') || sceneId.includes('05')}
-            withStorm={sceneId.includes('02') && subsceneId < 3}
+            withStorm={sceneId.includes('02') && subsceneId < 2}
             withLeaf={sceneId.includes('03')}
-            withSunshine2={sceneId.includes('04') || (sceneId.includes('02') && subsceneId >= 3)}
+            withSunshine2={sceneId.includes('04') || (sceneId.includes('02') && subsceneId >= 2)}
           />
           <Frame hasMenu />
           <Subtitle content={scene.subtitle} />

@@ -11,7 +11,7 @@ import gsap from 'gsap-bonus';
 //   blur?: boolean;
 // }
 
-const Background = ({ sceneId, type, src, isRightBottom = true, blur = false }) => {
+const Background = ({ sceneId, src, isRightBottom = true, blur = false }) => {
   const backgroundRef = useRef(null);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Background = ({ sceneId, type, src, isRightBottom = true, blur = false }) 
         }
       );
     }
-  }, [sceneId]);
+  }, [src[0]]);
 
   return (
     <figure
