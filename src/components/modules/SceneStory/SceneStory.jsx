@@ -14,7 +14,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { globalContext } from '@contexts/GlobalContext';
 import Resources from '../../../utils/Resources';
-import { fadeIn } from '../../../utils/howler';
+import { fadeIn, fadeOut } from '../../../utils/howler';
 
 const SceneStory = () => {
   const { data, setCurrentScene, sound } = useContext(globalContext);
@@ -25,6 +25,7 @@ const SceneStory = () => {
   const [subsceneId, setSubsceneId] = useState(0);
   const [subscenes, setSubscenes] = useState([]);
   const [loadingScene, setLoadingScene] = useState(true);
+  const [audio, setAudio] = useState(null);
 
   useEffect(() => {
     setSubsceneId(0);
@@ -51,16 +52,20 @@ const SceneStory = () => {
 
   useEffect(() => {
     if (sound) {
-      const audio = Resources.getItem(`vo_${sceneId.slice(3)}_0${subsceneId}`);
-      if (audio) fadeIn(audio.file);
+      const vo = Resources.getItem(`vo_${sceneId.slice(3)}_0${subsceneId}`);
+      if (vo) {
+        setAudio(vo);
+        fadeIn(vo.file);
+      }
     }
-  }, [subsceneId, sound]);
+  }, [sceneId, subsceneId, sound]);
 
   const navigate = useNavigate();
   const handleSwitchScene = () => {
     if (sceneId !== '05-postface-wish') {
       if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
       else if (scene.nextScene) navigate(`/scene/${scene.nextScene}`);
+      if (audio) fadeOut(audio.file);
     }
   };
 

@@ -17,7 +17,9 @@ const SplashScreen = () => {
   const { data, setCurrentScene } = useContext(globalContext);
 
   const navigate = useNavigate();
-  const nextScene = () => navigate(`/scene/${scene.nextScene}`);
+  const nextScene = () => {
+    navigate(`/scene/${scene.nextScene}`);
+  };
 
   const scene = data.scenes['00-splash-screen'];
 
