@@ -6,6 +6,7 @@ import Overlay from '@elements/Overlay/Overlay';
 import Subtitle from '@elements/Subtitle/Subtitle';
 import SceneText from '@elements/SceneText/SceneText';
 import Menu from '@elements/Menu/Menu';
+import SoundToggle from '@elements/SoundToggle/SoundToggle';
 import SceneWish from '../SceneWish/SceneWish';
 
 import React, { useContext, useEffect, useState, Fragment } from 'react';
@@ -53,7 +54,7 @@ const SceneStory = () => {
       const audio = Resources.getItem(`vo_${sceneId.slice(3)}_0${subsceneId}`);
       if (audio) fadeIn(audio.file);
     }
-  }, [subsceneId]);
+  }, [subsceneId, sound]);
 
   const navigate = useNavigate();
   const handleSwitchScene = () => {
@@ -66,6 +67,7 @@ const SceneStory = () => {
   return (
     <div className={`scene-story --${sceneId}`} onClick={handleSwitchScene}>
       <Menu />
+      <SoundToggle />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
           <Background

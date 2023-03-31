@@ -6,11 +6,12 @@ import Logo from '@elements/Logo/Logo';
 import Overlay from '@elements/Overlay/Overlay';
 import Subtitle from '@elements/Subtitle/Subtitle';
 import ScrollDown from '@elements/ScrollDown/ScrollDown';
+import Menu from '@elements/Menu/Menu';
+import SoundToggle from '@elements/SoundToggle/SoundToggle';
 
 import React, { useContext, useEffect } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
-import Menu from '../../elements/Menu/Menu';
 
 const SplashScreen = () => {
   const { data, setCurrentScene } = useContext(globalContext);
@@ -44,6 +45,7 @@ const SplashScreen = () => {
   return (
     <div className="splash-screen">
       <Menu />
+      <SoundToggle />
       <Background type="video" src={scene.bg} />
       <Overlay />
       <Frame isLogo />

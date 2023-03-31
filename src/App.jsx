@@ -58,7 +58,7 @@ const App = () => {
   useEffect(() => {
     // window.addEventListener('resourcesIsReady', () => {
     // });
-    if (sound) fadeIn(Resources.getItem('ambiance').file);
+    if (sound) fadeIn(Resources.getItem('ambiance').file, 800, 0.48);
     else Resources.getAudios().forEach((audio) => fadeOut(audio.file));
   }, [sound]);
 
