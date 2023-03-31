@@ -12,7 +12,7 @@ export default defineConfig({
     react(),
     VitePluginFonts({
       google: {
-        families: ['Alegreya Sans SC'],
+        families: ['Alegreya Sans SC', 'Playfair Display'],
       },
     }),
     createHtmlPlugin({

@@ -6,8 +6,9 @@
     width: calc(100vw - 32px);
     margin-left: 32px;
     padding: 0 20px;
-    font-family: $didot-b;
+    font-family: $playfair;
     font-size: $ft-s-xlarge;
+    font-weight: 700;
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
@@ -17,7 +18,7 @@
     width: calc(100vw - 32px);
     margin-left: 32px;
     padding-right: 48px;
-    font-family: $didot;
+    font-family: $playfair;
     font-size: $ft-s-small;
     left: 50%;
     top: 58%;
