@@ -6,7 +6,7 @@ import Overlay from '@elements/Overlay/Overlay';
 
 import React, { useContext } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const SceneMenu = () => {
   const { data, currentScene, setMenuOpened } = useContext(globalContext);
@@ -15,7 +15,7 @@ const SceneMenu = () => {
 
   const toChapter = (e, chapter) => {
     e.preventDefault();
-    navigate(`/scene/${chapter}`);
+    navigate(chapter.includes('splash') ? '/splash-screen' : `/scene/${chapter}`);
     setTimeout(() => setMenuOpened(false), 600);
   };
 
@@ -29,7 +29,9 @@ const SceneMenu = () => {
           <a
             key={`menu-chapter-${key}`}
             dangerouslySetInnerHTML={{ __html: chapterName }}
-            className={`${key === currentScene || key.includes('postface') ? '--current' : ''}`}
+            className={`${
+              key === currentScene || (key.includes('postface') && currentScene.includes('postface')) ? '--current' : ''
+            }`}
             onClick={(e) => toChapter(e, key)}
           />
         ))}

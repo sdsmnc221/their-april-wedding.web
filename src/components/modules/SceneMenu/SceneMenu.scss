@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   display: flex;
-  z-index: 98;
+  z-index: 97;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,7 @@
 
   .chapters {
     position: relative;
+    z-index: 3;
     left: -4vw;
     top: -8vh;
 
@@ -37,8 +38,9 @@
 
   button {
     position: absolute;
+    z-index: 1;
     display: inline-block;
-    bottom: 6vh;
+    bottom: 13vh;
     left: -14vw;
 
     span {

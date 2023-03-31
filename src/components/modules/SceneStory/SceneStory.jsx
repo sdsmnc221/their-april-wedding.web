@@ -55,7 +55,7 @@ const SceneStory = () => {
   };
 
   return (
-    <div className="scene-story" onClick={handleSwitchScene}>
+    <div className={`scene-story --${sceneId}`} onClick={handleSwitchScene}>
       <Menu />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
