@@ -6,16 +6,19 @@ import { SplitText } from 'gsap-bonus/SplitText';
 
 const createSplitText = (el, duration = 1.2, stagger = 0.1) => {
   const splitInstance = new SplitText(el, { type: 'chars,words', wordsClass: 'word', charsClass: 'char' });
-  gsap.from(splitInstance.chars, {
-    filter: 'blur(3.2px)',
-    y: 32,
-    opacity: 0,
-    duration,
-    stagger: {
-      each: stagger,
-    },
-    ease: 'Power4.InOut',
-  });
+  gsap
+    .timeline()
+    .to(el, { opacity: 1, duration: 0.6, ease: 'Power4.InOut' })
+    .from(splitInstance.chars, {
+      filter: 'blur(3.2px)',
+      y: 32,
+      opacity: 0,
+      duration,
+      stagger: {
+        each: stagger,
+      },
+      ease: 'Power4.InOut',
+    });
 };
 
 // interface Props {
@@ -37,7 +40,7 @@ const Heading = ({ text }) => {
   const textRef = useRef(null);
   useEffect(() => {
     if (textRef.current) createSplitText(textRef.current, 3.2, 0);
-  });
+  }, []);
   return <h2 className="scene-text" dangerouslySetInnerHTML={{ __html: text }} ref={textRef} />;
 };
 

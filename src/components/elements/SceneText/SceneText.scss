@@ -1,11 +1,12 @@
 .scene-text {
   position: absolute;
   z-index: 2;
+  opacity: 0;
 
   &:is(h2) {
     width: calc(100vw - 32px);
     margin-left: 32px;
-    padding: 0 20px;
+    padding: 0 12px;
     font-family: $playfair;
     font-size: $ft-s-xlarge;
     font-weight: 500;

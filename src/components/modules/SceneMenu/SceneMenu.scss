@@ -11,6 +11,10 @@
   height: 100vh;
   background-color: $color-bg;
 
+  .background {
+    height: 100vh;
+  }
+
   .chapters {
     position: relative;
     z-index: 3;
