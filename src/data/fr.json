@@ -61,12 +61,18 @@
       "title": "“Préface.",
       "content": [
         [
-          "Chers amis et <br/> membres de la famille,",
-          "Nous sommes réunis aujourd'hui pour célébrer l'union de deux âmes qui se sont trouvées dans un monde chaotique.",
+          "Chers amis et <br/> membres de la famille,"
+        ],
+        [
+          "Nous sommes réunis aujourd'hui pour célébrer l'union de deux âmes qui se sont trouvées dans un monde chaotique."
+        ],
+        [
           "<strong>Leur amour est comme un rayon de soleil qui éclaire cette journée d'avril, illuminant tout autour de nous.<strong>"
         ]
       ],
       "bg": [
+        "01-preface-0.jpg",
+        "01-preface-0.jpg",
         "01-preface-0.jpg"
       ],
       "nextScene": "02-past"

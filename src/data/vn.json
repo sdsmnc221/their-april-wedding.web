@@ -61,12 +61,18 @@
       "title": "“Lời tựa.",
       "content": [
         [
-          "Các bạn thân mến <br /> và gia đình thân yêu,",
-          "Hôm nay chúng ta tụ hội để chào đón sự kết hợp của hai linh hồn đã tìm thấy nhau trong một thế giới hỗn loạn.",
+          "Các bạn thân mến <br /> và gia đình thân yêu,"
+        ],
+        [
+          "Hôm nay chúng ta tụ hội để chào đón sự kết hợp của hai linh hồn đã tìm thấy nhau trong một thế giới hỗn loạn."
+        ],
+        [
           "<strong>Tình yêu của họ giống như tia nắng chiếu sáng ngày tháng Tư này, chiếu rọi mọi nơi xung quanh chúng ta.<strong>"
         ]
       ],
       "bg": [
+        "01-preface-0.jpg",
+        "01-preface-0.jpg",
         "01-preface-0.jpg"
       ],
       "nextScene": "02-past"
