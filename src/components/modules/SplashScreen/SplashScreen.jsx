@@ -23,6 +23,7 @@ const SplashScreen = () => {
   useEffect(() => {
     setCurrentScene('00-splash-screen');
 
+    // simulate swipe / scroll down
     let touchstartY = 0;
     let touchendY = 0;
 

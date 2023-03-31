@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bidello": "^1.0.1",
     "gsap-bonus": "file:gsap-bonus.tgz",
+    "howler": "^2.2.3",
     "imagesloaded": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

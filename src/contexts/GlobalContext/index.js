@@ -1,6 +1,7 @@
 import React from 'react';
 
 import dataFR from '../../data/fr.json';
+import Loaders from '../../utils/Loaders';
 
 // interface Props {
 //   lang: string;
@@ -18,7 +19,7 @@ const initialState = {
   setLang: () => undefined,
   data: dataFR,
   setData: () => undefined,
-  sound: true,
+  sound: false,
   setSound: () => undefined,
   currentScene: '00-splash-screen',
   setCurrentScene: () => undefined,
@@ -28,6 +29,8 @@ const initialState = {
   setIsLandscape: () => window.innerWidth > window.innerHeight,
   menuOpened: false,
   setMenuOpened: () => undefined,
+  resources: null,
+  setResources: () => new Loaders(),
 };
 
 const globalContext = React.createContext(initialState);

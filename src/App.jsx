@@ -9,6 +9,8 @@ import dataFR from './data/fr.json';
 import dataVN from './data/vn.json';
 import NoDesktop from './components/modules/NoDesktop/NoDesktop';
 import NoLandscape from './components/modules/NoLandscape/NoLandscape';
+import Resources from './utils/Resources';
+import { fadeIn, fadeOut } from './utils/howler';
 
 const App = () => {
   const [lang, setLang] = useState(initialState.lang);
@@ -18,6 +20,7 @@ const App = () => {
   const [isMobile, setIsMobile] = useState(initialState.setIsMobile());
   const [isLandscape, setIsLandscape] = useState(initialState.setIsLandscape());
   const [menuOpened, setMenuOpened] = useState(false);
+  const [resources, setResources] = useState(initialState.setResources());
   const value = useMemo(
     () => ({
       lang,
@@ -34,8 +37,10 @@ const App = () => {
       setIsLandscape,
       menuOpened,
       setMenuOpened,
+      resources,
+      setResources,
     }),
-    [lang, data, sound, currentScene, isMobile, isLandscape, menuOpened]
+    [lang, data, sound, currentScene, isMobile, isLandscape, menuOpened, resources]
   );
 
   useEffect(() => {
@@ -44,12 +49,17 @@ const App = () => {
   }, [lang]);
 
   useEffect(() => {
+    if (sound) fadeIn(Resources.getItem('ambiance').file);
+  }, [sound]);
+
+  useEffect(() => {
     const onResize = () => {
       setIsMobile(initialState.setIsMobile());
       setIsLandscape(initialState.setIsLandscape());
     };
 
     window.addEventListener('resize', onResize);
+    window.addEventListener('resourcesIsReady', () => console.log(Resources));
 
     return () => {
       window.removeEventListener('resize', onResize);

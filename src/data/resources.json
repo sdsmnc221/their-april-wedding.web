@@ -1,0 +1,123 @@
+[
+    {
+        "name": "ambiance",
+        "type": "audio",
+        "path": "sounds/intro-piano-loop.mp3",
+        "options": {
+            "volume": 0.8,
+            "loop": true
+        }
+    },
+    {
+        "name": "vo_preface_00",
+        "type": "audio",
+        "path": "sounds/vo_preface_00.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_preface_01",
+        "type": "audio",
+        "path": "sounds/vo_preface_01.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_preface_02",
+        "type": "audio",
+        "path": "sounds/vo_preface_02.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_past_00",
+        "type": "audio",
+        "path": "sounds/vo_past_00.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_past_01",
+        "type": "audio",
+        "path": "sounds/vo_past_01.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_past_02",
+        "type": "audio",
+        "path": "sounds/vo_past_02.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_past_03",
+        "type": "audio",
+        "path": "sounds/vo_past_03.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_present_00",
+        "type": "audio",
+        "path": "sounds/vo_present_00.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_future_00",
+        "type": "audio",
+        "path": "sounds/vo_future_00.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_future_01",
+        "type": "audio",
+        "path": "sounds/vo_future_01.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_postface_00",
+        "type": "audio",
+        "path": "sounds/vo_postface_00.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_postface_01",
+        "type": "audio",
+        "path": "sounds/vo_postface_01.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_postface_02",
+        "type": "audio",
+        "path": "sounds/vo_postface_02.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_postface_03",
+        "type": "audio",
+        "path": "sounds/vo_postface_03.mp3",
+        "options": {
+            "volume": 1
+        }
+    }
+]
