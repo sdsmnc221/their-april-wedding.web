@@ -19,9 +19,11 @@ const App = () => {
   const [currentScene, setCurrentScene] = useState(initialState.currentScene);
   const [isMobile, setIsMobile] = useState(initialState.setIsMobile());
   const [isLandscape, setIsLandscape] = useState(initialState.setIsLandscape());
-  const [menuOpened, setMenuOpened] = useState(false);
+  const [menuOpened, setMenuOpened] = useState(initialState.menuOpened);
+  const [creditsOpened, setCreditsOpened] = useState(initialState.creditsOpened);
   const [resources, setResources] = useState(initialState.setResources());
-  const [resourcesIsReady, setResourcesIsReady] = useState(false);
+  const [resourcesIsReady, setResourcesIsReady] = useState(initialState.resourcesIsReady);
+
   const value = useMemo(
     () => ({
       lang,
@@ -38,12 +40,14 @@ const App = () => {
       setIsLandscape,
       menuOpened,
       setMenuOpened,
+      creditsOpened,
+      setCreditsOpened,
       resources,
       setResources,
       resourcesIsReady,
       setResourcesIsReady,
     }),
-    [lang, data, sound, currentScene, isMobile, isLandscape, menuOpened]
+    [lang, data, sound, currentScene, isMobile, isLandscape, menuOpened, creditsOpened]
   );
 
   useEffect(() => {

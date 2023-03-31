@@ -6,10 +6,10 @@ import Overlay from '@elements/Overlay/Overlay';
 
 import React, { useContext } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SceneMenu = () => {
-  const { data, currentScene, setMenuOpened } = useContext(globalContext);
+  const { data, currentScene, setMenuOpened, setCreditsOpened } = useContext(globalContext);
 
   const navigate = useNavigate();
 
@@ -17,6 +17,11 @@ const SceneMenu = () => {
     e.preventDefault();
     navigate(chapter.includes('splash') ? '/splash-screen' : `/scene/${chapter}`);
     setTimeout(() => setMenuOpened(false), 600);
+  };
+
+  const handleCredits = (e) => {
+    e.preventDefault();
+    setCreditsOpened(true);
   };
 
   return (
@@ -45,7 +50,9 @@ const SceneMenu = () => {
         <img src="/images/logo.svg" alt="" />
         <span>{data.scenes.menu.cta}</span>
       </button>
-      <a className="credits">{data.scenes.credits.label}</a>
+      <a className="credits" onClick={handleCredits}>
+        {data.scenes.credits.label}
+      </a>
     </div>
   );
 };

@@ -5,15 +5,17 @@ import SceneSettings from '@modules/SceneSettings/SceneSettings';
 import SplashScreen from '@modules/SplashScreen/SplashScreen';
 import SceneStory from '@modules/SceneStory/SceneStory';
 import SceneMenu from '@modules/SceneMenu/SceneMenu';
+import SceneCredits from '@modules/SceneCredits/SceneCredits';
 
 import { globalContext } from '../contexts/GlobalContext';
 
 const Wrapper = ({ children }) => {
-  const { menuOpened } = useContext(globalContext);
+  const { menuOpened, creditsOpened } = useContext(globalContext);
   return (
     <Fragment>
       {children}
       {menuOpened && <SceneMenu />}
+      {creditsOpened && <SceneCredits />}
     </Fragment>
   );
 };

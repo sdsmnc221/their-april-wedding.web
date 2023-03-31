@@ -5,11 +5,12 @@ import React, { useContext } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 
 const Menu = () => {
-  const { menuOpened, setMenuOpened } = useContext(globalContext);
+  const { menuOpened, setMenuOpened, creditsOpened, setCreditsOpened } = useContext(globalContext);
 
   const handleClick = (e) => {
     e.stopPropagation();
-    setMenuOpened(!menuOpened);
+    if (creditsOpened) setCreditsOpened(!creditsOpened);
+    else setMenuOpened(!menuOpened);
   };
 
   return (

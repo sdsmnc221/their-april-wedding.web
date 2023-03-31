@@ -29,6 +29,8 @@ const initialState = {
   setIsLandscape: () => window.innerWidth > window.innerHeight,
   menuOpened: false,
   setMenuOpened: () => undefined,
+  creditsOpened: false,
+  setCreditsOpened: () => undefined,
   resources: null,
   setResources: () => new Loaders(),
   resourcesIsReady: false,
