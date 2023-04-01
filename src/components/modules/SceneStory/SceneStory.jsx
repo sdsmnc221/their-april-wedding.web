@@ -19,7 +19,8 @@ import Resources from '../../../utils/Resources';
 import { fadeIn, fadeOut } from '../../../utils/howler';
 
 const SceneStory = () => {
-  const { data, setCurrentScene, sound, resources, setCreditsOpened, setMenuOpened } = useContext(globalContext);
+  const { data, setCurrentScene, sound, resources, setCreditsOpened, menuOpened, setMenuOpened } =
+    useContext(globalContext);
 
   const { sceneId } = useParams();
 
@@ -37,6 +38,8 @@ const SceneStory = () => {
     setCurrentScene(sceneId);
 
     setScene(data.scenes[sceneId]);
+
+    setSubsceneId(0);
 
     setLoadingScene(true);
 
@@ -158,19 +161,21 @@ const SceneStory = () => {
       <Menu
         onClick={() => {
           setSubsceneId(0);
-          setTouchIndicatorHidden(!touchIndicatorHidden);
+          setTouchIndicatorHidden(menuOpened ? false : true);
           // setAutomating(!automating);
         }}
       />
       <SoundToggle />
-      <TouchIndicator
-        touchIndicatorHidden={touchIndicatorHidden}
-        setTouchIndicatorHidden={setTouchIndicatorHidden}
-        onClick={() => {
-          console.log('from touch indicator');
-          toNext();
-        }}
-      />
+      {sceneId !== '05-postface-wish' && (
+        <TouchIndicator
+          touchIndicatorHidden={touchIndicatorHidden}
+          setTouchIndicatorHidden={setTouchIndicatorHidden}
+          onClick={() => {
+            console.log('from touch indicator');
+            toNext();
+          }}
+        />
+      )}
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
           <Background
