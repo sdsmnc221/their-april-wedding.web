@@ -109,6 +109,9 @@ const SceneStory = () => {
         duration: 2.4,
         delay: 0.6,
         ease: 'Power4.InOut',
+        stagger: {
+          each: 0.64,
+        },
         onStart: () => {
           gsap.to(endingCTAsRef.current, { opacity: 1, duration: 4.8, ease: 'Power4.InOut' });
         },
