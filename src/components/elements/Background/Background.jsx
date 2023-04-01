@@ -41,7 +41,7 @@ const Background = ({ sceneId, src, isRightBottom = true, blur = false }) => {
       {src.map((source, index) => (
         <Fragment key={`${sceneId}-video-image-${index}`}>
           {source.includes('mp4') ? (
-            <video src={`/images/${source}`} loop muted autoPlay />
+            <video src={`/images/${source}`} loop muted autoPlay playsInline />
           ) : (
             <img src={`/images/${source}`} />
           )}
