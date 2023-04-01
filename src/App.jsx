@@ -21,7 +21,7 @@ const App = () => {
   const [isLandscape, setIsLandscape] = useState(initialState.setIsLandscape());
   const [menuOpened, setMenuOpened] = useState(initialState.menuOpened);
   const [creditsOpened, setCreditsOpened] = useState(initialState.creditsOpened);
-  const [resources, setResources] = useState(initialState.setResources());
+  const [resources, setResources] = useState(initialState.resources);
   const [resourcesIsReady, setResourcesIsReady] = useState(initialState.resourcesIsReady);
 
   const value = useMemo(
@@ -58,11 +58,11 @@ const App = () => {
   useEffect(() => {
     // window.addEventListener('resourcesIsReady', () => {
     // });
-    if (sound) {
+    if (sound && resources) {
       fadeIn(Resources.getItem('ambiance').file, 800, 0.48);
       fadeIn(Resources.getItem('ambiance2').file, 800, 0.12);
     } else Resources.getAudios().forEach((audio) => fadeOut(audio.file));
-  }, [sound]);
+  }, [sound, resources]);
 
   useEffect(() => {
     const onResize = () => {

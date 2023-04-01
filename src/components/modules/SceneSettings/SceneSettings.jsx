@@ -10,9 +10,10 @@ import Overlay from '@elements/Overlay/Overlay';
 import Subtitle from '@elements/Subtitle/Subtitle';
 
 import { globalContext } from '@contexts/GlobalContext';
+import { initialState } from '../../../contexts/GlobalContext';
 
 const SceneSettings = () => {
-  const { setLang, data, setSound, setCurrentScene } = useContext(globalContext);
+  const { setLang, data, setSound, setResources, setCurrentScene } = useContext(globalContext);
 
   const [settings, setSettings] = useState('lang');
 
@@ -27,6 +28,7 @@ const SceneSettings = () => {
 
   const navigate = useNavigate();
   const handleSetSound = (soundState) => {
+    setResources(initialState.setResources());
     setSound(soundState.includes('on'));
     setTimeout(() => {
       navigate('/splash-screen');
