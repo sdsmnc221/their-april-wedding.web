@@ -34,7 +34,9 @@ const SceneStory = () => {
     setScene(data.scenes[sceneId]);
 
     setLoadingScene(true);
+  }, [sceneId]);
 
+  useEffect(() => {
     if (sound) {
       const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
       if (vo) {
