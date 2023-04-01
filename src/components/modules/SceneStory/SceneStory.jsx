@@ -157,7 +157,7 @@ const SceneStory = () => {
       <Menu
         onClick={() => {
           setSubsceneId(0);
-          setTouchIndicatorHidden(true);
+          setTouchIndicatorHidden(!touchIndicatorHidden);
           // setAutomating(!automating);
         }}
       />
