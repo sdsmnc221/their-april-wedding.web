@@ -41,23 +41,16 @@ export default class Loaders {
     for (const source of this.sources) {
       if (Resources.getItem(source.name)) {
         sourceLoaded(source, null);
-        // } else if (source.type === 'gltfModel') {
-        //   this.gltfLoader.load(`${this.baseUrl}/${source.path}`, (file) => {
-        //     sourceLoaded(source, file);
-        //   });
       } else if (source.type === 'image') {
         const file = this.supportsWebP()
           ? source.path.replace('.png', '.webp').replace('.jpg', '.webp').replace('.jpeg', '.webp')
           : source.path;
         sourceLoaded(source, file);
-        // } else if (source.type === 'cubeTexture') {
-        //   this.cubeTextureLoader.load(`${this.baseUrl}/${source.path}`, (file) => {
-        //     sourceLoaded(source, file);
-        //   });
       } else if (source.type === 'audio') {
         const file = new Howl({
           src: [`/${source.path}`],
           ...source.options,
+          autoplay: false,
           onload: () => {
             sourceLoaded(source, file);
           },
