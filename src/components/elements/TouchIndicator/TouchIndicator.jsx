@@ -12,7 +12,7 @@ const TouchIndicator = ({ touchIndicatorHidden, setTouchIndicatorHidden, toNextS
       onClick={(e) => {
         e.stopPropagation();
         setTouchIndicatorHidden(!touchIndicatorHidden);
-        toNextSubscene(true);
+        toNextSubscene();
       }}
     >
       <div className="loader-container">

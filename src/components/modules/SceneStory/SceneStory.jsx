@@ -129,13 +129,19 @@ const SceneStory = () => {
     }
   };
 
-  const toNextSubscene = (force = false) => {
-    if (automating || force) {
+  const toNextSubscene = (index = null) => {
+    const next = (index) => {
       if (sceneId !== '05-postface-wish') {
-        if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
+        if (subsceneId < subscenes.length - 1) setSubsceneId(index || subsceneId + 1);
         if (audio) fadeOut(audio.file);
       }
-    }
+    };
+
+    if (typeof index === 'number') {
+      setAutomating(false);
+      next(index);
+      setAutomating(true);
+    } else if (automating) next();
   };
 
   const toNextScene = () => {
@@ -171,7 +177,7 @@ const SceneStory = () => {
       <TouchIndicator
         touchIndicatorHidden={touchIndicatorHidden}
         setTouchIndicatorHidden={setTouchIndicatorHidden}
-        toNextSubscene={toNextSubscene}
+        toNextSubscene={() => toNextSubscene(1)}
       />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
