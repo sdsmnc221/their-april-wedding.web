@@ -30,7 +30,7 @@ const Background = ({ sceneId, src, isRightBottom = true, blur = false }) => {
         }
       );
     }
-  }, [src[0]]);
+  }, [src[0], src[1]]);
 
   return (
     <figure
