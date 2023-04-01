@@ -17,7 +17,7 @@ import Resources from '../../../utils/Resources';
 import { fadeIn, fadeOut } from '../../../utils/howler';
 
 const SceneStory = () => {
-  const { data, setCurrentScene, sound } = useContext(globalContext);
+  const { data, setCurrentScene, sound, resources } = useContext(globalContext);
 
   const { sceneId } = useParams();
 
@@ -37,14 +37,16 @@ const SceneStory = () => {
   }, [sceneId]);
 
   useEffect(() => {
-    if (sound && subsceneId === 0) {
-      const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
-      if (vo) {
-        setAudio(vo);
-        fadeIn(vo.file);
-      }
+    if (resources && sound && subsceneId === 0) {
+      setTimeout(() => {
+        const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
+        if (vo) {
+          setAudio(vo);
+          fadeIn(vo.file);
+        }
+      }, 400);
     }
-  }, [sceneId, sound]);
+  }, [sceneId, sound, resources]);
 
   useEffect(() => {
     if (sceneId !== '05-postface-wish') {
@@ -61,14 +63,16 @@ const SceneStory = () => {
   }, [scene?.nextScene]);
 
   useEffect(() => {
-    if (sound && subsceneId > 0) {
-      const vo = Resources.getItem(`vo_${sceneId.slice(3)}_0${subsceneId}`);
-      if (vo) {
-        setAudio(vo);
-        fadeIn(vo.file);
-      }
+    if (resources && sound && subsceneId > 0) {
+      setTimeout(() => {
+        const vo = Resources.getItem(`vo_${sceneId.slice(3)}_0${subsceneId}`);
+        if (vo) {
+          setAudio(vo);
+          fadeIn(vo.file);
+        }
+      }, 400);
     }
-  }, [subsceneId, sound]);
+  }, [subsceneId, sound, resources]);
 
   const navigate = useNavigate();
   const handleSwitchScene = () => {
