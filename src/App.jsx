@@ -60,7 +60,7 @@ const App = () => {
     // });
     if (sound) {
       fadeIn(Resources.getItem('ambiance').file, 800, 0.48);
-      fadeIn(Resources.getItem('ambiance2').file, 800, 0.64);
+      fadeIn(Resources.getItem('ambiance2').file, 800, 0.32);
     } else Resources.getAudios().forEach((audio) => fadeOut(audio.file));
   }, [sound]);
 
