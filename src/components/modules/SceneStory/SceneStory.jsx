@@ -28,7 +28,6 @@ const SceneStory = () => {
   const [audio, setAudio] = useState(null);
 
   useEffect(() => {
-    setSubsceneId(0);
     setCurrentScene(sceneId);
 
     setScene(data.scenes[sceneId]);
@@ -78,7 +77,10 @@ const SceneStory = () => {
   const handleSwitchScene = () => {
     if (sceneId !== '05-postface-wish') {
       if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
-      else if (scene.nextScene) navigate(`/scene/${scene.nextScene}`);
+      else if (scene.nextScene) {
+        setSubsceneId(0);
+        navigate(`/scene/${scene.nextScene}`);
+      }
       if (audio) fadeOut(audio.file);
     }
   };
