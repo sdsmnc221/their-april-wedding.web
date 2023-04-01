@@ -44,7 +44,7 @@ const SceneStory = () => {
           setAudio(vo);
           fadeIn(vo.file);
         }
-      }, 400);
+      }, 1000);
     }
   }, [sceneId, sound, resources]);
 
@@ -58,7 +58,7 @@ const SceneStory = () => {
         })),
       ]);
 
-      setTimeout(() => setLoadingScene(false), 400);
+      setTimeout(() => setLoadingScene(false), 1000);
     }
   }, [scene?.nextScene]);
 
@@ -70,7 +70,7 @@ const SceneStory = () => {
           setAudio(vo);
           fadeIn(vo.file);
         }
-      }, 400);
+      }, 1000);
     }
   }, [subsceneId, sound, resources]);
 
