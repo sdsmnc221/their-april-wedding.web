@@ -57,6 +57,7 @@ const SceneStory = () => {
 
   useEffect(() => {
     if (sceneId !== '05-postface-wish') {
+      console.log(scene);
       setSubscenes([
         scene.title && { text: scene.title, bg: [...new Set(scene.bg)].filter((bg) => bg !== null), isHeading: true },
         ...scene.content.map((subscene, index) => ({
@@ -67,7 +68,7 @@ const SceneStory = () => {
 
       setTimeout(() => setLoadingScene(false), 1000);
     }
-  }, [scene?.nextScene, sceneId]);
+  }, [scene?.nextScene]);
 
   useEffect(() => {
     if (resources && sound && subsceneId > 0) {
