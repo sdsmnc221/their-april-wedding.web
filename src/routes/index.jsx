@@ -6,6 +6,7 @@ import SplashScreen from '@modules/SplashScreen/SplashScreen';
 import SceneStory from '@modules/SceneStory/SceneStory';
 import SceneMenu from '@modules/SceneMenu/SceneMenu';
 import SceneCredits from '@modules/SceneCredits/SceneCredits';
+import Scene404 from '@modules/Scene404/Scene404';
 
 import { globalContext } from '../contexts/GlobalContext';
 
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
     element: (
       <Wrapper>
         <SceneStory />
+      </Wrapper>
+    ),
+  },
+  {
+    path: '*',
+    element: (
+      <Wrapper>
+        <Scene404 />
       </Wrapper>
     ),
   },

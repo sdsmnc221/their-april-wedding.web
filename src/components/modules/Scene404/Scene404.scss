@@ -1,0 +1,54 @@
+.scene-404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  padding-top: 10vh;
+
+  .background {
+    top: 0;
+    left: 0;
+  }
+
+  .not-found {
+    position: relative;
+    width: 100%;
+    padding: 0 24vw;
+
+    p {
+      font-weight: 500;
+      font-size: $ft-s-xsmall;
+      line-height: 1.4rem;
+      color: $color-text-green;
+      text-align: center;
+      text-transform: uppercase;
+
+      a {
+        color: $color-text;
+        text-decoration: none;
+      }
+    }
+  }
+
+  button {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8vh;
+
+    width: 72vw;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
