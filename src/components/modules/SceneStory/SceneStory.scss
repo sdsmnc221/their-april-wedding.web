@@ -13,4 +13,41 @@
       right: 28px;
     }
   }
+
+  .ending-cta {
+    position: fixed;
+    z-index: 3;
+    left: 50%;
+    bottom: 16vh;
+    transform: translateX(-50%);
+    opacity: 0;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 24px;
+      background-color: $color-text-green;
+    }
+
+    a {
+      display: block;
+      font-weight: 500;
+      font-size: $ft-s-xsmall;
+      line-height: 1rem;
+      color: $color-text-green;
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 24px;
+      padding: rem(5px) rem(10px);
+      background: rgba(250, 246, 243, 0.24);
+      mix-blend-mode: hard-light;
+      border: 1px solid $color-text-green;
+      width: 50vw;
+    }
+  }
 }

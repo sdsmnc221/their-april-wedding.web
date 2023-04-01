@@ -6,7 +6,7 @@ import { globalContext } from '@contexts/GlobalContext';
 import Resources from '../../../utils/Resources';
 import { fadeOut } from '../../../utils/howler';
 
-const Menu = () => {
+const Menu = ({ onClick }) => {
   const { menuOpened, setMenuOpened, creditsOpened, setCreditsOpened, sound } = useContext(globalContext);
 
   const handleClick = (e) => {
@@ -19,6 +19,8 @@ const Menu = () => {
         if (!audio.name.includes('ambiance')) fadeOut(audio.file);
       });
     }
+
+    onClick && onClick();
   };
 
   return (

@@ -9,15 +9,16 @@ import Menu from '@elements/Menu/Menu';
 import SoundToggle from '@elements/SoundToggle/SoundToggle';
 import SceneWish from '../SceneWish/SceneWish';
 
-import React, { useContext, useEffect, useState, Fragment } from 'react';
+import React, { useContext, useEffect, useState, Fragment, useRef, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import gsap from 'gsap-bonus';
 
 import { globalContext } from '@contexts/GlobalContext';
 import Resources from '../../../utils/Resources';
 import { fadeIn, fadeOut } from '../../../utils/howler';
 
 const SceneStory = () => {
-  const { data, setCurrentScene, sound, resources } = useContext(globalContext);
+  const { data, setCurrentScene, sound, resources, setCreditsOpened, setMenuOpened } = useContext(globalContext);
 
   const { sceneId } = useParams();
 
@@ -26,6 +27,9 @@ const SceneStory = () => {
   const [subscenes, setSubscenes] = useState([]);
   const [loadingScene, setLoadingScene] = useState(true);
   const [audio, setAudio] = useState(null);
+  const [automating, setAutomating] = useState(true);
+
+  const endingCTAsRef = useRef(null);
 
   useEffect(() => {
     setCurrentScene(sceneId);
@@ -45,7 +49,7 @@ const SceneStory = () => {
         }
       }, 1000);
     }
-  }, [sceneId, sound, resources]);
+  }, [sceneId, subsceneId, sound, resources]);
 
   useEffect(() => {
     if (sceneId !== '05-postface-wish') {
@@ -87,30 +91,76 @@ const SceneStory = () => {
     }
   }, [sound, resources]);
 
+  const animateEndingCTA = useCallback(() => {
+    if (endingCTAsRef.current) {
+      const nodes = [...endingCTAsRef.current.querySelectorAll('a')];
+      gsap.from(nodes, {
+        filter: 'blur(32px)',
+        opacity: 0,
+        y: 64,
+        duration: 2.4,
+        delay: 0.6,
+        ease: 'Power4.InOut',
+        onStart: () => {
+          gsap.to(endingCTAsRef.current, { opacity: 1, duration: 4.8, ease: 'Power4.InOut' });
+        },
+      });
+    }
+  }, [endingCTAsRef.current, subsceneId]);
+
   const navigate = useNavigate();
+
   const handleSwitchScene = () => {
     if (sceneId !== '05-postface-wish') {
+      setAutomating(false);
+
       if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
       else if (scene.nextScene) {
         setSubsceneId(0);
         navigate(`/scene/${scene.nextScene}`);
       }
       if (audio) fadeOut(audio.file);
+
+      setAutomating(true);
     }
+  };
+
+  const toNextSubscene = () => {
+    if (automating) {
+      if (sceneId !== '05-postface-wish') {
+        if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
+        if (audio) fadeOut(audio.file);
+      }
+    }
+  };
+
+  const toNextScene = () => {
+    if (automating) {
+      if (sceneId !== '05-postface-wish') {
+        if (scene.nextScene) {
+          setSubsceneId(0);
+          navigate(`/scene/${scene.nextScene}`);
+        }
+        if (audio) fadeOut(audio.file);
+      }
+    }
+  };
+
+  const toScene = (e, index) => {
+    e.preventDefault();
+    if (index === 0) {
+      setMenuOpened(true);
+      setCreditsOpened(true);
+    } else navigate('/');
   };
 
   return (
     <div className={`scene-story --${sceneId}`} onClick={handleSwitchScene}>
-      <Menu />
+      <Menu onClick={() => setSubsceneId(0)} />
       <SoundToggle />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
-          <Background
-            sceneId={`${sceneId}-${subsceneId}`}
-            type={subscenes[subsceneId].bg[0].includes('mp4') ? 'video' : 'image'}
-            src={subscenes[subsceneId].bg}
-            blur={subsceneId === 0}
-          />
+          <Background sceneId={`${sceneId}-${subsceneId}`} src={subscenes[subsceneId].bg} blur={subsceneId === 0} />
           <Overlay
             withSunshine={sceneId.includes('01') || sceneId.includes('05')}
             withStorm={sceneId.includes('02') && subsceneId < 2}
@@ -124,17 +174,28 @@ const SceneStory = () => {
               sceneId={`${sceneId}-${subsceneId}`}
               isHeading={subsceneId === 0}
               text={subscenes[subsceneId].text}
+              isLastText={subsceneId === subscenes.length - 1}
+              animateEndingCTA={animateEndingCTA}
+              toNextScene={toNextScene}
+              toNextSubscene={toNextSubscene}
             />
+          )}
+          {sceneId === '05-postface-last' && subsceneId === subscenes.length - 1 && (
+            <div className="ending-cta" ref={endingCTAsRef}>
+              {scene &&
+                Array.isArray(scene.cta) &&
+                scene.cta.map((cta, index) => (
+                  <a key={`ending-cta-${index}`} onClick={(e) => toScene(e, index)}>
+                    {cta}
+                  </a>
+                ))}
+            </div>
           )}
         </Fragment>
       )}
       {sceneId === '05-postface-wish' && !!scene.labels && (
         <Fragment>
-          <Background
-            sceneId={`${sceneId}-${subsceneId}`}
-            type={scene.bg[0].includes('mp4') ? 'video' : 'image'}
-            src={scene.bg}
-          />
+          <Background sceneId={`${sceneId}-${subsceneId}`} src={scene.bg} />
           <Overlay />
           <Frame hasMenu />
           <Subtitle content={scene.subtitle} />

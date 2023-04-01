@@ -4,7 +4,7 @@ import React, { Fragment, useEffect, useRef } from 'react';
 import gsap from 'gsap-bonus';
 import { SplitText } from 'gsap-bonus/SplitText';
 
-const createSplitText = (el, duration = 1.2, stagger = 0.1) => {
+const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, toNextSubscene, toNextScene) => {
   const splitInstance = new SplitText(el, { type: 'chars,words', wordsClass: 'word', charsClass: 'char' });
   gsap
     .timeline()
@@ -18,6 +18,13 @@ const createSplitText = (el, duration = 1.2, stagger = 0.1) => {
         each: stagger,
       },
       ease: 'Power4.InOut',
+      onComplete: () => {
+        animateEndingCTA && animateEndingCTA();
+        setTimeout(() => {
+          if (toNextScene) toNextScene();
+          else toNextSubscene && toNextSubscene();
+        }, 1600);
+      },
     });
 };
 
@@ -44,11 +51,19 @@ const Heading = ({ text }) => {
   return <h2 className="scene-text" dangerouslySetInnerHTML={{ __html: text }} ref={textRef} />;
 };
 
-const Paragraphs = ({ text, sceneId }) => {
+const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNextScene, toNextSubscene }) => {
   const textRef = useRef(null);
 
   useEffect(() => {
-    if (textRef.current) createSplitText(textRef.current, 0.6, 0.056);
+    if (textRef.current)
+      createSplitText(
+        textRef.current,
+        0.6,
+        0.056,
+        isLastText && animateEndingCTA,
+        toNextSubscene,
+        isLastText && toNextScene
+      );
   }, [sceneId]);
 
   return (
@@ -60,8 +75,23 @@ const Paragraphs = ({ text, sceneId }) => {
   );
 };
 
-const SceneText = ({ sceneId, text, isHeading }) => {
-  return <Fragment>{isHeading ? <Heading text={text} /> : <Paragraphs text={text} sceneId={sceneId} />}</Fragment>;
+const SceneText = ({ sceneId, text, isHeading, isLastText, animateEndingCTA, toNextScene, toNextSubscene }) => {
+  return (
+    <Fragment>
+      {isHeading ? (
+        <Heading text={text} />
+      ) : (
+        <Paragraphs
+          text={text}
+          sceneId={sceneId}
+          isLastText={isLastText}
+          animateEndingCTA={animateEndingCTA}
+          toNextScene={toNextScene}
+          toNextSubscene={toNextSubscene}
+        />
+      )}
+    </Fragment>
+  );
 };
 
 export default SceneText;
