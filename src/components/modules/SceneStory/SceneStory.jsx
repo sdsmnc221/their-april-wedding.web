@@ -37,7 +37,7 @@ const SceneStory = () => {
   }, [sceneId]);
 
   useEffect(() => {
-    if (sound) {
+    if (sound && subsceneId === 0) {
       const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
       if (vo) {
         setAudio(vo);
