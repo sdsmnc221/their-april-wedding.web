@@ -23,7 +23,7 @@ const SceneWish: React.FC<Props> = ({ labels, cta, nextScene }) => {
         {labels.map((label: string, index: number) => (
           <Fragment key={`input-wish-${index}`}>
             <p>{label}</p>
-            <textarea name={`input-wish-${index}`} />
+            <textarea name={`input-wish-${index}`} required />
           </Fragment>
         ))}
       </div>

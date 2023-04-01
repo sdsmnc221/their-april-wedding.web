@@ -27,9 +27,10 @@ const SceneStory = () => {
   const [scene, setScene] = useState(data.scenes[sceneId]);
   const [subsceneId, setSubsceneId] = useState(0);
   const [subscenes, setSubscenes] = useState([]);
+  const [subscenesCount, setSubscenesCount] = useState(0);
   const [loadingScene, setLoadingScene] = useState(true);
   const [audio, setAudio] = useState(null);
-  const [automating, setAutomating] = useState(true);
+  // const [automating, setAutomating] = useState(true);
 
   const endingCTAsRef = useRef(null);
 
@@ -64,10 +65,11 @@ const SceneStory = () => {
           bg: [scene.bg[index]],
         })),
       ]);
+      setSubscenesCount(subscenes.length);
 
       setTimeout(() => setLoadingScene(false), 1000);
     }
-  }, [scene?.nextScene]);
+  }, [scene?.nextScene, sceneId]);
 
   useEffect(() => {
     if (resources && sound && subsceneId > 0) {
@@ -116,7 +118,7 @@ const SceneStory = () => {
 
   const handleSwitchScene = () => {
     if (sceneId !== '05-postface-wish') {
-      setAutomating(false);
+      // setAutomating(false);
 
       if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
       else if (scene.nextScene) {
@@ -125,27 +127,22 @@ const SceneStory = () => {
       }
       if (audio) fadeOut(audio.file);
 
-      setTimeout(() => setAutomating(true), 400);
+      // setAutomating(true);
     }
   };
 
-  const toNextSubscene = () => {
+  const toNext = () => {
+    // if (automating) {
     if (sceneId !== '05-postface-wish') {
       if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
+      else if (scene.nextScene && subsceneId === subscenes.length - 1) {
+        setSubsceneId(0);
+        navigate(`/scene/${scene.nextScene}`);
+      }
       if (audio) fadeOut(audio.file);
     }
-  };
-
-  const toNextScene = () => {
-    if (automating) {
-      if (sceneId !== '05-postface-wish') {
-        if (scene.nextScene && subsceneId === subscenes.length - 1) {
-          setSubsceneId(0);
-          navigate(`/scene/${scene.nextScene}`);
-        }
-        if (audio) fadeOut(audio.file);
-      }
-    }
+    // }
+    console.log('next scene', { sceneId, subsceneId });
   };
 
   const toScene = (e, index) => {
@@ -157,16 +154,21 @@ const SceneStory = () => {
   };
 
   return (
-    <div className={`scene-story --${sceneId}`} onClick={handleSwitchScene}>
+    // <div className={`scene-story --${sceneId}`} onClick={handleSwitchScene}>
+    <div className={`scene-story --${sceneId}`}>
       <Menu
         onClick={() => {
           setSubsceneId(0);
           setTouchIndicatorHidden(true);
-          setAutomating(!automating);
+          // setAutomating(!automating);
         }}
       />
       <SoundToggle />
-      <TouchIndicator touchIndicatorHidden={touchIndicatorHidden} setTouchIndicatorHidden={setTouchIndicatorHidden} />
+      <TouchIndicator
+        touchIndicatorHidden={touchIndicatorHidden}
+        setTouchIndicatorHidden={setTouchIndicatorHidden}
+        onClick={() => toNext()}
+      />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
           <Background
@@ -187,10 +189,9 @@ const SceneStory = () => {
               sceneId={`${sceneId}-${subsceneId}`}
               isHeading={subsceneId === 0}
               text={subscenes[subsceneId].text}
-              isLastText={subsceneId === subscenes.length - 1}
+              isLastText={subsceneId === subscenesCount - 1}
               animateEndingCTA={animateEndingCTA}
-              toNextScene={toNextScene}
-              toNextSubscene={toNextSubscene}
+              toNext={toNext}
             />
           )}
           {sceneId === '05-postface-last' && subsceneId === subscenes.length - 1 && (

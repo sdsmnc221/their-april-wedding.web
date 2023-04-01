@@ -4,7 +4,7 @@ import React, { Fragment, useEffect, useRef } from 'react';
 import gsap from 'gsap-bonus';
 import { SplitText } from 'gsap-bonus/SplitText';
 
-const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, toNextSubscene, toNextScene) => {
+const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, toNext) => {
   const splitInstance = new SplitText(el, { type: 'chars,words', wordsClass: 'word', charsClass: 'char' });
   gsap
     .timeline()
@@ -20,10 +20,7 @@ const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, to
       ease: 'Power4.InOut',
       onComplete: () => {
         animateEndingCTA && animateEndingCTA();
-        setTimeout(() => {
-          if (toNextScene) toNextScene();
-          else toNextSubscene && toNextSubscene();
-        }, 1600);
+        if (toNext) setTimeout(() => toNext(), 1600);
       },
     });
 };
@@ -51,19 +48,11 @@ const Heading = ({ text }) => {
   return <h2 className="scene-text" dangerouslySetInnerHTML={{ __html: text }} ref={textRef} />;
 };
 
-const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNextScene, toNextSubscene }) => {
+const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNext }) => {
   const textRef = useRef(null);
 
   useEffect(() => {
-    if (textRef.current)
-      createSplitText(
-        textRef.current,
-        0.6,
-        0.056,
-        isLastText && animateEndingCTA,
-        toNextSubscene,
-        isLastText && toNextScene
-      );
+    if (textRef.current) createSplitText(textRef.current, 0.6, 0.056, isLastText && animateEndingCTA, toNext);
   }, [sceneId]);
 
   return (
@@ -75,7 +64,7 @@ const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNextScene, 
   );
 };
 
-const SceneText = ({ sceneId, text, isHeading, isLastText, animateEndingCTA, toNextScene, toNextSubscene }) => {
+const SceneText = ({ sceneId, text, isHeading, isLastText, animateEndingCTA, toNext }) => {
   return (
     <Fragment>
       {isHeading ? (
@@ -86,8 +75,7 @@ const SceneText = ({ sceneId, text, isHeading, isLastText, animateEndingCTA, toN
           sceneId={sceneId}
           isLastText={isLastText}
           animateEndingCTA={animateEndingCTA}
-          toNextScene={toNextScene}
-          toNextSubscene={toNextSubscene}
+          toNext={toNext}
         />
       )}
     </Fragment>
