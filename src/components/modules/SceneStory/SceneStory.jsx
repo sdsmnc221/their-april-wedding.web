@@ -129,8 +129,8 @@ const SceneStory = () => {
     }
   };
 
-  const toNextSubscene = () => {
-    if (automating) {
+  const toNextSubscene = (force = false) => {
+    if (automating || force) {
       if (sceneId !== '05-postface-wish') {
         if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
         if (audio) fadeOut(audio.file);
@@ -167,7 +167,11 @@ const SceneStory = () => {
         }}
       />
       <SoundToggle />
-      <TouchIndicator touchIndicatorHidden={touchIndicatorHidden} setTouchIndicatorHidden={setTouchIndicatorHidden} />
+      <TouchIndicator
+        touchIndicatorHidden={touchIndicatorHidden}
+        setTouchIndicatorHidden={setTouchIndicatorHidden}
+        toNextSubscene={toNextSubscene}
+      />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
           <Background sceneId={`${sceneId}-${subsceneId}`} src={subscenes[subsceneId].bg} blur={subsceneId === 0} />
