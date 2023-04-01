@@ -125,29 +125,21 @@ const SceneStory = () => {
       }
       if (audio) fadeOut(audio.file);
 
-      setAutomating(true);
+      setTimeout(() => setAutomating(true), 400);
     }
   };
 
-  const toNextSubscene = (index = null) => {
-    const next = (index) => {
-      if (sceneId !== '05-postface-wish') {
-        if (subsceneId < subscenes.length - 1) setSubsceneId(index || subsceneId + 1);
-        if (audio) fadeOut(audio.file);
-      }
-    };
-
-    if (typeof index === 'number') {
-      setAutomating(false);
-      next(index);
-      setAutomating(true);
-    } else if (automating) next();
+  const toNextSubscene = () => {
+    if (sceneId !== '05-postface-wish') {
+      if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
+      if (audio) fadeOut(audio.file);
+    }
   };
 
   const toNextScene = () => {
     if (automating) {
       if (sceneId !== '05-postface-wish') {
-        if (scene.nextScene) {
+        if (scene.nextScene && subsceneId === subscenes.length - 1) {
           setSubsceneId(0);
           navigate(`/scene/${scene.nextScene}`);
         }
