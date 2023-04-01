@@ -164,6 +164,7 @@ const SceneStory = () => {
         onClick={() => {
           setSubsceneId(0);
           setTouchIndicatorHidden(true);
+          setAutomating(!automating);
         }}
       />
       <SoundToggle />
@@ -174,7 +175,11 @@ const SceneStory = () => {
       />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
-          <Background sceneId={`${sceneId}-${subsceneId}`} src={subscenes[subsceneId].bg} blur={subsceneId === 0} />
+          <Background
+            sceneId={`${sceneId}-${subsceneId}`}
+            src={subscenes && subscenes[subsceneId] && subscenes[subsceneId].bg}
+            blur={subsceneId === 0}
+          />
           <Overlay
             withSunshine={sceneId.includes('01') || sceneId.includes('05')}
             withStorm={sceneId.includes('02') && subsceneId < 2}
