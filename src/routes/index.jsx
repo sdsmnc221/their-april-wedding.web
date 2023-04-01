@@ -43,6 +43,10 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: '/*',
+    element: <Scene404 />,
+  },
+  {
     path: '*',
     element: <Scene404 />,
   },
