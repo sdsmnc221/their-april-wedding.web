@@ -27,7 +27,6 @@ const SceneStory = () => {
   const [scene, setScene] = useState(data.scenes[sceneId]);
   const [subsceneId, setSubsceneId] = useState(0);
   const [subscenes, setSubscenes] = useState([]);
-  const [subscenesCount, setSubscenesCount] = useState(0);
   const [loadingScene, setLoadingScene] = useState(true);
   const [audio, setAudio] = useState(null);
   // const [automating, setAutomating] = useState(true);
@@ -65,7 +64,6 @@ const SceneStory = () => {
           bg: [scene.bg[index]],
         })),
       ]);
-      setSubscenesCount(subscenes.length);
 
       setTimeout(() => setLoadingScene(false), 1000);
     }
@@ -167,7 +165,10 @@ const SceneStory = () => {
       <TouchIndicator
         touchIndicatorHidden={touchIndicatorHidden}
         setTouchIndicatorHidden={setTouchIndicatorHidden}
-        onClick={() => toNext()}
+        onClick={() => {
+          console.log('from touch indicator');
+          toNext();
+        }}
       />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
@@ -189,7 +190,7 @@ const SceneStory = () => {
               sceneId={`${sceneId}-${subsceneId}`}
               isHeading={subsceneId === 0}
               text={subscenes[subsceneId].text}
-              isLastText={subsceneId === subscenesCount - 1}
+              isLastText={subsceneId === subscenes.length - 1}
               animateEndingCTA={animateEndingCTA}
               toNext={toNext}
             />

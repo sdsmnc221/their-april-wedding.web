@@ -20,7 +20,11 @@ const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, to
       ease: 'Power4.InOut',
       onComplete: () => {
         animateEndingCTA && animateEndingCTA();
-        if (toNext) setTimeout(() => toNext(), 1600);
+        if (toNext)
+          setTimeout(() => {
+            console.log('from gsap');
+            toNext();
+          }, 1600);
       },
     });
 };
@@ -53,7 +57,7 @@ const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNext }) => 
 
   useEffect(() => {
     if (textRef.current) createSplitText(textRef.current, 0.6, 0.056, isLastText && animateEndingCTA, toNext);
-  }, [sceneId]);
+  }, [text]);
 
   return (
     <div className="scene-text" ref={textRef}>
