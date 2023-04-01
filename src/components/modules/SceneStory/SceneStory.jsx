@@ -73,6 +73,20 @@ const SceneStory = () => {
     }
   }, [subsceneId, sound, resources]);
 
+  useEffect(() => {
+    if (resources) {
+      setTimeout(() => {
+        if (sound) {
+          const amb1 = Resources.getItem('ambiance').file;
+          const amb2 = Resources.getItem('ambiance2').file;
+
+          if (!amb1.playing()) fadeIn(amb1, 800, 0.48);
+          if (!amb2.playing()) fadeIn(amb2, 800, 0.12);
+        }
+      }, 1000);
+    }
+  }, [sound, resources]);
+
   const navigate = useNavigate();
   const handleSwitchScene = () => {
     if (sceneId !== '05-postface-wish') {

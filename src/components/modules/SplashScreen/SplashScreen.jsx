@@ -12,9 +12,11 @@ import SoundToggle from '@elements/SoundToggle/SoundToggle';
 import React, { useContext, useEffect } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
+import Resources from '../../../utils/Resources';
+import { fadeIn } from '../../../utils/howler';
 
 const SplashScreen = () => {
-  const { data, setCurrentScene } = useContext(globalContext);
+  const { data, setCurrentScene, sound, resources } = useContext(globalContext);
 
   const navigate = useNavigate();
   const nextScene = () => {
@@ -43,6 +45,20 @@ const SplashScreen = () => {
       checkDirection();
     });
   }, []);
+
+  useEffect(() => {
+    if (resources) {
+      setTimeout(() => {
+        if (sound) {
+          const amb1 = Resources.getItem('ambiance').file;
+          const amb2 = Resources.getItem('ambiance2').file;
+
+          if (!amb1.playing()) fadeIn(amb1, 800, 0.48);
+          if (!amb2.playing()) fadeIn(amb2, 800, 0.12);
+        }
+      }, 1000);
+    }
+  }, [sound, resources]);
 
   return (
     <div className="splash-screen">
