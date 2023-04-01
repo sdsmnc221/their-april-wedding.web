@@ -31,8 +31,6 @@ const SceneSettings = () => {
     setResources(initialState.setResources());
     setTimeout(() => {
       setSound(soundState.includes('on'));
-    }, 1000);
-    setTimeout(() => {
       navigate('/splash-screen');
     }, 600);
   };
