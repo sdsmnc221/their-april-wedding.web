@@ -89,7 +89,7 @@ const App = () => {
 
   return (
     <globalContext.Provider value={value}>
-      <main className="app">
+      <main className="app" lang={lang}>
         {isMobile ? isLandscape ? <NoLandscape /> : <RouterProvider router={router} /> : <NoDesktop />}
       </main>
     </globalContext.Provider>
