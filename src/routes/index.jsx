@@ -11,12 +11,18 @@ import Scene404 from '@modules/Scene404/Scene404';
 import { globalContext } from '../contexts/GlobalContext';
 
 const Wrapper = ({ children }) => {
-  const { menuOpened, creditsOpened } = useContext(globalContext);
+  const { menuOpened, creditsOpened, userDidInteracted } = useContext(globalContext);
   return (
     <Fragment>
-      {children}
-      {menuOpened && <SceneMenu />}
-      {creditsOpened && <SceneCredits />}
+      {userDidInteracted ? (
+        <Fragment>
+          {children}
+          {menuOpened && <SceneMenu />}
+          {creditsOpened && <SceneCredits />}
+        </Fragment>
+      ) : (
+        <Scene404 />
+      )}
     </Fragment>
   );
 };

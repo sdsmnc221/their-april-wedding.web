@@ -13,6 +13,7 @@ import Resources from './utils/Resources';
 import { fadeIn, fadeOut } from './utils/howler';
 
 const App = () => {
+  const [userDidInteracted, setUserDidInteracted] = useState(initialState.userDidInteracted);
   const [lang, setLang] = useState(initialState.lang);
   const [data, setData] = useState(initialState.data);
   const [sound, setSound] = useState(initialState.sound);
@@ -26,6 +27,8 @@ const App = () => {
 
   const value = useMemo(
     () => ({
+      userDidInteracted,
+      setUserDidInteracted,
       lang,
       setLang,
       data,
@@ -47,7 +50,7 @@ const App = () => {
       resourcesIsReady,
       setResourcesIsReady,
     }),
-    [lang, data, sound, currentScene, isMobile, isLandscape, menuOpened, creditsOpened]
+    [userDidInteracted, lang, data, sound, currentScene, isMobile, isLandscape, menuOpened, creditsOpened]
   );
 
   useEffect(() => {

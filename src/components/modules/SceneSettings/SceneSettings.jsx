@@ -13,11 +13,12 @@ import { globalContext } from '@contexts/GlobalContext';
 import { initialState } from '../../../contexts/GlobalContext';
 
 const SceneSettings = () => {
-  const { setLang, data, setSound, setResources, setCurrentScene } = useContext(globalContext);
+  const { setLang, data, setSound, setResources, setCurrentScene, setUserDidInteracted } = useContext(globalContext);
 
   const [settings, setSettings] = useState('lang');
 
   const handleSetLang = (lang) => {
+    setUserDidInteracted(true);
     setLang(lang);
     document.body.removeAttribute('class');
     document.body.classList.add(`--${lang}`);
