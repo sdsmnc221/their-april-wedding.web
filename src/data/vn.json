@@ -5,6 +5,7 @@
   },
   "noDesktop": "Scannez le <span>code QR</span> avec votre appareil mobile <br/> pour embarquer dans cette histoire d'amour. <br/><br/> Quét <span>mã QR</span> bằng thiết bị di động của bạn <br/> để bắt đầu câu chuyện tình yêu này.",
   "noLandscape": "Veuillez <span>tournez votre appareil</span> <br /> pour continuer l'expérience. <br/> <br/> Hãy <span>quay thiết bị của bạn lại</span> <br /> để tiếp tục trải nghiệm.",
+  "touch": "Chạm",
   "scenes": {
     "menu": {
       "chapters": {
@@ -96,7 +97,7 @@
       ],
       "bg": [
         "02-past-0.jpg",
-        "02-past-2.jpg",
+        "02-past-2.jpeg",
         "02-past-1.jpg",
         "02-past-1.jpg"
       ],

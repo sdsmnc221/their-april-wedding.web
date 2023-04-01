@@ -7,6 +7,7 @@ import Subtitle from '@elements/Subtitle/Subtitle';
 import SceneText from '@elements/SceneText/SceneText';
 import Menu from '@elements/Menu/Menu';
 import SoundToggle from '@elements/SoundToggle/SoundToggle';
+import TouchIndicator from '@elements/TouchIndicator/TouchIndicator';
 import SceneWish from '../SceneWish/SceneWish';
 
 import React, { useContext, useEffect, useState, Fragment, useRef, useCallback } from 'react';
@@ -22,6 +23,7 @@ const SceneStory = () => {
 
   const { sceneId } = useParams();
 
+  const [touchIndicatorHidden, setTouchIndicatorHidden] = useState(true);
   const [scene, setScene] = useState(data.scenes[sceneId]);
   const [subsceneId, setSubsceneId] = useState(0);
   const [subscenes, setSubscenes] = useState([]);
@@ -37,6 +39,8 @@ const SceneStory = () => {
     setScene(data.scenes[sceneId]);
 
     setLoadingScene(true);
+
+    setTimeout(() => setTouchIndicatorHidden(false), 3200);
   }, [sceneId]);
 
   useEffect(() => {
@@ -156,8 +160,14 @@ const SceneStory = () => {
 
   return (
     <div className={`scene-story --${sceneId}`} onClick={handleSwitchScene}>
-      <Menu onClick={() => setSubsceneId(0)} />
+      <Menu
+        onClick={() => {
+          setSubsceneId(0);
+          setTouchIndicatorHidden(true);
+        }}
+      />
       <SoundToggle />
+      <TouchIndicator touchIndicatorHidden={touchIndicatorHidden} setTouchIndicatorHidden={setTouchIndicatorHidden} />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
           <Background sceneId={`${sceneId}-${subsceneId}`} src={subscenes[subsceneId].bg} blur={subsceneId === 0} />
