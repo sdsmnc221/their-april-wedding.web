@@ -3,7 +3,7 @@ import './TouchIndicator.scss';
 import React, { useContext } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 
-const TouchIndicator = ({ touchIndicatorHidden, setTouchIndicatorHidden, toNextSubscene }) => {
+const TouchIndicator = ({ touchIndicatorHidden, setTouchIndicatorHidden }) => {
   const { data } = useContext(globalContext);
 
   return (
@@ -12,7 +12,6 @@ const TouchIndicator = ({ touchIndicatorHidden, setTouchIndicatorHidden, toNextS
       onClick={(e) => {
         e.stopPropagation();
         setTouchIndicatorHidden(!touchIndicatorHidden);
-        toNextSubscene();
       }}
     >
       <div className="loader-container">

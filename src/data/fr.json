@@ -6,7 +6,7 @@
   "noDesktop": "Scannez le <span>code QR</span> avec votre appareil mobile pour embarquer dans cette histoire d'amour. <br/><br/> Quét <span>mã QR</span> bằng thiết bị di động của bạn để bắt đầu câu chuyện tình yêu này.",
   "noLandscape": "Veuillez <span>tournez votre appareil</span> <br /> pour continuer l'expérience. <br/> <br/> Hãy <span>quay thiết bị của bạn lại</span> <br /> để tiếp tục trải nghiệm.",
   "404": "Oopsie doosie ! <br/> Vous êtes tombé.e.s sur une page non trouvable. <br/> <strong>Veuillez retourner à l’expérience en cliquand  sur le bouton ci-dessous.</strong> <br/> <br/> Xin lỗi! <br/> Bạn đã đến trang không thể tìm thấy. <br/> <strong>Vui lòng quay lại trải nghiệm bằng cách nhấp vào nút bên dưới.<strong/>",
-  "touch": "Tapper",
+  "touch": "Tapper 2 fois",
   "scenes": {
     "menu": {
       "chapters": {

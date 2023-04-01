@@ -174,11 +174,7 @@ const SceneStory = () => {
         }}
       />
       <SoundToggle />
-      <TouchIndicator
-        touchIndicatorHidden={touchIndicatorHidden}
-        setTouchIndicatorHidden={setTouchIndicatorHidden}
-        toNextSubscene={() => toNextSubscene(1)}
-      />
+      <TouchIndicator touchIndicatorHidden={touchIndicatorHidden} setTouchIndicatorHidden={setTouchIndicatorHidden} />
       {sceneId !== '05-postface-wish' && subscenes.length > 0 && (
         <Fragment>
           <Background
