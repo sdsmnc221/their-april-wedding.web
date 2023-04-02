@@ -51,6 +51,7 @@ export default class Loaders {
           src: [`/${source.path}`],
           ...source.options,
           autoplay: false,
+          html5: true,
           onload: () => {
             sourceLoaded(source, file);
           },
