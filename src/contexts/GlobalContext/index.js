@@ -23,6 +23,8 @@ const initialState = {
   setData: () => undefined,
   sound: false,
   setSound: () => undefined,
+  soundsNodes: null,
+  setSoundsNodes: () => undefined,
   currentScene: '00-splash-screen',
   setCurrentScene: () => undefined,
   isMobile: false,

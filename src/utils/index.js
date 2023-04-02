@@ -27,4 +27,6 @@ const randomFontWeight = () => sample(shuffle([100, 200, 300, 400, 500, 600, 700
 
 const randomDuration = (min = 1.2, max = 2.4) => randomNumberInRange(min, max);
 
-export { preloadImages, randomNumberInRange, sample, shuffle, randomDuration, randomFontWeight };
+const getSound = (soundsNodes, soundName) => soundsNodes.find((node) => node.classList.contains(soundName));
+
+export { preloadImages, randomNumberInRange, sample, shuffle, randomDuration, randomFontWeight, getSound };

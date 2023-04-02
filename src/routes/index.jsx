@@ -9,9 +9,10 @@ import SceneCredits from '@modules/SceneCredits/SceneCredits';
 import Scene404 from '@modules/Scene404/Scene404';
 
 import { globalContext } from '../contexts/GlobalContext';
+import Sounds from '../components/elements/Sounds/Sounds';
 
 const Wrapper = ({ children }) => {
-  const { menuOpened, creditsOpened, userDidInteracted } = useContext(globalContext);
+  const { menuOpened, creditsOpened, userDidInteracted, sound } = useContext(globalContext);
   return (
     <Fragment>
       {userDidInteracted ? (
@@ -19,6 +20,7 @@ const Wrapper = ({ children }) => {
           {children}
           {menuOpened && <SceneMenu />}
           {creditsOpened && <SceneCredits />}
+          {sound && <Sounds />}
         </Fragment>
       ) : (
         <Scene404 />

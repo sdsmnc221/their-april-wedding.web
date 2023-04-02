@@ -11,6 +11,7 @@ import NoDesktop from './components/modules/NoDesktop/NoDesktop';
 import NoLandscape from './components/modules/NoLandscape/NoLandscape';
 import Resources from './utils/Resources';
 import { fadeIn, fadeOut } from './utils/howler';
+import { getSound } from './utils';
 
 const App = () => {
   const [userDidInteracted, setUserDidInteracted] = useState(initialState.userDidInteracted);
@@ -23,6 +24,7 @@ const App = () => {
   const [menuOpened, setMenuOpened] = useState(initialState.menuOpened);
   const [creditsOpened, setCreditsOpened] = useState(initialState.creditsOpened);
   const [resources, setResources] = useState(initialState.resources);
+  const [soundsNodes, setSoundsNodes] = useState(initialState.soundsNodes);
   const [resourcesIsReady, setResourcesIsReady] = useState(initialState.resourcesIsReady);
 
   const value = useMemo(
@@ -35,6 +37,8 @@ const App = () => {
       setData,
       sound,
       setSound,
+      soundsNodes,
+      setSoundsNodes,
       currentScene,
       setCurrentScene,
       isMobile,
@@ -50,7 +54,7 @@ const App = () => {
       resourcesIsReady,
       setResourcesIsReady,
     }),
-    [userDidInteracted, lang, data, sound, currentScene, isMobile, isLandscape, menuOpened, creditsOpened]
+    [userDidInteracted, lang, data, sound, soundsNodes, currentScene, isMobile, isLandscape, menuOpened, creditsOpened]
   );
 
   useEffect(() => {
@@ -61,15 +65,26 @@ const App = () => {
   useEffect(() => {
     // window.addEventListener('resourcesIsReady', () => {
     // });
-    if (resources) {
+    if (resources && soundsNodes) {
       setTimeout(() => {
         if (sound) {
-          fadeIn(Resources.getItem('ambiance').file, 800, 0.24);
-          fadeIn(Resources.getItem('ambiance2').file, 800, 0.12);
-        } else Resources.getAudios().forEach((audio) => fadeOut(audio.file));
+          const amb1 = getSound(soundsNodes, 'ambiance');
+          const amb2 = getSound(soundsNodes, 'ambiance2');
+
+          if (amb1 && amb1.paused) amb1.play();
+          if (amb2 && amb1.paused) amb2.play();
+          // fadeIn(Resources.getItem('ambiance').file, 800, 0.24);
+          // fadeIn(Resources.getItem('ambiance2').file, 800, 0.12);
+        } else {
+          // Resources.getAudios().forEach((audio) => fadeOut(audio.file));
+          soundsNodes.forEach((soundNode) => {
+            soundNode.pause();
+            soundNode.currentTime = 0;
+          });
+        }
       }, 1000);
     }
-  }, [sound, resources]);
+  }, [sound, resources, soundsNodes]);
 
   useEffect(() => {
     const onResize = () => {
