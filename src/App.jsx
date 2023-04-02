@@ -66,7 +66,7 @@ const App = () => {
     // window.addEventListener('resourcesIsReady', () => {
     // });
     let amb1, amb2;
-    if (resources && soundsNodes) {
+    if (resources && soundsNodes && userDidInteracted) {
       setTimeout(() => {
         if (sound) {
           amb1 = getSound(soundsNodes, 'ambiance');
@@ -87,7 +87,7 @@ const App = () => {
         }
       }, 1000);
     }
-  }, [sound, resources, soundsNodes]);
+  }, [sound, resources, soundsNodes, userDidInteracted]);
 
   useEffect(() => {
     const onResize = () => {
