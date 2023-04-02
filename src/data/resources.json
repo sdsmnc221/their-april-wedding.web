@@ -4,7 +4,7 @@
         "type": "audio",
         "path": "sounds/summer-night-piano.mp3",
         "options": {
-            "volume": 0.48,
+            "volume": 0.24,
             "loop": true
         }
     },
@@ -13,7 +13,7 @@
         "type": "audio",
         "path": "sounds/bird-chirping.mp3",
         "options": {
-            "volume": 0.72,
+            "volume": 0.12,
             "loop": true
         }
     },
@@ -34,6 +34,14 @@
         }
     },
     {
+        "name": "vo_preface_01_vn",
+        "type": "audio",
+        "path": "sounds/vo_preface_01_vn.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
         "name": "vo_preface_02",
         "type": "audio",
         "path": "sounds/vo_preface_02.mp3",
@@ -42,9 +50,25 @@
         }
     },
     {
+        "name": "vo_preface_02_vn",
+        "type": "audio",
+        "path": "sounds/vo_preface_02_vn.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
         "name": "vo_preface_03",
         "type": "audio",
         "path": "sounds/vo_preface_03.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_preface_03_vn",
+        "type": "audio",
+        "path": "sounds/vo_preface_03_vn.mp3",
         "options": {
             "volume": 1
         }
@@ -66,9 +90,25 @@
         }
     },
     {
+        "name": "vo_past_01_vn",
+        "type": "audio",
+        "path": "sounds/vo_past_01_vn.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
         "name": "vo_past_02",
         "type": "audio",
         "path": "sounds/vo_past_02.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_past_02_vn",
+        "type": "audio",
+        "path": "sounds/vo_past_02_vn.mp3",
         "options": {
             "volume": 1
         }
@@ -82,9 +122,25 @@
         }
     },
     {
+        "name": "vo_past_03_vn",
+        "type": "audio",
+        "path": "sounds/vo_past_03_vn.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
         "name": "vo_past_04",
         "type": "audio",
         "path": "sounds/vo_past_04.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_past_04_vn",
+        "type": "audio",
+        "path": "sounds/vo_past_04_vn.mp3",
         "options": {
             "volume": 1
         }
@@ -106,6 +162,14 @@
         }
     },
     {
+        "name": "vo_present_01_vn",
+        "type": "audio",
+        "path": "sounds/vo_present_01_vn.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
         "name": "vo_future_00",
         "type": "audio",
         "path": "sounds/vo_future_00.mp3",
@@ -122,9 +186,25 @@
         }
     },
     {
+        "name": "vo_future_01_vn",
+        "type": "audio",
+        "path": "sounds/vo_future_01_vn.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
         "name": "vo_future_02",
         "type": "audio",
         "path": "sounds/vo_future_02.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_future_02_vn",
+        "type": "audio",
+        "path": "sounds/vo_future_02_vn.mp3",
         "options": {
             "volume": 1
         }
@@ -146,9 +226,25 @@
         }
     },
     {
+        "name": "vo_postface_01_vn",
+        "type": "audio",
+        "path": "sounds/vo_postface_01_vn.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
         "name": "vo_postface_02",
         "type": "audio",
         "path": "sounds/vo_postface_02.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_postface_02_vn",
+        "type": "audio",
+        "path": "sounds/vo_postface_02_vn.mp3",
         "options": {
             "volume": 1
         }
@@ -170,9 +266,25 @@
         }
     },
     {
+        "name": "vo_postface-last_01_vn",
+        "type": "audio",
+        "path": "sounds/vo_postface_03_vn.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
         "name": "vo_postface-last_02",
         "type": "audio",
         "path": "sounds/vo_postface_04.mp3",
+        "options": {
+            "volume": 1
+        }
+    },
+    {
+        "name": "vo_postface-last_02_vn",
+        "type": "audio",
+        "path": "sounds/vo_postface_04_vn.mp3",
         "options": {
             "volume": 1
         }

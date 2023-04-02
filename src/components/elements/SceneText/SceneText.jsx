@@ -1,8 +1,9 @@
 import './SceneText.scss';
 
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment, useContext, useEffect, useRef } from 'react';
 import gsap from 'gsap-bonus';
 import { SplitText } from 'gsap-bonus/SplitText';
+import { globalContext } from '@contexts/GlobalContext';
 
 const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, toNext) => {
   const splitInstance = new SplitText(el, { type: 'chars,words', wordsClass: 'word', charsClass: 'char' });
@@ -54,9 +55,11 @@ const Heading = ({ text }) => {
 
 const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNext }) => {
   const textRef = useRef(null);
+  const { lang } = useContext(globalContext);
 
   useEffect(() => {
-    if (textRef.current) createSplitText(textRef.current, 0.6, 0.056, isLastText && animateEndingCTA, toNext);
+    if (textRef.current)
+      createSplitText(textRef.current, 0.6, lang === 'vn' ? 0.072 : 0.056, isLastText && animateEndingCTA, toNext);
   }, [text]);
 
   return (

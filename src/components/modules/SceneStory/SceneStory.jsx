@@ -19,7 +19,7 @@ import Resources from '../../../utils/Resources';
 import { fadeIn, fadeOut } from '../../../utils/howler';
 
 const SceneStory = () => {
-  const { data, setCurrentScene, sound, resources, setCreditsOpened, menuOpened, setMenuOpened } =
+  const { data, setCurrentScene, lang, sound, resources, setCreditsOpened, menuOpened, setMenuOpened } =
     useContext(globalContext);
 
   const { sceneId } = useParams();
@@ -76,7 +76,9 @@ const SceneStory = () => {
   useEffect(() => {
     if (resources && sound && subsceneId > 0) {
       setTimeout(() => {
-        const vo = Resources.getItem(`vo_${sceneId.slice(3)}_0${subsceneId}`);
+        const vo = Resources.getItem(
+          `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
+        );
         if (vo) {
           setAudio(vo);
           fadeIn(vo.file);
@@ -92,7 +94,7 @@ const SceneStory = () => {
           const amb1 = Resources.getItem('ambiance').file;
           const amb2 = Resources.getItem('ambiance2').file;
 
-          if (!amb1.playing()) fadeIn(amb1, 800, 0.48);
+          if (!amb1.playing()) fadeIn(amb1, 800, 0.24);
           if (!amb2.playing()) fadeIn(amb2, 800, 0.12);
         }
       }, 1000);
@@ -202,6 +204,7 @@ const SceneStory = () => {
               isLastText={subsceneId === subscenes.length - 1}
               animateEndingCTA={animateEndingCTA}
               toNext={toNext}
+              vo={audio}
             />
           )}
           {sceneId === '05-postface-last' && subsceneId === subscenes.length - 1 && (

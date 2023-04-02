@@ -64,7 +64,7 @@ const App = () => {
     if (resources) {
       setTimeout(() => {
         if (sound) {
-          fadeIn(Resources.getItem('ambiance').file, 800, 0.48);
+          fadeIn(Resources.getItem('ambiance').file, 800, 0.24);
           fadeIn(Resources.getItem('ambiance2').file, 800, 0.12);
         } else Resources.getAudios().forEach((audio) => fadeOut(audio.file));
       }, 1000);
