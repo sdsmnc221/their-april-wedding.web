@@ -73,7 +73,7 @@ const App = () => {
           amb2 = getSound(soundsNodes, 'ambiance2');
 
           if (amb1 && amb1.paused) amb1.play();
-          if (amb2 && amb1.paused) amb2.play();
+          if (amb2 && amb2.paused) amb2.play();
           // fadeIn(Resources.getItem('ambiance').file, 800, 0.24);
           // fadeIn(Resources.getItem('ambiance2').file, 800, 0.12);
         } else {
