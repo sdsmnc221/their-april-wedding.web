@@ -17,6 +17,8 @@ import Loaders from '../../utils/Loaders';
 const initialState = {
   userDidInteracted: false,
   setUserDidInteracted: () => undefined,
+  userDidSetSound: false,
+  setUserDidSetSound: () => undefined,
   lang: 'fr',
   setLang: () => undefined,
   data: dataFR,

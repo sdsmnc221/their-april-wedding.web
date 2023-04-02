@@ -13,7 +13,8 @@ import { globalContext } from '@contexts/GlobalContext';
 import { initialState } from '../../../contexts/GlobalContext';
 
 const SceneSettings = () => {
-  const { setLang, data, setSound, setResources, setCurrentScene, setUserDidInteracted } = useContext(globalContext);
+  const { setLang, data, setSound, setResources, setCurrentScene, setUserDidInteracted, setUserDidSetSound } =
+    useContext(globalContext);
 
   const [settings, setSettings] = useState('lang');
 
@@ -29,6 +30,7 @@ const SceneSettings = () => {
 
   const navigate = useNavigate();
   const handleSetSound = (soundState) => {
+    setUserDidSetSound(true);
     setResources(initialState.setResources());
     setTimeout(() => {
       setSound(soundState.includes('on'));

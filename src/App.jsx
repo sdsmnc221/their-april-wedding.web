@@ -18,6 +18,7 @@ const App = () => {
   const [lang, setLang] = useState(initialState.lang);
   const [data, setData] = useState(initialState.data);
   const [sound, setSound] = useState(initialState.sound);
+  const [userDidSetSound, setUserDidSetSound] = useState(initialState.userDidSetSound);
   const [currentScene, setCurrentScene] = useState(initialState.currentScene);
   const [isMobile, setIsMobile] = useState(initialState.setIsMobile());
   const [isLandscape, setIsLandscape] = useState(initialState.setIsLandscape());
@@ -37,6 +38,8 @@ const App = () => {
       setData,
       sound,
       setSound,
+      userDidSetSound,
+      setUserDidSetSound,
       soundsNodes,
       setSoundsNodes,
       currentScene,
@@ -54,7 +57,19 @@ const App = () => {
       resourcesIsReady,
       setResourcesIsReady,
     }),
-    [userDidInteracted, lang, data, sound, soundsNodes, currentScene, isMobile, isLandscape, menuOpened, creditsOpened]
+    [
+      userDidInteracted,
+      lang,
+      data,
+      sound,
+      userDidSetSound,
+      soundsNodes,
+      currentScene,
+      isMobile,
+      isLandscape,
+      menuOpened,
+      creditsOpened,
+    ]
   );
 
   useEffect(() => {
@@ -66,7 +81,7 @@ const App = () => {
     // window.addEventListener('resourcesIsReady', () => {
     // });
     let amb1, amb2;
-    if (resources && soundsNodes && userDidInteracted) {
+    if (resources && soundsNodes && userDidSetSound) {
       setTimeout(() => {
         if (sound) {
           amb1 = getSound(soundsNodes, 'ambiance');
@@ -87,7 +102,7 @@ const App = () => {
         }
       }, 1000);
     }
-  }, [sound, resources, soundsNodes, userDidInteracted]);
+  }, [sound, resources, soundsNodes, userDidSetSound]);
 
   useEffect(() => {
     const onResize = () => {
