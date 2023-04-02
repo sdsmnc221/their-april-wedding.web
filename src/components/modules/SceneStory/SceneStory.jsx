@@ -30,7 +30,6 @@ const SceneStory = () => {
   const [subsceneId, setSubsceneId] = useState(0);
   const [subscenes, setSubscenes] = useState([]);
   const [loadingScene, setLoadingScene] = useState(true);
-  const [audio, setAudio] = useState(null);
   // const [automating, setAutomating] = useState(true);
 
   const endingCTAsRef = useRef(null);
@@ -53,7 +52,6 @@ const SceneStory = () => {
         // const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
         const vo = getSound(soundsNodes, `vo_${sceneId.slice(3)}_00`);
         if (vo) {
-          setAudio(vo);
           // fadeIn(vo.file);
           vo.play();
         }
@@ -87,7 +85,6 @@ const SceneStory = () => {
           `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
         );
         if (vo) {
-          setAudio(vo);
           // fadeIn(vo.file);
           vo.play();
         }
@@ -139,11 +136,6 @@ const SceneStory = () => {
         setSubsceneId(0);
         navigate(`/scene/${scene.nextScene}`);
       }
-      // if (audio) fadeOut(audio.file);
-      if (audio) {
-        audio.pause();
-        // audio.currentTime = 0;
-      }
 
       // setAutomating(true);
     }
@@ -157,10 +149,19 @@ const SceneStory = () => {
         setSubsceneId(0);
         navigate(`/scene/${scene.nextScene}`);
       }
-      // if (audio) fadeOut(audio.file);
-      if (audio) {
-        audio.pause();
-        // audio.currentTime = 0;
+
+      if (sound) {
+        soundsNodes.forEach((soundNode) => {
+          if (
+            !soundNode.classList.contains('ambiance') &&
+            !soundNode.classList.contains('ambiance2') &&
+            !soundNode.classList.contains(
+              `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
+            )
+          ) {
+            soundNode.pause();
+          }
+        });
       }
     }
     // }

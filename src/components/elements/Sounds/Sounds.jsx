@@ -7,14 +7,15 @@ const Sounds = () => {
   const { resources, sound, setSoundsNodes } = useContext(globalContext);
 
   useEffect(() => {
-    if (resources.sources.length) {
+    if (resources && resources.sources.length) {
       setSoundsNodes([...document.querySelectorAll('audio')]);
     }
   }, [sound, resources]);
 
   return (
     <div className="sounds">
-      {resources.sources.length &&
+      {resources &&
+        resources.sources.length &&
         resources.sources
           .filter((asset) => asset.type === 'audio')
           .map((sound) => (

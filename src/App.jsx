@@ -65,11 +65,12 @@ const App = () => {
   useEffect(() => {
     // window.addEventListener('resourcesIsReady', () => {
     // });
+    let amb1, amb2;
     if (resources && soundsNodes) {
       setTimeout(() => {
         if (sound) {
-          const amb1 = getSound(soundsNodes, 'ambiance');
-          const amb2 = getSound(soundsNodes, 'ambiance2');
+          amb1 = getSound(soundsNodes, 'ambiance');
+          amb2 = getSound(soundsNodes, 'ambiance2');
 
           if (amb1 && amb1.paused) amb1.play();
           if (amb2 && amb1.paused) amb2.play();
@@ -79,8 +80,10 @@ const App = () => {
           // Resources.getAudios().forEach((audio) => fadeOut(audio.file));
           soundsNodes.forEach((soundNode) => {
             soundNode.pause();
-            soundNode.currentTime = 0;
+            // soundNode.currentTime = 0;
           });
+          amb1?.pause();
+          amb2?.pause();
         }
       }, 1000);
     }

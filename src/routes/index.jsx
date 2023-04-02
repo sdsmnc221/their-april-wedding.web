@@ -20,7 +20,7 @@ const Wrapper = ({ children }) => {
           {children}
           {menuOpened && <SceneMenu />}
           {creditsOpened && <SceneCredits />}
-          {sound && <Sounds />}
+          <Sounds />
         </Fragment>
       ) : (
         <Scene404 />
