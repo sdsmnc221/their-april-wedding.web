@@ -23,7 +23,7 @@ const SceneCredits = () => {
 
   return (
     <div className="scene-credits">
-      <Background type="video" src={['intro-video.mp4']} isRightBottom={false} />
+      <Background src={['intro-video.mp4']} isRightBottom={false} />
       <Overlay />
       <Frame withMenu />
       <div className="credits">

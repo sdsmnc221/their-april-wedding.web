@@ -29,6 +29,7 @@ const SceneStory = () => {
   const [subscenes, setSubscenes] = useState([]);
   const [loadingScene, setLoadingScene] = useState(true);
   // const [automating, setAutomating] = useState(true);
+  const [backgroundRef, setBackgroundRef] = useState(null);
 
   const endingCTAsRef = useRef(null);
 
@@ -104,6 +105,12 @@ const SceneStory = () => {
       });
     }
   }, [endingCTAsRef.current, subsceneId]);
+
+  const animateBackgroundOut = () => {
+    if (backgroundRef && !backgroundRef.sameBg) {
+      gsap.to(backgroundRef.bgRef.current, { opacity: 0, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -183,6 +190,7 @@ const SceneStory = () => {
             sceneId={`${sceneId}-${subsceneId}`}
             src={subscenes && subscenes[subsceneId] && subscenes[subsceneId].bg}
             blur={subsceneId === 0}
+            setBackgroundRef={(bgRef, sameBg) => setBackgroundRef({ bgRef, sameBg })}
           />
           <Overlay
             withSunshine={sceneId.includes('01') || sceneId.includes('05')}
@@ -200,6 +208,7 @@ const SceneStory = () => {
               isLastText={subsceneId === subscenes.length - 1}
               animateEndingCTA={animateEndingCTA}
               toNext={toNext}
+              animateBackgroundOut={animateBackgroundOut}
             />
           )}
           {sceneId === '05-postface-last' && subsceneId === subscenes.length - 1 && (
@@ -217,7 +226,7 @@ const SceneStory = () => {
       )}
       {sceneId === '05-postface-wish' && !!scene.labels && (
         <Fragment>
-          <Background sceneId={`${sceneId}-${subsceneId}`} src={scene.bg} />
+          <Background sceneId={`${sceneId}-${subsceneId}`} src={scene.bg} setBackgroundRef={setBackgroundRef} />
           <Overlay />
           <Frame hasMenu />
           <Subtitle content={scene.subtitle} />

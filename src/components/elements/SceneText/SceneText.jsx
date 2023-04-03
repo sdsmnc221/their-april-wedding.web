@@ -5,7 +5,7 @@ import gsap from 'gsap-bonus';
 import { SplitText } from 'gsap-bonus/SplitText';
 import { globalContext } from '@contexts/GlobalContext';
 
-const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, toNext) => {
+const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, toNext, animateBackgroundOut) => {
   const splitInstance = new SplitText(el, { type: 'chars,words', wordsClass: 'word', charsClass: 'char' });
   gsap
     .timeline()
@@ -21,11 +21,13 @@ const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, to
       ease: 'Power4.InOut',
       onComplete: () => {
         animateEndingCTA && animateEndingCTA();
-        if (toNext)
+        if (toNext) {
+          animateBackgroundOut && animateBackgroundOut();
           setTimeout(() => {
             console.log('from gsap');
             toNext();
           }, 2400);
+        }
         if (el.tagName !== 'H2' && !animateEndingCTA)
           gsap.to(el, { opacity: 0, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
       },
@@ -55,13 +57,20 @@ const Heading = ({ text }) => {
   return <h2 className="scene-text" dangerouslySetInnerHTML={{ __html: text }} ref={textRef} />;
 };
 
-const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNext }) => {
+const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNext, animateBackgroundOut }) => {
   const textRef = useRef(null);
   const { lang } = useContext(globalContext);
 
   useEffect(() => {
     if (textRef.current)
-      createSplitText(textRef.current, 0.6, lang === 'vn' ? 0.072 : 0.056, isLastText && animateEndingCTA, toNext);
+      createSplitText(
+        textRef.current,
+        0.6,
+        lang === 'vn' ? 0.072 : 0.056,
+        isLastText && animateEndingCTA,
+        toNext,
+        animateBackgroundOut
+      );
   }, [text]);
 
   return (
@@ -73,7 +82,7 @@ const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNext }) => 
   );
 };
 
-const SceneText = ({ sceneId, text, isHeading, isLastText, animateEndingCTA, toNext }) => {
+const SceneText = ({ sceneId, text, isHeading, isLastText, animateEndingCTA, toNext, animateBackgroundOut }) => {
   return (
     <Fragment>
       {isHeading ? (
@@ -85,6 +94,7 @@ const SceneText = ({ sceneId, text, isHeading, isLastText, animateEndingCTA, toN
           isLastText={isLastText}
           animateEndingCTA={animateEndingCTA}
           toNext={toNext}
+          animateBackgroundOut={animateBackgroundOut}
         />
       )}
     </Fragment>

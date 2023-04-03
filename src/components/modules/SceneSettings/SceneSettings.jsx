@@ -61,7 +61,7 @@ const SceneSettings = () => {
 
   return (
     <div className="scene-settings" ref={sceneRef}>
-      <Background type="video" src={['intro-video.mp4']} />
+      <Background src={['intro-video.mp4']} />
       <Overlay />
       <Frame isLogo />
       <Subtitle content={data.scenes['00-splash-screen-settings-lang'].subtitle} />

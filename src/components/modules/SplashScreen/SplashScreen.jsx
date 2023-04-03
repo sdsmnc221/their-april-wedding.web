@@ -48,7 +48,7 @@ const SplashScreen = () => {
     <div className="splash-screen">
       <Menu />
       <SoundToggle />
-      <Background type="video" src={scene.bg} />
+      <Background src={scene.bg} />
       <Overlay />
       <Frame isLogo />
       <Subtitle content={scene.subtitle} />

@@ -26,7 +26,7 @@ const SceneMenu = () => {
 
   return (
     <div className="scene-menu">
-      <Background type="video" src={['intro-video.mp4']} isRightBottom={false} />
+      <Background src={['intro-video.mp4']} isRightBottom={false} />
       <Overlay />
       <Frame withMenu />
       <div className="chapters">
