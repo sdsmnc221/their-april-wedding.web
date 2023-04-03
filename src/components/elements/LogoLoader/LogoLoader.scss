@@ -1,0 +1,61 @@
+.logo-loader {
+  position: fixed;
+  width: 64vw;
+  left: 50%;
+  top: 10vh;
+  transform: translateX(calc(-50% + 24px));
+
+  .cls-1 {
+    fill: #84b589;
+  }
+
+  .cls-2 {
+    fill: #d9e4db;
+  }
+
+  .cls-3 {
+    fill: #70b1a1;
+  }
+
+  .cls-4 {
+    fill: #467167;
+  }
+
+  * {
+    animation-name: fill-op;
+    animation-duration: 1.6s;
+    animation-delay: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+  }
+
+  path {
+    stroke: #795548;
+    stroke-width: 0.1;
+    stroke-dasharray: 2100;
+    stroke-dashoffset: 2100;
+    animation-name: draw;
+    animation-duration: 1.6s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fill-op {
+    from {
+      fill-opacity: 0;
+    }
+    to {
+      fill-opacity: 0.32;
+    }
+  }
+}

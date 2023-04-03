@@ -7,4 +7,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  & > *:not(.subtitle),
+  &::before,
+  &::after {
+    filter: grayscale(1);
+  }
+
+  .subtitle {
+    filter: saturate(4.8);
+  }
+
+  .frame {
+    top: 48px;
+    left: 48px;
+
+    &::before {
+      height: 100vh;
+    }
+
+    &__menu {
+      display: none;
+    }
+  }
 }

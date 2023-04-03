@@ -11,11 +11,11 @@ import gsap from 'gsap-bonus';
 //   blur?: boolean;
 // }
 
-const Background = ({ sceneId, src, isRightBottom = true, blur = false }) => {
+const Background = ({ sceneId, src, isRightBottom = true, blur = false, animating = true }) => {
   const backgroundRef = useRef(null);
 
   useEffect(() => {
-    if (backgroundRef.current) {
+    if (backgroundRef.current && animating) {
       gsap.fromTo(
         backgroundRef.current,
         {

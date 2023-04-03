@@ -10,7 +10,6 @@ import dataVN from './data/vn.json';
 import NoDesktop from './components/modules/NoDesktop/NoDesktop';
 import NoLandscape from './components/modules/NoLandscape/NoLandscape';
 import { getSound } from './utils';
-import ResourcesLoader from './utils/ResourcesLoader';
 
 const App = () => {
   const [userDidInteracted, setUserDidInteracted] = useState(initialState.userDidInteracted);
@@ -105,8 +104,6 @@ const App = () => {
     };
 
     window.addEventListener('resize', onResize);
-
-    ResourcesLoader.loader.onComplete.add(() => setTimeout(() => setResourcesIsReady(true), 1200));
 
     return () => {
       window.removeEventListener('resize', onResize);
