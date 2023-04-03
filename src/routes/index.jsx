@@ -16,19 +16,22 @@ const Wrapper = ({ noNeedForInteraction, children }) => {
   const { menuOpened, creditsOpened, userDidInteracted, resourcesIsReady } = useContext(globalContext);
   return (
     <Fragment>
-      {!resourcesIsReady ? (
+      {noNeedForInteraction ? (
+        <Fragment>
+          {children}
+          {!resourcesIsReady && <SceneLoader />}
+        </Fragment>
+      ) : !userDidInteracted ? (
+        <Scene404 />
+      ) : !resourcesIsReady ? (
         <SceneLoader />
-      ) : noNeedForInteraction ? (
-        <Fragment>{children}</Fragment>
-      ) : userDidInteracted ? (
+      ) : (
         <Fragment>
           {children}
           {menuOpened && <SceneMenu />}
           {creditsOpened && <SceneCredits />}
           <Sounds />
         </Fragment>
-      ) : (
-        <Scene404 />
       )}
     </Fragment>
   );
