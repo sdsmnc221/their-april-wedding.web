@@ -1,7 +1,6 @@
 import React from 'react';
 
 import dataFR from '../../data/fr.json';
-import Loaders from '../../utils/Loaders';
 
 // interface Props {
 //   lang: string;

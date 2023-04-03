@@ -15,8 +15,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import gsap from 'gsap-bonus';
 
 import { globalContext } from '@contexts/GlobalContext';
-import Resources from '../../../utils/Resources';
-import { fadeIn, fadeOut } from '../../../utils/howler';
 import { getSound } from '../../../utils';
 
 const SceneStory = () => {
@@ -52,7 +50,6 @@ const SceneStory = () => {
         // const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
         const vo = getSound(soundsNodes, `vo_${sceneId.slice(3)}_00`);
         if (vo) {
-          // fadeIn(vo.file);
           vo.play();
         }
       }, 1000);
@@ -77,31 +74,16 @@ const SceneStory = () => {
   useEffect(() => {
     if (sound && soundsNodes && subsceneId > 0) {
       setTimeout(() => {
-        // const vo = Resources.getItem(
-        //   `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
-        // );
         const vo = getSound(
           soundsNodes,
           `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
         );
         if (vo) {
-          // fadeIn(vo.file);
           vo.play();
         }
       }, 1000);
     }
   }, [subsceneId, sound, soundsNodes]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (sound && soundsNodes) {
-        // const amb1 = Resources.getItem('ambiance').file;
-        // const amb2 = Resources.getItem('ambiance2').file;
-        // if (!amb1.playing()) fadeIn(amb1, 800, 0.24);
-        // if (!amb2.playing()) fadeIn(amb2, 800, 0.12);
-      }
-    }, 1000);
-  }, [sound]);
 
   const animateEndingCTA = useCallback(() => {
     if (endingCTAsRef.current) {

@@ -9,8 +9,6 @@ import dataFR from './data/fr.json';
 import dataVN from './data/vn.json';
 import NoDesktop from './components/modules/NoDesktop/NoDesktop';
 import NoLandscape from './components/modules/NoLandscape/NoLandscape';
-import Resources from './utils/Resources';
-import { fadeIn, fadeOut } from './utils/howler';
 import { getSound } from './utils';
 import ResourcesLoader from './utils/ResourcesLoader';
 
@@ -88,10 +86,7 @@ const App = () => {
 
           if (amb1 && amb1.paused) amb1.play();
           if (amb2 && amb2.paused) amb2.play();
-          // fadeIn(Resources.getItem('ambiance').file, 800, 0.24);
-          // fadeIn(Resources.getItem('ambiance2').file, 800, 0.12);
         } else {
-          // Resources.getAudios().forEach((audio) => fadeOut(audio.file));
           soundsNodes.forEach((soundNode) => {
             soundNode.pause();
             // soundNode.currentTime = 0;
