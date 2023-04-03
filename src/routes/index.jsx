@@ -18,7 +18,7 @@ const Wrapper = ({ noNeedForInteraction, children }) => {
     <Fragment>
       {noNeedForInteraction ? (
         <Fragment>
-          {children}
+          {resourcesIsReady && children}
           {!resourcesIsReady && <SceneLoader />}
         </Fragment>
       ) : !userDidInteracted ? (

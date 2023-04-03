@@ -43,25 +43,25 @@ const SceneSettings = () => {
 
   useEffect(() => {
     setCurrentScene('00-splash-screen');
-  }, []);
 
-  useEffect(() => {
-    gsap.fromTo(
-      [...sceneRef.current.children].reverse(),
-      { opacity: 0, y: 64 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 3.2,
-        stagger: { each: 0.8 },
-        ease: 'Power4.InOut',
-      }
-    );
-  }, [sceneRef.current]);
+    if (sceneRef.current) {
+      gsap.fromTo(
+        [...sceneRef.current.children].reverse(),
+        { opacity: 0, yPercent: 4 },
+        {
+          opacity: 1,
+          yPercent: 0,
+          duration: 2.4,
+          stagger: { each: 0.4 },
+          ease: 'Power4.InOut',
+        }
+      );
+    }
+  }, []);
 
   return (
     <div className="scene-settings" ref={sceneRef}>
-      <Background src={['intro-video.mp4']} />
+      <Background animating={false} src={['intro-video.mp4']} />
       <Overlay />
       <Frame isLogo />
       <Subtitle content={data.scenes['00-splash-screen-settings-lang'].subtitle} />

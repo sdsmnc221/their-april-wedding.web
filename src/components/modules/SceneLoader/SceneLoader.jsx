@@ -14,24 +14,43 @@ import LogoLoader from '@elements/LogoLoader/LogoLoader';
 const SceneLoader = () => {
   const [progress, setProgress] = useState(0);
   const sceneRef = useRef(null);
-  const { setResourcesIsReady } = useContext(globalContext);
+  const { setResourcesIsReady, resourcesIsReady } = useContext(globalContext);
+
+  const animLoaderOut = () => {
+    if (sceneRef.current)
+      gsap.to([...sceneRef.current.children], {
+        opacity: 0,
+        yPercent: 4,
+        duration: 2.4,
+        delay: 0.6,
+        stagger: { each: 0.4 },
+        ease: 'Power4.InOut',
+        onStart: () =>
+          sceneRef.current &&
+          [...sceneRef.current.querySelectorAll('svg *'), ...sceneRef.current.querySelectorAll('path')].forEach(
+            (el) => (el.style.animationPlayState = 'paused')
+          ),
+        onComplete: () => setResourcesIsReady(true),
+      });
+  };
 
   useEffect(() => {
-    ResourcesLoader.loader.onProgress.add((loaderProgress) => setProgress(Math.ceil(loaderProgress.progress)));
-  }, []);
-
-  useEffect(() => {
-    ResourcesLoader.loader.onComplete.add(() => {
-      if (sceneRef.current)
-        gsap.to([...sceneRef.current.children].reverse(), {
-          opacity: 0,
-          duration: 4.8,
-          stagger: { each: 0.8 },
-          ease: 'Power4.InOut',
-          onComplete: () => setResourcesIsReady(true),
-        });
-    });
+    if (ResourcesLoader.loader.progress === 100) {
+      setProgress(100);
+      setResourcesIsReady(true);
+      animLoaderOut();
+    } else {
+      ResourcesLoader.loader.onProgress.add((loaderProgress) => setProgress(Math.ceil(loaderProgress.progress)));
+      ResourcesLoader.loader.onComplete.add(() => animLoaderOut());
+    }
   }, [sceneRef.current]);
+
+  useEffect(() => {
+    if (resourcesIsReady) {
+      setProgress(100);
+      animLoaderOut();
+    }
+  }, [resourcesIsReady]);
 
   return (
     <div className="scene-loader" ref={sceneRef}>

@@ -6,7 +6,6 @@
   position: fixed;
   display: flex;
   z-index: -1;
-  // transition: all ease-in-out 1.2s;
 
   &.--blurred {
     filter: blur(4px);
