@@ -1,7 +1,8 @@
 import './SceneSettings.scss';
 
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import gsap from 'gsap-bonus';
 
 import Background from '@elements/Background/Background';
 import Frame from '@elements/Frame/Frame';
@@ -10,13 +11,14 @@ import Overlay from '@elements/Overlay/Overlay';
 import Subtitle from '@elements/Subtitle/Subtitle';
 
 import { globalContext } from '@contexts/GlobalContext';
-import { initialState } from '../../../contexts/GlobalContext';
 
 const SceneSettings = () => {
   const { setLang, data, setSound, setCurrentScene, setUserDidInteracted, setUserDidSetSound } =
     useContext(globalContext);
 
   const [settings, setSettings] = useState('lang');
+
+  const sceneRef = useRef(null);
 
   const handleSetLang = (lang) => {
     setUserDidInteracted(true);
@@ -43,8 +45,22 @@ const SceneSettings = () => {
     setCurrentScene('00-splash-screen');
   }, []);
 
+  useEffect(() => {
+    gsap.fromTo(
+      [...sceneRef.current.children].reverse(),
+      { opacity: 0, y: 64 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 3.2,
+        stagger: { each: 0.8 },
+        ease: 'Power4.InOut',
+      }
+    );
+  }, [sceneRef.current]);
+
   return (
-    <div className="scene-settings">
+    <div className="scene-settings" ref={sceneRef}>
       <Background type="video" src={['intro-video.mp4']} />
       <Overlay />
       <Frame isLogo />

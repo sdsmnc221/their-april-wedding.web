@@ -13,7 +13,7 @@ import LogoLoader from '@elements/LogoLoader/LogoLoader';
 
 const SceneLoader = () => {
   const [progress, setProgress] = useState(0);
-  const loaderRef = useRef(null);
+  const sceneRef = useRef(null);
   const { setResourcesIsReady } = useContext(globalContext);
 
   useEffect(() => {
@@ -22,19 +22,19 @@ const SceneLoader = () => {
 
   useEffect(() => {
     ResourcesLoader.loader.onComplete.add(() => {
-      if (loaderRef.current)
-        gsap.to([...loaderRef.current.children], {
+      if (sceneRef.current)
+        gsap.to([...sceneRef.current.children].reverse(), {
           opacity: 0,
-          duration: 2.4,
-          stagger: { each: 0.6 },
+          duration: 4.8,
+          stagger: { each: 0.8 },
           ease: 'Power4.InOut',
           onComplete: () => setResourcesIsReady(true),
         });
     });
-  }, [loaderRef.current]);
+  }, [sceneRef.current]);
 
   return (
-    <div className="scene-loader" ref={loaderRef}>
+    <div className="scene-loader" ref={sceneRef}>
       <Background src={['bg-loader.jpeg']} animating={false} />
       <Overlay />
       <Frame />
