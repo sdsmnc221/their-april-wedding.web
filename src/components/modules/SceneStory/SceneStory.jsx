@@ -20,7 +20,7 @@ import { fadeIn, fadeOut } from '../../../utils/howler';
 import { getSound } from '../../../utils';
 
 const SceneStory = () => {
-  const { data, setCurrentScene, lang, sound, soundsNodes, resources, setCreditsOpened, menuOpened, setMenuOpened } =
+  const { data, setCurrentScene, lang, sound, soundsNodes, setCreditsOpened, menuOpened, setMenuOpened } =
     useContext(globalContext);
 
   const { sceneId } = useParams();
@@ -47,7 +47,7 @@ const SceneStory = () => {
   }, [sceneId]);
 
   useEffect(() => {
-    if (resources && sound && soundsNodes && subsceneId === 0) {
+    if (sound && soundsNodes && subsceneId === 0) {
       setTimeout(() => {
         // const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
         const vo = getSound(soundsNodes, `vo_${sceneId.slice(3)}_00`);
@@ -57,7 +57,7 @@ const SceneStory = () => {
         }
       }, 1000);
     }
-  }, [sceneId, subsceneId, sound, soundsNodes, resources]);
+  }, [sceneId, subsceneId, sound, soundsNodes]);
 
   useEffect(() => {
     if (sceneId !== '05-postface-wish') {
@@ -75,7 +75,7 @@ const SceneStory = () => {
   }, [scene?.nextScene]);
 
   useEffect(() => {
-    if (resources && sound && soundsNodes && subsceneId > 0) {
+    if (sound && soundsNodes && subsceneId > 0) {
       setTimeout(() => {
         // const vo = Resources.getItem(
         //   `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
@@ -90,20 +90,18 @@ const SceneStory = () => {
         }
       }, 1000);
     }
-  }, [subsceneId, sound, soundsNodes, resources]);
+  }, [subsceneId, sound, soundsNodes]);
 
   useEffect(() => {
-    if (resources) {
-      setTimeout(() => {
-        if (sound && soundsNodes) {
-          // const amb1 = Resources.getItem('ambiance').file;
-          // const amb2 = Resources.getItem('ambiance2').file;
-          // if (!amb1.playing()) fadeIn(amb1, 800, 0.24);
-          // if (!amb2.playing()) fadeIn(amb2, 800, 0.12);
-        }
-      }, 1000);
-    }
-  }, [sound, resources]);
+    setTimeout(() => {
+      if (sound && soundsNodes) {
+        // const amb1 = Resources.getItem('ambiance').file;
+        // const amb2 = Resources.getItem('ambiance2').file;
+        // if (!amb1.playing()) fadeIn(amb1, 800, 0.24);
+        // if (!amb2.playing()) fadeIn(amb2, 800, 0.12);
+      }
+    }, 1000);
+  }, [sound]);
 
   const animateEndingCTA = useCallback(() => {
     if (endingCTAsRef.current) {
