@@ -40,9 +40,13 @@ const SceneLoader = () => {
       setResourcesIsReady(true);
       animLoaderOut();
     } else {
-      ResourcesLoader.loader.onProgress.add((loaderProgress) => setProgress(Math.ceil(loaderProgress.progress)));
+      ResourcesLoader.loader.onProgress.add((loaderProgress) => {
+        const progress_ = Math.ceil(loaderProgress.progress);
+        setProgress(progress_);
+
+        if (progress_ === 99) setTimeout(() => setProgress(100), 600);
+      });
       ResourcesLoader.loader.onComplete.add(() => animLoaderOut());
-      ResourcesLoader.loader.onError.add((ab, ab2) => console.log(ab, ab2));
     }
   }, [sceneRef.current]);
 
