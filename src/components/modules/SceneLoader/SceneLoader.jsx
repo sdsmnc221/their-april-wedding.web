@@ -42,6 +42,7 @@ const SceneLoader = () => {
     } else {
       ResourcesLoader.loader.onProgress.add((loaderProgress) => setProgress(Math.ceil(loaderProgress.progress)));
       ResourcesLoader.loader.onComplete.add(() => animLoaderOut());
+      ResourcesLoader.loader.onError.add((ab, ab2) => console.log(ab, ab2));
     }
   }, [sceneRef.current]);
 
