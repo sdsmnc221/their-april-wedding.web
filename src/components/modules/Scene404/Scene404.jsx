@@ -15,7 +15,7 @@ const Scene404 = () => {
 
   return (
     <div className="scene-404">
-      <Background src={['intro-video.mp4']} />
+      <Background isRightBottom={false} src={['intro-video.mp4']} />
       <Overlay />
       <div className="not-found">
         <p dangerouslySetInnerHTML={{ __html: data['404'] }} />

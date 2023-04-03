@@ -15,6 +15,7 @@
   &.--right-bottom {
     top: 32px;
     left: 32px;
+    width: calc(100vw - 32px);
   }
 
   &.--left-top {
