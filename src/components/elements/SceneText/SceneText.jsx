@@ -26,7 +26,8 @@ const createSplitText = (el, duration = 1.2, stagger = 0.1, animateEndingCTA, to
             console.log('from gsap');
             toNext();
           }, 2400);
-        if (el.tagName !== 'H2') gsap.to(el, { opacity: 0, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
+        if (el.tagName !== 'H2' && !animateEndingCTA)
+          gsap.to(el, { opacity: 0, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
       },
     });
 };
