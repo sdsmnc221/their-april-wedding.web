@@ -1,31 +1,34 @@
 import './Sounds.scss';
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
+import ResourcesLoader from '../../../utils/ResourcesLoader';
 
 const Sounds = () => {
-  const { resources, sound, setSoundsNodes } = useContext(globalContext);
+  const { setSoundsNodes } = useContext(globalContext);
+  const [audios, setAudios] = useState([]);
 
   useEffect(() => {
-    if (resources && resources.sources.length) {
+    setAudios(ResourcesLoader.getAudios());
+  }, []);
+
+  useEffect(() => {
+    if (audios.length) {
       setSoundsNodes([...document.querySelectorAll('audio')]);
     }
-  }, [sound, resources]);
+  }, [audios]);
 
   return (
     <div className="sounds">
-      {resources &&
-        resources.sources.length &&
-        resources.sources
-          .filter((asset) => asset.type === 'audio')
-          .map((sound) => (
-            <audio
-              key={`audio-${sound.name}`}
-              className={`${sound.name}`}
-              src={`/${sound.path}`}
-              loop={sound.name.includes('ambiance')}
-            ></audio>
-          ))}
+      {audios.length &&
+        audios.map((sound) => (
+          <audio
+            key={`audio-${sound.name}`}
+            className={`${sound.name}`}
+            src={`/${sound.path}`}
+            loop={sound.name.includes('ambiance')}
+          ></audio>
+        ))}
     </div>
   );
 };

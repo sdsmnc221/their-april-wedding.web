@@ -30,6 +30,12 @@ class ResourcesLoader extends Singleton {
     return this._items;
   }
 
+  getAudios() {
+    return Object.entries(this._items)
+      .filter((item) => item[1].type === 'audio')
+      .map((item) => item[1]);
+  }
+
   addItem(name, file) {
     this._items[name] = file;
   }
