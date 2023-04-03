@@ -44,7 +44,9 @@ const SceneLoader = () => {
         const progress_ = Math.ceil(loaderProgress.progress);
         setProgress(progress_);
 
-        if (progress_ === 99) setTimeout(() => setProgress(100), 600);
+        setTimeout(() => {
+          if (progress_ === 99) setTimeout(() => setProgress(100), 600);
+        }, 2400);
       });
       //   ResourcesLoader.loader.onComplete.add(() => animLoaderOut());
     }
