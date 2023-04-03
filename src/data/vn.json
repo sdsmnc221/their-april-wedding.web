@@ -50,7 +50,7 @@
       }
     },
     "00-splash-screen": {
-      "subtitle": "<strong>00.</strong> Màn hình khởi động",
+      "subtitle": "<strong>00.</strong> Màn hình khởi động.",
       "cta": "Khám phá",
       "bg": [
         "intro-video.mp4"
@@ -99,7 +99,7 @@
         "02-past-0.jpg",
         "02-past-2.jpeg",
         "02-past-1.jpg",
-        "02-past-1.jpg"
+        "02-past-3.jpeg"
       ],
       "nextScene": "03-present"
     },

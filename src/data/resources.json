@@ -385,6 +385,11 @@
         "path": "images/02-past-2.jpeg"
     },
     {
+        "name": "img-02-past-3",
+        "type": "image",
+        "path": "images/02-past-3.jpeg"
+    },
+    {
         "name": "img-03-present-0",
         "type": "image",
         "path": "images/03-present-0.jpg"

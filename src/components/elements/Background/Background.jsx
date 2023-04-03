@@ -13,8 +13,6 @@ import gsap from 'gsap-bonus';
 
 const Background = ({ sceneId, src, isRightBottom = true, blur = false, animating = true, setBackgroundRef }) => {
   const backgroundRef = useRef(null);
-  const [src_, setSrc_] = useState(src);
-  const [sameBackground, setSameBackground] = useState(false);
 
   useEffect(() => {
     if (backgroundRef.current && animating) {
@@ -35,10 +33,7 @@ const Background = ({ sceneId, src, isRightBottom = true, blur = false, animatin
   }, [src[0], src[1]]);
 
   useEffect(() => {
-    console.log(src, src_);
-    if (backgroundRef.current)
-      setBackgroundRef && setBackgroundRef(backgroundRef, src[0] === src_[0] && src.length === src_.length);
-    setSrc_(src);
+    if (backgroundRef.current) setBackgroundRef && setBackgroundRef(backgroundRef);
   }, [src, backgroundRef.current]);
 
   return (

@@ -107,8 +107,8 @@ const SceneStory = () => {
   }, [endingCTAsRef.current, subsceneId]);
 
   const animateBackgroundOut = () => {
-    if (backgroundRef && !backgroundRef.sameBg) {
-      gsap.to(backgroundRef.bgRef.current, { opacity: 0, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
+    if (backgroundRef && backgroundRef.current) {
+      gsap.to(backgroundRef.current, { opacity: 0, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
     }
   };
 
@@ -190,7 +190,7 @@ const SceneStory = () => {
             sceneId={`${sceneId}-${subsceneId}`}
             src={subscenes && subscenes[subsceneId] && subscenes[subsceneId].bg}
             blur={subsceneId === 0}
-            setBackgroundRef={(bgRef, sameBg) => setBackgroundRef({ bgRef, sameBg })}
+            setBackgroundRef={setBackgroundRef}
           />
           <Overlay
             withSunshine={sceneId.includes('01') || sceneId.includes('05')}
