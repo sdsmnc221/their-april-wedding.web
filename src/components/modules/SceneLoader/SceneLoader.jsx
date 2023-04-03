@@ -46,7 +46,7 @@ const SceneLoader = () => {
 
         if (progress_ === 99) setTimeout(() => setProgress(100), 600);
       });
-      ResourcesLoader.loader.onComplete.add(() => animLoaderOut());
+      //   ResourcesLoader.loader.onComplete.add(() => animLoaderOut());
     }
   }, [sceneRef.current]);
 
@@ -56,6 +56,10 @@ const SceneLoader = () => {
       animLoaderOut();
     }
   }, [resourcesIsReady]);
+
+  useEffect(() => {
+    if (progress === 100) animLoaderOut();
+  }, [progress]);
 
   return (
     <div className="scene-loader" ref={sceneRef}>
