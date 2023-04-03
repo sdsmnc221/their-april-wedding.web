@@ -37,8 +37,6 @@ const initialState = {
   setMenuOpened: () => undefined,
   creditsOpened: false,
   setCreditsOpened: () => undefined,
-  resources: null,
-  setResources: () => new Loaders(),
   resourcesIsReady: false,
   setResourcesIsReady: () => undefined,
 };

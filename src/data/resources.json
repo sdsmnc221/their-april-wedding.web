@@ -290,6 +290,21 @@
         }
     },
     {
+        "name": "intro-video",
+        "type": "video",
+        "path": "images/intro-video.mp4"
+    },
+    {
+        "name": "outro-video",
+        "type": "video",
+        "path": "images/outro-video.mp4"
+    },
+    {
+        "name": "waiting-video",
+        "type": "video",
+        "path": "images/waiting-video.mp4"
+    },
+    {
         "name": "gif-sunshine",
         "type": "image",
         "path": "images/sunshine.gif"
@@ -300,8 +315,113 @@
         "path": "images/sunshine2.gif"
     },
     {
-        "name": "gif-sunshine",
+        "name": "gif-storm",
         "type": "image",
-        "path": "images/sunshine.gif"
+        "path": "images/storm.gif"
+    },
+    {
+        "name": "gif-leaf",
+        "type": "image",
+        "path": "images/leaf.gif"
+    },
+    {
+        "name": "svg-logo",
+        "type": "image",
+        "path": "images/logo.svg"
+    },
+    {
+        "name": "svg-voice",
+        "type": "image",
+        "path": "images/voice.svg"
+    },
+    {
+        "name": "svg-pd",
+        "type": "image",
+        "path": "images/pd-full.svg"
+    },
+    {
+        "name": "svg-QR",
+        "type": "image",
+        "path": "images/QR.svg"
+    },
+    {
+        "name": "img-logo",
+        "type": "image",
+        "path": "images/logo.png"
+    },
+    {
+        "name": "img-texture",
+        "type": "image",
+        "path": "images/texture.jpg"
+    },
+    {
+        "name": "img-01-preface-0",
+        "type": "image",
+        "path": "images/01-preface-0.jpg"
+    },
+    {
+        "name": "img-01-preface-1",
+        "type": "image",
+        "path": "images/01-preface-1.jpg"
+    },
+    {
+        "name": "img-01-preface-2",
+        "type": "image",
+        "path": "images/01-preface-2.jpg"
+    },
+    {
+        "name": "img-02-past-0",
+        "type": "image",
+        "path": "images/02-past-0.jpg"
+    },
+    {
+        "name": "img-02-past-1",
+        "type": "image",
+        "path": "images/02-past-1.jpg"
+    },
+    {
+        "name": "img-02-past-2",
+        "type": "image",
+        "path": "images/02-past-2.jpeg"
+    },
+    {
+        "name": "img-03-present-0",
+        "type": "image",
+        "path": "images/03-present-0.jpg"
+    },
+    {
+        "name": "img-04-future-0",
+        "type": "image",
+        "path": "images/04-future-0.jpg"
+    },
+    {
+        "name": "img-04-future-1",
+        "type": "image",
+        "path": "images/04-future-1.jpg"
+    },
+    {
+        "name": "img-05-postface-0",
+        "type": "image",
+        "path": "images/05-postface-0.jpg"
+    },
+    {
+        "name": "img-05-postface-1",
+        "type": "image",
+        "path": "images/05-postface-1.jpg"
+    },
+    {
+        "name": "img-05-postface-2",
+        "type": "image",
+        "path": "images/05-postface-2.jpg"
+    },
+    {
+        "name": "img-05-postface-3",
+        "type": "image",
+        "path": "images/05-postface-3.jpg"
+    },
+    {
+        "name": "img-05-postface-4",
+        "type": "image",
+        "path": "images/05-postface-4.jpg"
     }
 ]

@@ -12,6 +12,7 @@ import NoLandscape from './components/modules/NoLandscape/NoLandscape';
 import Resources from './utils/Resources';
 import { fadeIn, fadeOut } from './utils/howler';
 import { getSound } from './utils';
+import ResourcesLoader from './utils/ResourcesLoader';
 
 const App = () => {
   const [userDidInteracted, setUserDidInteracted] = useState(initialState.userDidInteracted);
@@ -24,7 +25,6 @@ const App = () => {
   const [isLandscape, setIsLandscape] = useState(initialState.setIsLandscape());
   const [menuOpened, setMenuOpened] = useState(initialState.menuOpened);
   const [creditsOpened, setCreditsOpened] = useState(initialState.creditsOpened);
-  const [resources, setResources] = useState(initialState.resources);
   const [soundsNodes, setSoundsNodes] = useState(initialState.soundsNodes);
   const [resourcesIsReady, setResourcesIsReady] = useState(initialState.resourcesIsReady);
 
@@ -52,8 +52,6 @@ const App = () => {
       setMenuOpened,
       creditsOpened,
       setCreditsOpened,
-      resources,
-      setResources,
       resourcesIsReady,
       setResourcesIsReady,
     }),
@@ -69,6 +67,7 @@ const App = () => {
       isLandscape,
       menuOpened,
       creditsOpened,
+      resourcesIsReady,
     ]
   );
 
@@ -81,7 +80,7 @@ const App = () => {
     // window.addEventListener('resourcesIsReady', () => {
     // });
     let amb1, amb2;
-    if (resources && soundsNodes && userDidSetSound) {
+    if (resourcesIsReady && soundsNodes && userDidSetSound) {
       setTimeout(() => {
         if (sound) {
           amb1 = getSound(soundsNodes, 'ambiance');
@@ -102,7 +101,7 @@ const App = () => {
         }
       }, 1000);
     }
-  }, [sound, resources, soundsNodes, userDidSetSound]);
+  }, [sound, resourcesIsReady, soundsNodes, userDidSetSound]);
 
   useEffect(() => {
     const onResize = () => {
@@ -110,16 +109,12 @@ const App = () => {
       setIsLandscape(initialState.setIsLandscape());
     };
 
-    const onLoaded = () => {
-      // if (!resourcesIsReady) setResourcesIsReady(true);
-    };
-
     window.addEventListener('resize', onResize);
-    window.addEventListener('resourcesIsReady', onLoaded);
+
+    ResourcesLoader.loader.onComplete.add(() => setTimeout(() => setResourcesIsReady(true), 1200));
 
     return () => {
       window.removeEventListener('resize', onResize);
-      window.removeEventListener('resourcesIsReady', onLoaded);
     };
   }, []);
 

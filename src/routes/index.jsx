@@ -7,15 +7,20 @@ import SceneStory from '@modules/SceneStory/SceneStory';
 import SceneMenu from '@modules/SceneMenu/SceneMenu';
 import SceneCredits from '@modules/SceneCredits/SceneCredits';
 import Scene404 from '@modules/Scene404/Scene404';
+import SceneLoader from '@modules/SceneLoader/SceneLoader';
 
 import { globalContext } from '../contexts/GlobalContext';
 import Sounds from '../components/elements/Sounds/Sounds';
 
-const Wrapper = ({ children }) => {
-  const { menuOpened, creditsOpened, userDidInteracted, sound } = useContext(globalContext);
+const Wrapper = ({ noNeedForInteraction, children }) => {
+  const { menuOpened, creditsOpened, userDidInteracted, resourcesIsReady } = useContext(globalContext);
   return (
     <Fragment>
-      {userDidInteracted ? (
+      {!resourcesIsReady ? (
+        <SceneLoader />
+      ) : noNeedForInteraction ? (
+        <Fragment>{children}</Fragment>
+      ) : userDidInteracted ? (
         <Fragment>
           {children}
           {menuOpened && <SceneMenu />}
@@ -32,7 +37,11 @@ const Wrapper = ({ children }) => {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <SceneSettings />,
+    element: (
+      <Wrapper noNeedForInteraction>
+        <SceneSettings />
+      </Wrapper>
+    ),
   },
   {
     path: '/splash-screen',
