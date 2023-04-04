@@ -1,6 +1,6 @@
 import './SceneSettings.scss';
 
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap-bonus';
 
@@ -19,6 +19,7 @@ const SceneSettings = () => {
   const [settings, setSettings] = useState('lang');
 
   const sceneRef = useRef(null);
+  const ctasRef = useRef(null);
 
   const handleSetLang = (lang) => {
     setUserDidInteracted(true);
@@ -41,10 +42,31 @@ const SceneSettings = () => {
     }, 600);
   };
 
+  const animateCTA = useCallback(() => {
+    if (ctasRef.current) {
+      const nodes = [...ctasRef.current.children];
+      gsap.from(nodes, {
+        filter: 'blur(32px)',
+        opacity: 0,
+        y: 64,
+        duration: 2.4,
+        delay: 0.6,
+        ease: 'Power4.InOut',
+        stagger: {
+          each: 0.64,
+        },
+        onStart: () => {
+          gsap.to(ctasRef.current, { opacity: 1, duration: 4.8, ease: 'Power4.InOut' });
+        },
+      });
+    }
+  }, [ctasRef.current]);
+
   useEffect(() => {
     setCurrentScene('00-splash-screen');
 
-    if (sceneRef.current) {
+    if (sceneRef.current && ctasRef.current) {
+      const nodes = [...ctasRef.current.children];
       gsap
         .timeline()
         .to(sceneRef.current, { opacity: 1, duration: 0.6 })
@@ -59,6 +81,28 @@ const SceneSettings = () => {
             stagger: { each: 0.4 },
             ease: 'Power4.InOut',
           }
+        )
+        .fromTo(
+          nodes,
+          {
+            filter: 'blur(32px)',
+            opacity: 0,
+            y: 64,
+          },
+          {
+            filter: 'blur(0.1px)',
+            opacity: 1,
+            y: 0,
+            duration: 2.4,
+            ease: 'Power4.InOut',
+            stagger: {
+              each: 0.64,
+            },
+            onStart: () => {
+              gsap.to(ctasRef.current, { opacity: 1, duration: 4.8, ease: 'Power4.InOut' });
+            },
+          },
+          '0.8'
         );
     }
   }, []);
@@ -69,7 +113,7 @@ const SceneSettings = () => {
       <Overlay />
       <Frame isLogo />
       <Subtitle content={data.scenes['00-splash-screen-settings-lang'].subtitle} />
-      <div className="lang-buttons">
+      <div className="lang-buttons" ref={ctasRef}>
         {settings === 'lang' &&
           Object.entries(data.scenes['00-splash-screen-settings-lang'].cta).map((entry) => (
             <button className="unbutton" key={`btn-settings-lang-${entry[1]}`} onClick={() => handleSetLang(entry[0])}>
