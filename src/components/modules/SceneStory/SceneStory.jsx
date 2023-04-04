@@ -55,9 +55,9 @@ const SceneStory = () => {
     }
   }, [endingCTAsRef.current, subsceneId]);
 
-  const animateBackgroundOut = () => {
+  const animateBackground = (out = true) => {
     if (backgroundRef && backgroundRef.current) {
-      gsap.to(backgroundRef.current, { opacity: 0, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
+      gsap.to(backgroundRef.current, { opacity: out ? 0 : 1, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
     }
   };
 
@@ -171,7 +171,7 @@ const SceneStory = () => {
       onComplete.bind(null, {
         el: document.querySelector('.scene-text'),
         toNext,
-        animateBackgroundOut,
+        animateBackground,
       })
     );
   }, []);
@@ -221,7 +221,7 @@ const SceneStory = () => {
               isLastText={subsceneId === subscenes.length - 1}
               animateEndingCTA={animateEndingCTA}
               toNext={toNext}
-              animateBackgroundOut={animateBackgroundOut}
+              animateBackground={animateBackground}
               setOnVoiceEnded={setOnVoiceEnded}
               sound={sound}
             />

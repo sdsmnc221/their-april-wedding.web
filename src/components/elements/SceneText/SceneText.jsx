@@ -24,10 +24,11 @@ const createSplitText = ({ el, duration = 1.2, stagger = 0.1, completeCb, startC
     });
 };
 
-const onComplete = ({ el, animateEndingCTA, animateBackgroundOut, toNext }) => {
+const onComplete = ({ el, animateEndingCTA, animateBackground, toNext }) => {
   animateEndingCTA && animateEndingCTA();
+
   if (toNext) {
-    animateBackgroundOut && animateBackgroundOut();
+    animateBackground(true);
 
     timeoutRef = setTimeout(() => {
       console.log('from gsap');
@@ -75,7 +76,7 @@ const Paragraphs = ({
   animateEndingCTA,
   isLastText,
   toNext,
-  animateBackgroundOut,
+  animateBackground,
   setOnVoiceEnded,
   sound,
 }) => {
@@ -90,7 +91,7 @@ const Paragraphs = ({
         el: textRef.current,
         animateEndingCTA: isLastText && animateEndingCTA,
         toNext,
-        animateBackgroundOut,
+        animateBackground,
       });
     };
 
@@ -100,15 +101,17 @@ const Paragraphs = ({
           el: textRef.current,
           animateEndingCTA: isLastText && animateEndingCTA,
           toNext,
-          animateBackgroundOut,
+          animateBackground,
         })
       );
 
-    if (textRef.current) {
-      gsap.killTweensOf(textRef.current);
-
+    const stopAnim = () => {
+      // gsap.killTweensOf(textRef.current);
       resetTimeout();
+    };
 
+    if (textRef.current) {
+      stopAnim();
       tl = createSplitText({
         el: textRef.current,
         duration: 0.6,
@@ -134,7 +137,7 @@ const SceneText = ({
   isLastText,
   animateEndingCTA,
   toNext,
-  animateBackgroundOut,
+  animateBackground,
   setOnVoiceEnded,
   sound,
 }) => {
@@ -149,7 +152,7 @@ const SceneText = ({
           isLastText={isLastText}
           animateEndingCTA={animateEndingCTA}
           toNext={toNext}
-          animateBackgroundOut={animateBackgroundOut}
+          animateBackground={animateBackground}
           setOnVoiceEnded={setOnVoiceEnded}
           sound={sound}
         />
