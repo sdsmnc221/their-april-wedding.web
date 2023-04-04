@@ -38,7 +38,6 @@ const SceneLoader = () => {
     if (ResourcesLoader.loader.progress === 100) {
       setProgress(100);
       setResourcesIsReady(true);
-      animLoaderOut();
     } else {
       ResourcesLoader.loader.onProgress.add((loaderProgress) => {
         const progress_ = Math.ceil(loaderProgress.progress);
@@ -52,19 +51,23 @@ const SceneLoader = () => {
     }
   }, [sceneRef.current]);
 
-  useEffect(() => {
-    if (resourcesIsReady) {
-      setProgress(100);
-      animLoaderOut();
-    }
-  }, [resourcesIsReady]);
+  //   useEffect(() => {
+  //     if (resourcesIsReady) {
+  //       setProgress(100);
+  //         animLoaderOut();
+  //     }
+  //   }, [resourcesIsReady]);
 
   useEffect(() => {
     if (progress === 100) animLoaderOut();
   }, [progress]);
 
   return (
-    <div className="scene-loader" ref={sceneRef}>
+    <div
+      className="scene-loader"
+      ref={sceneRef}
+      style={{ ['--progress']: `${progress}%`, ['--progress-decimal']: `${progress * 0.1}` }}
+    >
       <Background src={['bg-loader.jpeg']} animating={false} />
       <Overlay />
       <Frame />
