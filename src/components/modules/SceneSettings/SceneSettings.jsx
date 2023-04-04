@@ -47,19 +47,16 @@ const SceneSettings = () => {
     if (sceneRef.current) {
       gsap
         .timeline()
-        .set([...sceneRef.current.children].reverse(), { opacity: 0, yPercent: 4 })
-        .to(
-          [...sceneRef.current.children].reverse(),
-
-          {
-            opacity: 1,
-            yPercent: 0,
-            duration: 2.4,
-            delay: 0.8,
-            stagger: { each: 0.4 },
-            ease: 'Power4.InOut',
-          }
-        );
+        .to(sceneRef.current, { opacity: 1, duration: 1.2 })
+        .from([...sceneRef.current.children].reverse(), {
+          opacity: 0,
+          yPercent: 4,
+          duration: 2.4,
+          delay: 0.8,
+          stagger: { each: 0.4 },
+          ease: 'Power4.InOut',
+        }),
+        '>';
     }
   }, []);
 
