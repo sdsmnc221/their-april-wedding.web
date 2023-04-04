@@ -88,7 +88,7 @@ const App = () => {
         } else {
           soundsNodes.forEach((soundNode) => {
             soundNode.pause();
-            // soundNode.currentTime = 0;
+            soundNode.currentTime = 0;
           });
           amb1?.pause();
           amb2?.pause();

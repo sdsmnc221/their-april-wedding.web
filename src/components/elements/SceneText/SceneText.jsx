@@ -5,6 +5,8 @@ import gsap from 'gsap-bonus';
 import { SplitText } from 'gsap-bonus/SplitText';
 import { globalContext } from '@contexts/GlobalContext';
 
+let timeoutRef;
+
 const createSplitText = ({ el, duration = 1.2, stagger = 0.1 }) => {
   const splitInstance = new SplitText(el, { type: 'chars,words', wordsClass: 'word', charsClass: 'char' });
   return gsap
@@ -26,13 +28,22 @@ const onComplete = ({ el, animateEndingCTA, animateBackgroundOut, toNext }) => {
   animateEndingCTA && animateEndingCTA();
   if (toNext) {
     animateBackgroundOut && animateBackgroundOut();
-    setTimeout(() => {
+
+    timeoutRef = setTimeout(() => {
       console.log('from gsap');
       toNext();
     }, 2400);
   }
+
   if (el.tagName !== 'H2' && !animateEndingCTA)
     gsap.to(el, { opacity: 0, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
+};
+
+const resetTimeout = () => {
+  if (timeoutRef) {
+    clearTimeout(timeoutRef);
+    timeoutRef = null;
+  }
 };
 
 // interface Props {
@@ -58,27 +69,60 @@ const Heading = ({ text }) => {
   return <h2 className="scene-text" dangerouslySetInnerHTML={{ __html: text }} ref={textRef} />;
 };
 
-const Paragraphs = ({ text, sceneId, animateEndingCTA, isLastText, toNext, animateBackgroundOut }) => {
+const Paragraphs = ({
+  text,
+  sceneId,
+  animateEndingCTA,
+  isLastText,
+  toNext,
+  animateBackgroundOut,
+  setOnVoiceEnded,
+  sound,
+}) => {
   const textRef = useRef(null);
   const { lang } = useContext(globalContext);
   let tl;
 
   useEffect(() => {
-    if (textRef.current)
-      tl = createSplitText({
-        el: textRef.current,
-        duration: 0.6,
-        stagger: lang === 'vn' ? 0.072 : 0.056,
-      });
-    tl.eventCallback('onComplete', () =>
+    const completeCb = () => {
+      console.log('on complete sound off', sound);
       onComplete({
         el: textRef.current,
         animateEndingCTA: isLastText && animateEndingCTA,
         toNext,
         animateBackgroundOut,
-      })
-    );
-  }, [text]);
+      });
+    };
+
+    if (textRef.current) {
+      gsap.killTweensOf(textRef.current);
+
+      resetTimeout();
+
+      tl = createSplitText({
+        el: textRef.current,
+        duration: 0.6,
+        stagger: lang === 'vn' ? 0.072 : 0.056,
+      });
+
+      if (sound) {
+        tl.eventCallback('onComplete', null);
+        tl.eventCallback('onStart', () =>
+          setOnVoiceEnded(() =>
+            onComplete.bind(null, {
+              el: textRef.current,
+              animateEndingCTA: isLastText && animateEndingCTA,
+              toNext,
+              animateBackgroundOut,
+            })
+          )
+        );
+      } else {
+        tl.eventCallback('onComplete', completeCb);
+        tl.eventCallback('onStart', () => setOnVoiceEnded(null));
+      }
+    }
+  }, [text, sound]);
 
   return (
     <div className="scene-text" ref={textRef}>
@@ -98,6 +142,7 @@ const SceneText = ({
   toNext,
   animateBackgroundOut,
   setOnVoiceEnded,
+  sound,
 }) => {
   return (
     <Fragment>
@@ -111,6 +156,8 @@ const SceneText = ({
           animateEndingCTA={animateEndingCTA}
           toNext={toNext}
           animateBackgroundOut={animateBackgroundOut}
+          setOnVoiceEnded={setOnVoiceEnded}
+          sound={sound}
         />
       )}
     </Fragment>
@@ -118,3 +165,5 @@ const SceneText = ({
 };
 
 export default SceneText;
+
+export { onComplete };

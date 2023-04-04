@@ -16,12 +16,15 @@ import gsap from 'gsap-bonus';
 
 import { globalContext } from '@contexts/GlobalContext';
 import { getSound } from '../../../utils';
+import { onComplete } from '../../elements/SceneText/SceneText';
 
 const SceneStory = () => {
   const { data, setCurrentScene, lang, sound, soundsNodes, setCreditsOpened, menuOpened, setMenuOpened } =
     useContext(globalContext);
 
   const { sceneId } = useParams();
+
+  const endingCTAsRef = useRef(null);
 
   const [touchIndicatorHidden, setTouchIndicatorHidden] = useState(true);
   const [scene, setScene] = useState(data.scenes[sceneId]);
@@ -31,62 +34,6 @@ const SceneStory = () => {
   // const [automating, setAutomating] = useState(true);
   const [backgroundRef, setBackgroundRef] = useState(null);
   const [onVoiceEnded, setOnVoiceEnded] = useState(null);
-
-  const endingCTAsRef = useRef(null);
-
-  useEffect(() => {
-    setCurrentScene(sceneId);
-
-    setScene(data.scenes[sceneId]);
-
-    setSubsceneId(0);
-
-    setLoadingScene(true);
-
-    setTimeout(() => setTouchIndicatorHidden(false), 3200);
-  }, [sceneId]);
-
-  useEffect(() => {
-    if (sound && soundsNodes && subsceneId === 0) {
-      setTimeout(() => {
-        // const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
-        const vo = getSound(soundsNodes, `vo_${sceneId.slice(3)}_00`);
-        if (vo) {
-          vo.play();
-        }
-      }, 1000);
-    }
-  }, [sceneId, subsceneId, sound, soundsNodes]);
-
-  useEffect(() => {
-    if (sceneId !== '05-postface-wish') {
-      console.log(scene);
-      setSubscenes([
-        scene.title && { text: scene.title, bg: [...new Set(scene.bg)].filter((bg) => bg !== null), isHeading: true },
-        ...scene.content.map((subscene, index) => ({
-          text: subscene,
-          bg: [scene.bg[index]],
-        })),
-      ]);
-
-      setTimeout(() => setLoadingScene(false), 1000);
-    }
-  }, [scene?.nextScene]);
-
-  useEffect(() => {
-    if (sound && soundsNodes && subsceneId > 0) {
-      setTimeout(() => {
-        const vo = getSound(
-          soundsNodes,
-          `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
-        );
-        if (vo) {
-          vo.onended = () => onVoiceEnded && onVoiceEnded();
-          vo.play();
-        }
-      }, 1000);
-    }
-  }, [subsceneId, sound, soundsNodes]);
 
   const animateEndingCTA = useCallback(() => {
     if (endingCTAsRef.current) {
@@ -165,6 +112,70 @@ const SceneStory = () => {
     } else navigate('/');
   };
 
+  useEffect(() => {
+    setCurrentScene(sceneId);
+
+    setScene(data.scenes[sceneId]);
+
+    setSubsceneId(0);
+
+    setLoadingScene(true);
+
+    setTimeout(() => setTouchIndicatorHidden(false), 3200);
+  }, [sceneId]);
+
+  useEffect(() => {
+    if (sound && soundsNodes && subsceneId === 0) {
+      setTimeout(() => {
+        // const vo = Resources.getItem(`vo_${sceneId.slice(3)}_00`);
+        const vo = getSound(soundsNodes, `vo_${sceneId.slice(3)}_00`);
+        if (vo) {
+          vo.play();
+        }
+      }, 1000);
+    }
+  }, [sceneId, subsceneId, sound, soundsNodes]);
+
+  useEffect(() => {
+    if (sceneId !== '05-postface-wish') {
+      console.log(scene);
+      setSubscenes([
+        scene.title && { text: scene.title, bg: [...new Set(scene.bg)].filter((bg) => bg !== null), isHeading: true },
+        ...scene.content.map((subscene, index) => ({
+          text: subscene,
+          bg: [scene.bg[index]],
+        })),
+      ]);
+
+      setTimeout(() => setLoadingScene(false), 1000);
+    }
+  }, [scene?.nextScene]);
+
+  useEffect(() => {
+    if (sound && soundsNodes && subsceneId > 0) {
+      setTimeout(() => {
+        const vo = getSound(
+          soundsNodes,
+          `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
+        );
+        if (vo) {
+          if (sound) vo.onended = () => onVoiceEnded && onVoiceEnded() && console.log('voice ended');
+          vo.play();
+        }
+      }, 1000);
+    }
+  }, [subsceneId, sound, soundsNodes, onVoiceEnded]);
+
+  useEffect(() => {
+    setOnVoiceEnded(() =>
+      onComplete.bind(null, {
+        el: document.querySelector('.scene-text'),
+        toNext,
+        animateBackgroundOut,
+      })
+    );
+  }, []);
+
   return (
     // <div className={`scene-story --${sceneId}`} onClick={handleSwitchScene}>
     <div className={`scene-story --${sceneId}`}>
@@ -212,6 +223,7 @@ const SceneStory = () => {
               toNext={toNext}
               animateBackgroundOut={animateBackgroundOut}
               setOnVoiceEnded={setOnVoiceEnded}
+              sound={sound}
             />
           )}
           {sceneId === '05-postface-last' && subsceneId === subscenes.length - 1 && (
