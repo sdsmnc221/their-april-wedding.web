@@ -27,7 +27,7 @@ const SceneSettings = () => {
     document.body.classList.add(`--${lang}`);
     setTimeout(() => {
       setSettings('sound');
-    }, 1200);
+    }, 600);
   };
 
   const navigate = useNavigate();
