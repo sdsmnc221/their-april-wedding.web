@@ -30,6 +30,7 @@ const SceneStory = () => {
   const [loadingScene, setLoadingScene] = useState(true);
   // const [automating, setAutomating] = useState(true);
   const [backgroundRef, setBackgroundRef] = useState(null);
+  const [onVoiceEnded, setOnVoiceEnded] = useState(null);
 
   const endingCTAsRef = useRef(null);
 
@@ -80,6 +81,7 @@ const SceneStory = () => {
           `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
         );
         if (vo) {
+          vo.onended = () => onVoiceEnded && onVoiceEnded();
           vo.play();
         }
       }, 1000);
@@ -209,6 +211,7 @@ const SceneStory = () => {
               animateEndingCTA={animateEndingCTA}
               toNext={toNext}
               animateBackgroundOut={animateBackgroundOut}
+              setOnVoiceEnded={setOnVoiceEnded}
             />
           )}
           {sceneId === '05-postface-last' && subsceneId === subscenes.length - 1 && (
