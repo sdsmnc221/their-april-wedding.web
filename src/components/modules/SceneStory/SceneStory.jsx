@@ -166,16 +166,6 @@ const SceneStory = () => {
     }
   }, [subsceneId, sound, soundsNodes, onVoiceEnded]);
 
-  useEffect(() => {
-    setOnVoiceEnded(() =>
-      onComplete.bind(null, {
-        el: document.querySelector('.scene-text'),
-        toNext,
-        animateBackground,
-      })
-    );
-  }, []);
-
   return (
     // <div className={`scene-story --${sceneId}`} onClick={handleSwitchScene}>
     <div className={`scene-story --${sceneId}`}>
