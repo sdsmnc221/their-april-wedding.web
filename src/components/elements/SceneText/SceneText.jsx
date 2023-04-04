@@ -28,7 +28,7 @@ const onComplete = ({ el, animateEndingCTA, animateBackground, toNext }) => {
   animateEndingCTA && animateEndingCTA();
 
   if (toNext) {
-    animateBackground(true);
+    !animateEndingCTA && animateBackground(true);
 
     timeoutRef = setTimeout(() => {
       console.log('from gsap');
@@ -86,7 +86,6 @@ const Paragraphs = ({
 
   useEffect(() => {
     const completeCb = () => {
-      console.log('on complete sound off', sound);
       onComplete({
         el: textRef.current,
         animateEndingCTA: isLastText && animateEndingCTA,
