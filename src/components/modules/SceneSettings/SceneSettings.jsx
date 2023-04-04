@@ -45,12 +45,12 @@ const SceneSettings = () => {
     setCurrentScene('00-splash-screen');
 
     if (sceneRef.current) {
-      gsap.fromTo(
+      gsap.from(
         [...sceneRef.current.children].reverse(),
-        { opacity: 0, yPercent: 4 },
+        // { opacity: 0, yPercent: 4 },
         {
-          opacity: 1,
-          yPercent: 0,
+          opacity: 0,
+          yPercent: 4,
           duration: 2.4,
           stagger: { each: 0.4 },
           ease: 'Power4.InOut',
