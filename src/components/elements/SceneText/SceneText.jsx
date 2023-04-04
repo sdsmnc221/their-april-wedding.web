@@ -7,10 +7,10 @@ import { globalContext } from '@contexts/GlobalContext';
 
 let timeoutRef;
 
-const createSplitText = ({ el, duration = 1.2, stagger = 0.1 }) => {
+const createSplitText = ({ el, duration = 1.2, stagger = 0.1, completeCb, startCb }) => {
   const splitInstance = new SplitText(el, { type: 'chars,words', wordsClass: 'word', charsClass: 'char' });
   return gsap
-    .timeline()
+    .timeline({ onComplete: completeCb, onStart: startCb })
     .to(el, { opacity: 1, duration: 0.6, ease: 'Power4.InOut' })
     .from(splitInstance.chars, {
       filter: 'blur(3.2px)',
@@ -94,6 +94,16 @@ const Paragraphs = ({
       });
     };
 
+    const startCb = () =>
+      setOnVoiceEnded(() =>
+        onComplete.bind(null, {
+          el: textRef.current,
+          animateEndingCTA: isLastText && animateEndingCTA,
+          toNext,
+          animateBackgroundOut,
+        })
+      );
+
     if (textRef.current) {
       gsap.killTweensOf(textRef.current);
 
@@ -103,24 +113,8 @@ const Paragraphs = ({
         el: textRef.current,
         duration: 0.6,
         stagger: lang === 'vn' ? 0.072 : 0.056,
+        ...(sound ? { completeCb: null, startCb } : { completeCb, startCb: null }),
       });
-
-      if (sound) {
-        tl.eventCallback('onComplete', null);
-        tl.eventCallback('onStart', () =>
-          setOnVoiceEnded(() =>
-            onComplete.bind(null, {
-              el: textRef.current,
-              animateEndingCTA: isLastText && animateEndingCTA,
-              toNext,
-              animateBackgroundOut,
-            })
-          )
-        );
-      } else {
-        tl.eventCallback('onComplete', completeCb);
-        tl.eventCallback('onStart', () => setOnVoiceEnded(null));
-      }
     }
   }, [text, sound]);
 
