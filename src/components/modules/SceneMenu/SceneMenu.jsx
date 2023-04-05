@@ -4,14 +4,17 @@ import Background from '@elements/Background/Background';
 import Frame from '@elements/Frame/Frame';
 import Overlay from '@elements/Overlay/Overlay';
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
+import { animIn, animOut } from '../../../utils/animScene';
 
 const SceneMenu = () => {
-  const { data, currentScene, setMenuOpened, setCreditsOpened } = useContext(globalContext);
+  const { data, currentScene, menuOpened, setMenuOpened, setCreditsOpened } = useContext(globalContext);
 
   const navigate = useNavigate();
+
+  const sceneRef = useRef(null);
 
   const toChapter = (e, chapter) => {
     e.preventDefault();
@@ -24,8 +27,12 @@ const SceneMenu = () => {
     setCreditsOpened(true);
   };
 
+  useEffect(() => {
+    if (menuOpened) animIn({ sceneRef });
+  }, [menuOpened]);
+
   return (
-    <div className="scene-menu">
+    <div className="scene-menu" ref={sceneRef}>
       <Background src={['intro-video.mp4']} isRightBottom={false} />
       <Overlay />
       <Frame withMenu />
@@ -37,7 +44,7 @@ const SceneMenu = () => {
             className={`${
               key === currentScene || (key.includes('postface') && currentScene.includes('postface')) ? '--current' : ''
             }`}
-            onClick={(e) => toChapter(e, key)}
+            onClick={(e) => animOut({ sceneRef, onComplete: () => toChapter(e, key) })}
           />
         ))}
       </div>

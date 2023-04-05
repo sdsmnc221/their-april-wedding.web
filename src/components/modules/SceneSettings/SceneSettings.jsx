@@ -60,7 +60,8 @@ const SceneSettings = () => {
             delay: 0.8,
             stagger: { each: 0.4 },
             ease: 'Power4.InOut',
-          }
+          },
+          0
         )
         .fromTo(
           nodes,
@@ -82,7 +83,7 @@ const SceneSettings = () => {
               gsap.to(ctasRef.current, { opacity: 1, duration: 4.8, ease: 'Power4.InOut' });
             },
           },
-          '0.8'
+          0
         );
     }
   }, []);

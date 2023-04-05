@@ -16,15 +16,25 @@ import gsap from 'gsap-bonus';
 
 import { globalContext } from '@contexts/GlobalContext';
 import { getSound } from '../../../utils';
-import { onComplete } from '../../elements/SceneText/SceneText';
+import { animIn } from '../../../utils/animScene';
 
 const SceneStory = () => {
-  const { data, setCurrentScene, lang, sound, soundsNodes, setCreditsOpened, menuOpened, setMenuOpened } =
-    useContext(globalContext);
+  const {
+    data,
+    setCurrentScene,
+    lang,
+    sound,
+    soundsNodes,
+    setCreditsOpened,
+    creditsOpenened,
+    menuOpened,
+    setMenuOpened,
+  } = useContext(globalContext);
 
   const { sceneId } = useParams();
 
   const endingCTAsRef = useRef(null);
+  const sceneRef = useRef(null);
 
   const [touchIndicatorHidden, setTouchIndicatorHidden] = useState(true);
   const [scene, setScene] = useState(data.scenes[sceneId]);
@@ -113,6 +123,10 @@ const SceneStory = () => {
   };
 
   useEffect(() => {
+    animIn({ sceneRef });
+  }, [sceneRef.current, sceneId]);
+
+  useEffect(() => {
     setCurrentScene(sceneId);
 
     setScene(data.scenes[sceneId]);
@@ -168,16 +182,15 @@ const SceneStory = () => {
 
   return (
     // <div className={`scene-story --${sceneId}`} onClick={handleSwitchScene}>
-    <div className={`scene-story --${sceneId}`}>
+    <div className={`scene-story --${sceneId}`} ref={sceneRef}>
       <Menu
         onClick={() => {
           setSubsceneId(0);
-          setTouchIndicatorHidden(menuOpened ? false : true);
           // setAutomating(!automating);
         }}
       />
       <SoundToggle />
-      {sceneId !== '05-postface-wish' && (
+      {sceneId !== '05-postface-wish' && !menuOpened && !creditsOpenened && (
         <TouchIndicator
           touchIndicatorHidden={touchIndicatorHidden}
           setTouchIndicatorHidden={setTouchIndicatorHidden}
@@ -207,7 +220,7 @@ const SceneStory = () => {
             <SceneText
               sceneId={`${sceneId}-${subsceneId}`}
               isHeading={subsceneId === 0}
-              text={subscenes[subsceneId].text}
+              text={subscenes[subsceneId]?.text}
               isLastText={subsceneId === subscenes.length - 1}
               animateEndingCTA={animateEndingCTA}
               toNext={toNext}

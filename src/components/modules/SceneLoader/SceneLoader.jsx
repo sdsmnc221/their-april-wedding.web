@@ -10,29 +10,22 @@ import Frame from '@elements/Frame/Frame';
 import Overlay from '@elements/Overlay/Overlay';
 import Subtitle from '@elements/Subtitle/Subtitle';
 import LogoLoader from '@elements/LogoLoader/LogoLoader';
+import { animOut } from '../../../utils/animScene';
 
 const SceneLoader = () => {
   const [progress, setProgress] = useState(0);
   const sceneRef = useRef(null);
   const { setResourcesIsReady, resourcesIsReady } = useContext(globalContext);
 
-  const animLoaderOut = () => {
-    if (sceneRef.current)
-      gsap.to([...sceneRef.current.children], {
-        opacity: 0,
-        yPercent: 4,
-        duration: 2.4,
-        delay: 0.6,
-        stagger: { each: 0.4 },
-        ease: 'Power4.InOut',
-        onStart: () =>
-          sceneRef.current &&
-          [...sceneRef.current.querySelectorAll('svg *'), ...sceneRef.current.querySelectorAll('path')].forEach(
-            (el) => (el.style.animationPlayState = 'paused')
-          ),
-        onComplete: () => setResourcesIsReady(true),
-      });
-  };
+  const animLoaderOut = animOut.bind(null, {
+    sceneRef,
+    onStart: () =>
+      sceneRef.current &&
+      [...sceneRef.current.querySelectorAll('svg *'), ...sceneRef.current.querySelectorAll('path')].forEach(
+        (el) => (el.style.animationPlayState = 'paused')
+      ),
+    onComplete: () => setResourcesIsReady(true),
+  });
 
   useEffect(() => {
     if (ResourcesLoader.loader.progress === 100) {

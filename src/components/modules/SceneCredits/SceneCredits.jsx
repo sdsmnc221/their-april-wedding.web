@@ -4,13 +4,16 @@ import Background from '@elements/Background/Background';
 import Frame from '@elements/Frame/Frame';
 import Overlay from '@elements/Overlay/Overlay';
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
+import { animIn } from '../../../utils/animScene';
 
 const SceneCredits = () => {
   const navigate = useNavigate();
-  const { data, currentScene, setCreditsOpened, menuOpened, setMenuOpened } = useContext(globalContext);
+  const { data, currentScene, setCreditsOpened, creditsOpened, menuOpened, setMenuOpened } = useContext(globalContext);
+
+  const sceneRef = useRef(null);
 
   const toWish = (e) => {
     e.preventDefault();
@@ -21,8 +24,12 @@ const SceneCredits = () => {
     }, 600);
   };
 
+  useEffect(() => {
+    if (creditsOpened) animIn({ sceneRef });
+  }, [creditsOpened]);
+
   return (
-    <div className="scene-credits">
+    <div className="scene-credits" ref={sceneRef}>
       <Background src={['intro-video.mp4']} isRightBottom={false} />
       <Overlay />
       <Frame withMenu />

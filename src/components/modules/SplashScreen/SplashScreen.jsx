@@ -9,9 +9,10 @@ import ScrollDown from '@elements/ScrollDown/ScrollDown';
 import Menu from '@elements/Menu/Menu';
 import SoundToggle from '@elements/SoundToggle/SoundToggle';
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
+import { animIn, animOut } from '../../../utils/animScene';
 
 const SplashScreen = () => {
   const { data, setCurrentScene, sound, resources } = useContext(globalContext);
@@ -23,8 +24,12 @@ const SplashScreen = () => {
 
   const scene = data.scenes['00-splash-screen'];
 
+  const sceneRef = useRef(null);
+
   useEffect(() => {
     setCurrentScene('00-splash-screen');
+
+    animIn({ sceneRef });
 
     // simulate swipe / scroll down
     let touchstartY = 0;
@@ -45,15 +50,20 @@ const SplashScreen = () => {
   }, []);
 
   return (
-    <div className="splash-screen">
+    <div className="splash-screen" ref={sceneRef}>
       <Menu />
       <SoundToggle />
-      <Background src={scene.bg} />
+      <Background animating={false} src={scene.bg} />
       <Overlay />
       <Frame isLogo />
       <Subtitle content={scene.subtitle} />
       <Logo />
-      <ScrollDown text={scene.cta} onClick={nextScene} />
+      <ScrollDown
+        text={scene.cta}
+        onClick={() => {
+          animOut({ sceneRef, onComplete: () => nextScene() });
+        }}
+      />
     </div>
   );
 };
