@@ -123,7 +123,9 @@ const SceneStory = () => {
   };
 
   useEffect(() => {
-    animIn({ sceneRef });
+    setTimeout(() => {
+      animIn({ sceneRef });
+    }, 200);
   }, [sceneRef.current, sceneId]);
 
   useEffect(() => {
@@ -207,6 +209,7 @@ const SceneStory = () => {
             src={subscenes && subscenes[subsceneId] && subscenes[subsceneId].bg}
             blur={subsceneId === 0}
             setBackgroundRef={setBackgroundRef}
+            animating={subsceneId !== 0}
           />
           <Overlay
             withSunshine={sceneId.includes('01') || sceneId.includes('05')}
@@ -220,7 +223,7 @@ const SceneStory = () => {
             <SceneText
               sceneId={`${sceneId}-${subsceneId}`}
               isHeading={subsceneId === 0}
-              text={subscenes[subsceneId]?.text}
+              text={subscenes[subsceneId]?.text || []}
               isLastText={subsceneId === subscenes.length - 1}
               animateEndingCTA={animateEndingCTA}
               toNext={toNext}
