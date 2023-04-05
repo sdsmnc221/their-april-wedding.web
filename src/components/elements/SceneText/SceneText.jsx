@@ -162,4 +162,4 @@ const SceneText = ({
 
 export default SceneText;
 
-export { onComplete };
+export { onComplete, createSplitText };

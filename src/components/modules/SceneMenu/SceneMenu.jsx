@@ -7,7 +7,8 @@ import Overlay from '@elements/Overlay/Overlay';
 import React, { useContext, useEffect, useRef } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
-import { animIn, animOut } from '../../../utils/animScene';
+import gsap from 'gsap-bonus';
+import { animOut } from '../../../utils/animScene';
 
 const SceneMenu = () => {
   const { data, currentScene, menuOpened, setMenuOpened, setCreditsOpened } = useContext(globalContext);
@@ -28,12 +29,30 @@ const SceneMenu = () => {
   };
 
   useEffect(() => {
-    if (menuOpened) animIn({ sceneRef });
+    if (sceneRef.current) {
+      const nodes = [...sceneRef.current.children, ...sceneRef.current.querySelectorAll('.chapters a')];
+      if (menuOpened) {
+        if (sceneRef.current) {
+          gsap.fromTo(
+            nodes,
+            { opacity: 0, yPercent: 4 },
+            {
+              opacity: 1,
+              yPercent: 0,
+              duration: 2.4,
+              delay: 0.6,
+              stagger: { each: 0.4 },
+              ease: 'Power4.InOut',
+            }
+          );
+        }
+      }
+    }
   }, [menuOpened]);
 
   return (
     <div className="scene-menu" ref={sceneRef}>
-      <Background src={['intro-video.mp4']} isRightBottom={false} />
+      <Background animating={false} src={['intro-video.mp4']} isRightBottom={false} />
       <Overlay />
       <Frame withMenu />
       <div className="chapters">

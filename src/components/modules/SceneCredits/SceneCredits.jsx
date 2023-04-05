@@ -8,6 +8,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { globalContext } from '@contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
 import { animIn } from '../../../utils/animScene';
+import { createSplitText } from '../../elements/SceneText/SceneText';
 
 const SceneCredits = () => {
   const navigate = useNavigate();
@@ -25,12 +26,15 @@ const SceneCredits = () => {
   };
 
   useEffect(() => {
-    if (creditsOpened) animIn({ sceneRef });
+    if (creditsOpened) {
+      animIn({ sceneRef });
+      createSplitText({ el: sceneRef.current.querySelector('.credits p'), duration: 0.8, stagger: 0.032 });
+    }
   }, [creditsOpened]);
 
   return (
     <div className="scene-credits" ref={sceneRef}>
-      <Background src={['intro-video.mp4']} isRightBottom={false} />
+      <Background animating={false} src={['intro-video.mp4']} isRightBottom={false} />
       <Overlay />
       <Frame withMenu />
       <div className="credits">
