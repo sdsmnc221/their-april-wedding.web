@@ -6,9 +6,8 @@
   transform: scale(0.48);
   transition: all ease 0.8s;
 
-  &.--hidden {
-    opacity: 0;
-    transform: scale(0);
+  &.--menu-opened {
+    bottom: 5vh;
   }
 
   img {

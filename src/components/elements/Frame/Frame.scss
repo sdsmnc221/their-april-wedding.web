@@ -4,7 +4,7 @@
   top: 32px;
   left: 32px;
   position: fixed;
-  pointer-events: none;
+  pointer-events: lo none;
 
   mix-blend-mode: hard-light;
 
@@ -48,7 +48,7 @@
     &::after {
       top: $vh;
       left: 0;
-      width: 90%;
+      width: 80%;
     }
 
     &::before {

@@ -11,7 +11,7 @@ const SoundToggle = () => {
   };
 
   return (
-    <div className={`sound-toggle ${menuOpened ? '--hidden' : ''}`} onClick={(e) => e.stopPropagation()}>
+    <div className={`sound-toggle ${menuOpened ? '--menu-opened' : ''}`} onClick={(e) => e.stopPropagation()}>
       <input id="switch" type="checkbox" checked={sound} onChange={handleSound} />
       <label className="love-heart" htmlFor="switch">
         <i className="left"></i>
