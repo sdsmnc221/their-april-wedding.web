@@ -42,26 +42,6 @@ const SceneSettings = () => {
     }, 600);
   };
 
-  const animateCTA = useCallback(() => {
-    if (ctasRef.current) {
-      const nodes = [...ctasRef.current.children];
-      gsap.from(nodes, {
-        filter: 'blur(32px)',
-        opacity: 0,
-        y: 64,
-        duration: 2.4,
-        delay: 0.6,
-        ease: 'Power4.InOut',
-        stagger: {
-          each: 0.64,
-        },
-        onStart: () => {
-          gsap.to(ctasRef.current, { opacity: 1, duration: 4.8, ease: 'Power4.InOut' });
-        },
-      });
-    }
-  }, [ctasRef.current]);
-
   useEffect(() => {
     setCurrentScene('00-splash-screen');
 
