@@ -247,7 +247,12 @@ const SceneStory = () => {
       )}
       {sceneId === '05-postface-wish' && !!scene.labels && (
         <Fragment>
-          <Background sceneId={`${sceneId}-${subsceneId}`} src={scene.bg} setBackgroundRef={setBackgroundRef} />
+          <Background
+            animating={false}
+            sceneId={`${sceneId}-${subsceneId}`}
+            src={scene.bg}
+            setBackgroundRef={setBackgroundRef}
+          />
           <Overlay />
           <Frame hasMenu />
           <Subtitle content={scene.subtitle} />
