@@ -161,6 +161,7 @@
       "bg": [
         "05-postface-4.jpg"
       ],
+      "errorLabel": "Vui lòng điền đầy đủ thông tin.",
       "nextScene": "05-postface-last"
     },
     "05-postface-last": {

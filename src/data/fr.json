@@ -162,6 +162,7 @@
       "bg": [
         "05-postface-4.jpg"
       ],
+      "errorLabel": "Veuillez remplir tous les champs.",
       "nextScene": "05-postface-last"
     },
     "05-postface-last": {

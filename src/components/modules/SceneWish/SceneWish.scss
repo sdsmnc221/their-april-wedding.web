@@ -29,9 +29,9 @@
       text-transform: uppercase;
     }
 
-    textarea {
+    input {
       resize: none;
-      width: 120%;
+      width: 72vw;
       margin-top: rem(24px);
       margin-bottom: rem(48px);
       border: none;
@@ -42,9 +42,91 @@
       background-color: transparentize($color-bg, 0.48);
       outline: none;
 
-      &:last-of-type {
-        height: 18vh;
+      &:first-of-type {
         font-size: $ft-s-xsmall;
+      }
+    }
+
+    .ck {
+      --bg: rgba(254, 248, 250, 0.48);
+      --ck-color-base-background: var(--bg);
+      --ck-color-toolbar-background: var(--bg);
+      --ck-color-background: var(--bg);
+
+      &.ck-editor {
+        width: 72vw;
+        margin-top: 24px;
+      }
+
+      .ck-toolbar__items {
+        position: relative;
+        top: 32px;
+      }
+
+      .ck-toolbar_grouping {
+        & > .ck-toolbar__separator {
+          top: 0;
+        }
+      }
+
+      .ck-toolbar__separator {
+        position: relative;
+        top: -32px;
+      }
+
+      .ck-button_with-text.ck-dropdown__button svg {
+        top: 0;
+        left: 0;
+      }
+
+      .ck-dropdown__button svg {
+        position: relative;
+        top: 36px;
+        left: -9px;
+      }
+
+      .ck-editor__editable {
+        height: 18vh;
+        & > * {
+          font-size: $ft-s-xsmall;
+          color: $color-text-green;
+          font-family: $playfair;
+          text-transform: none;
+          text-align: left;
+          border: none;
+          mix-blend-mode: normal;
+
+          &:is(p) {
+            padding: 0;
+          }
+
+          &:not(p) {
+            padding: 0.3125rem 0.625rem;
+            font-size: $ft-s-small;
+          }
+        }
+      }
+    }
+  }
+
+  .error {
+    position: absolute;
+    text-transform: lowercase;
+    background: transparentize($color-bg, 0.48);
+    width: 100%;
+    text-align: center;
+    padding: 4px;
+    letter-spacing: 0.032rem;
+    animation: fade 0.5s ease-in-out;
+
+    @keyframes fade {
+      0% {
+        opacity: 0;
+        transform: translateY(-32px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   }
