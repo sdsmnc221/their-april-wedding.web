@@ -44,6 +44,7 @@ const SceneStory = () => {
   // const [automating, setAutomating] = useState(true);
   const [backgroundRef, setBackgroundRef] = useState(null);
   const [onVoiceEnded, setOnVoiceEnded] = useState(null);
+  const [voiceOver, setVoiceOver] = useState(null);
 
   const animateEndingCTA = useCallback(() => {
     if (endingCTAsRef.current) {
@@ -88,30 +89,32 @@ const SceneStory = () => {
   };
 
   const toNext = () => {
-    // if (automating) {
-    if (sceneId !== '05-postface-wish') {
-      if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
-      else if (scene.nextScene && subsceneId === subscenes.length - 1) {
-        setSubsceneId(0);
-        navigate(`/scene/${scene.nextScene}`);
-      }
+    if (!menuOpened) {
+      // if (automating) {
+      if (sceneId !== '05-postface-wish') {
+        if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
+        else if (scene.nextScene && subsceneId === subscenes.length - 1) {
+          setSubsceneId(0);
+          navigate(`/scene/${scene.nextScene}`);
+        }
 
-      if (sound) {
-        soundsNodes.forEach((soundNode) => {
-          if (
-            !soundNode.classList.contains('ambiance') &&
-            !soundNode.classList.contains('ambiance2') &&
-            !soundNode.classList.contains(
-              `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
-            )
-          ) {
-            soundNode.pause();
-          }
-        });
+        if (sound) {
+          soundsNodes.forEach((soundNode) => {
+            if (
+              !soundNode.classList.contains('ambiance') &&
+              !soundNode.classList.contains('ambiance2') &&
+              !soundNode.classList.contains(
+                `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
+              )
+            ) {
+              soundNode.pause();
+            }
+          });
+        }
       }
+      // }
+      console.log('next scene', { sceneId, subsceneId });
     }
-    // }
-    console.log('next scene', { sceneId, subsceneId });
   };
 
   const toScene = (e, index) => {
@@ -175,8 +178,11 @@ const SceneStory = () => {
           `vo_${sceneId.slice(3)}_0${subsceneId}${subsceneId !== 0 && lang === 'vn' ? '_vn' : ''}`
         );
         if (vo) {
-          if (sound) vo.onended = () => onVoiceEnded && onVoiceEnded() && console.log('voice ended');
-          vo.play();
+          if (sound) {
+            vo.onended = () => onVoiceEnded && onVoiceEnded() && console.log('voice ended');
+            vo.play();
+            setVoiceOver(vo);
+          }
         }
       }, 1000);
     }
@@ -188,6 +194,7 @@ const SceneStory = () => {
       <Menu
         onClick={() => {
           setSubsceneId(0);
+          if (voiceOver) voiceOver.pause();
           // setAutomating(!automating);
         }}
       />
