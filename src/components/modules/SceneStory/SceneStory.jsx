@@ -16,7 +16,7 @@ import gsap from 'gsap-bonus';
 
 import { globalContext } from '@contexts/GlobalContext';
 import { getSound } from '../../../utils';
-import { animIn } from '../../../utils/animScene';
+import { animIn, animOut } from '../../../utils/animScene';
 
 const SceneStory = () => {
   const {
@@ -94,8 +94,13 @@ const SceneStory = () => {
       if (sceneId !== '05-postface-wish') {
         if (subsceneId < subscenes.length - 1) setSubsceneId(subsceneId + 1);
         else if (scene.nextScene && subsceneId === subscenes.length - 1) {
-          setSubsceneId(0);
-          navigate(`/scene/${scene.nextScene}`);
+          animOut({
+            sceneRef,
+            onComplete: () => {
+              setSubsceneId(0);
+              navigate(`/scene/${scene.nextScene}`);
+            },
+          });
         }
 
         if (sound) {
