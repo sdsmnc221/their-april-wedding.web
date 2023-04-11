@@ -11,7 +11,9 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^37.0.1",
     "@ckeditor/ckeditor5-react": "^6.0.0",
+    "@firebase/firestore": "^3.10.0",
     "bidello": "^1.0.1",
+    "firebase": "^9.19.1",
     "gsap-bonus": "file:gsap-bonus.tgz",
     "howler": "^2.2.3",
     "imagesloaded": "^5.0.0",

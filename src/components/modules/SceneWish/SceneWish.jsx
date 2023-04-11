@@ -4,6 +4,8 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { setDoc, deleteDoc, doc, Timestamp } from '@firebase/firestore';
+import { firestore } from '../../../utils/firebase';
 
 // interface Props {
 //   labels: string[];
@@ -45,6 +47,14 @@ const SceneWish = ({ labels, errorLabel, skipLabel, cta, nextScene, setTouchIndi
       const wish = editor.data.get();
       if (identity && wish) {
         setError(false);
+
+        const date = Date.now();
+        setDoc(doc(firestore, 'april-wedding', date.toString()), {
+          identity,
+          message: wish,
+          date: Timestamp.fromDate(new Date(date)),
+        });
+
         setTouchIndicatorHidden(true);
         navigate(`/scene/${nextScene}`);
         setTimeout(() => setTouchIndicatorHidden(false), 3200);
