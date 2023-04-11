@@ -256,7 +256,13 @@ const SceneStory = () => {
           <Overlay />
           <Frame hasMenu />
           <Subtitle content={scene.subtitle} />
-          <SceneWish labels={scene.labels} cta={scene.cta} errorLabel={scene.errorLabel} nextScene={scene.nextScene} />
+          <SceneWish
+            labels={scene.labels}
+            cta={scene.cta}
+            errorLabel={scene.errorLabel}
+            skipLabel={scene.skipLabel}
+            nextScene={scene.nextScene}
+          />
         </Fragment>
       )}
     </div>

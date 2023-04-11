@@ -150,6 +150,14 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: rem(6px) rem(10px);
+
+      &.skip {
+        padding: rem(6px) rem(24px);
+        background: rgba(112, 177, 161, 0.35);
+        border: 1px solid #70b1a1;
+        transform: translateY(15px);
+        font-size: $ft-s-xxsmall;
+      }
     }
   }
 }

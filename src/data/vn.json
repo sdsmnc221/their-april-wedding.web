@@ -162,6 +162,7 @@
         "05-postface-4.jpg"
       ],
       "errorLabel": "Vui lòng điền đầy đủ thông tin.",
+      "skipLabel": "Bỏ qua chúc phúc.",
       "nextScene": "05-postface-last"
     },
     "05-postface-last": {

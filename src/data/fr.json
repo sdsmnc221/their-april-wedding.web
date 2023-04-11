@@ -163,6 +163,7 @@
         "05-postface-4.jpg"
       ],
       "errorLabel": "Veuillez remplir tous les champs.",
+      "skipLabel": "Continuons sans émettre des vœux.",
       "nextScene": "05-postface-last"
     },
     "05-postface-last": {

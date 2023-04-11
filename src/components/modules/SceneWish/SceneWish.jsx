@@ -11,7 +11,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 //   nextScene: string;
 // }
 
-const SceneWish = ({ labels, errorLabel, cta, nextScene }) => {
+const SceneWish = ({ labels, errorLabel, skipLabel, cta, nextScene }) => {
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [editor, setEditor] = useState(null);
@@ -68,8 +68,17 @@ const SceneWish = ({ labels, errorLabel, cta, nextScene }) => {
       </div>
       {error && errorLabel && <p className="error">{errorLabel}</p>}
       <button className="unbutton" type="submit">
+        <span
+          className="skip"
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/scene/${nextScene}`);
+          }}
+        >
+          {skipLabel}
+        </span>
         <img src="/images/logo.svg" alt="" />
-        <span>{cta}</span>
+        <span className="send">{cta}</span>
       </button>
     </form>
   );
