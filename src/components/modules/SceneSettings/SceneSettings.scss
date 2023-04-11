@@ -41,6 +41,11 @@
       margin-bottom: rem(24px);
       width: 50vw;
       padding: rem(6px) rem(12px);
+
+      &.journey {
+        padding: rem(6px);
+        font-size: $ft-s-xxsmall;
+      }
     }
   }
 }

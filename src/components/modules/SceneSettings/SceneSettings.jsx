@@ -120,7 +120,7 @@ const SceneSettings = () => {
         {settings === 'journey' &&
           Object.entries(data.scenes['00-splash-screen-settings-journey'].cta).map((entry) => (
             <button
-              className="unbutton"
+              className="unbutton journey"
               key={`btn-settings-journey-${entry[1]}`}
               onClick={() => handleSetJourney(entry[0])}
             >
