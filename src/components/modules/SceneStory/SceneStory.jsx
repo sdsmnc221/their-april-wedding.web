@@ -262,6 +262,7 @@ const SceneStory = () => {
             errorLabel={scene.errorLabel}
             skipLabel={scene.skipLabel}
             nextScene={scene.nextScene}
+            setTouchIndicatorHidden={setTouchIndicatorHidden}
           />
         </Fragment>
       )}

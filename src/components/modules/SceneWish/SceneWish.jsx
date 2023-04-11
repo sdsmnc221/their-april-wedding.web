@@ -11,7 +11,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 //   nextScene: string;
 // }
 
-const SceneWish = ({ labels, errorLabel, skipLabel, cta, nextScene }) => {
+const SceneWish = ({ labels, errorLabel, skipLabel, cta, nextScene, setTouchIndicatorHidden }) => {
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [editor, setEditor] = useState(null);
@@ -45,7 +45,9 @@ const SceneWish = ({ labels, errorLabel, skipLabel, cta, nextScene }) => {
       const wish = editor.data.get();
       if (identity && wish) {
         setError(false);
+        setTouchIndicatorHidden(true);
         navigate(`/scene/${nextScene}`);
+        setTimeout(() => setTouchIndicatorHidden(false), 3200);
       } else {
         setError(true);
       }
@@ -72,7 +74,9 @@ const SceneWish = ({ labels, errorLabel, skipLabel, cta, nextScene }) => {
           className="skip"
           onClick={(e) => {
             e.stopPropagation();
+            setTouchIndicatorHidden(true);
             navigate(`/scene/${nextScene}`);
+            setTimeout(() => setTouchIndicatorHidden(false), 3200);
           }}
         >
           {skipLabel}
