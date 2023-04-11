@@ -50,6 +50,16 @@
         "sound-off": "Mutons le son."
       }
     },
+    "00-splash-screen-settings-journey": {
+      "subtitle": "<strong>00.</strong> Splash Screen - Settings.",
+      "bg": [
+        "intro-video.mp4"
+      ],
+      "cta": {
+        "/scene/05-postface-wish": "Envoyons les vœeux aux mariés.",
+        "/splash-screen": "Découvrons l'expérience (10 minutes)."
+      }
+    },
     "00-splash-screen": {
       "subtitle": "<strong>00.</strong> Splash Screen",
       "cta": "Découvrons",

@@ -38,7 +38,13 @@ const SceneSettings = () => {
       setSound(soundState.includes('on'));
     }, 1200);
     setTimeout(() => {
-      navigate('/splash-screen');
+      setSettings('journey');
+    }, 600);
+  };
+
+  const handleSetJourney = (journey) => {
+    setTimeout(() => {
+      navigate(journey);
     }, 600);
   };
 
@@ -103,7 +109,21 @@ const SceneSettings = () => {
           ))}
         {settings === 'sound' &&
           Object.entries(data.scenes['00-splash-screen-settings-sound'].cta).map((entry) => (
-            <button className="unbutton" key={`btn-settings-lang-${entry[1]}`} onClick={() => handleSetSound(entry[0])}>
+            <button
+              className="unbutton"
+              key={`btn-settings-sound-${entry[1]}`}
+              onClick={() => handleSetSound(entry[0])}
+            >
+              {entry[1]}
+            </button>
+          ))}
+        {settings === 'journey' &&
+          Object.entries(data.scenes['00-splash-screen-settings-journey'].cta).map((entry) => (
+            <button
+              className="unbutton"
+              key={`btn-settings-journey-${entry[1]}`}
+              onClick={() => handleSetJourney(entry[0])}
+            >
               {entry[1]}
             </button>
           ))}

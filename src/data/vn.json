@@ -49,6 +49,16 @@
         "sound-off": "Tắt tiếng."
       }
     },
+    "00-splash-screen-settings-journey": {
+      "subtitle": "<strong>00.</strong> Splash Screen - Settings.",
+      "bg": [
+        "intro-video.mp4"
+      ],
+      "cta": {
+        "/scene/05-postface-wish": "Gửi lời chúc phúc.",
+        "/splash-screen": "Khám phá trải nghiệm (10 phút)."
+      }
+    },
     "00-splash-screen": {
       "subtitle": "<strong>00.</strong> Màn hình khởi động.",
       "cta": "Khám phá",
