@@ -33,7 +33,7 @@ const onComplete = ({ el, animateEndingCTA, animateBackground, toNext }) => {
     timeoutRef = setTimeout(() => {
       console.log('from gsap');
       toNext();
-    }, 2400);
+    }, 1200);
   }
 
   if (el.tagName !== 'H2' && !animateEndingCTA)

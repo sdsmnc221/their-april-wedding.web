@@ -96,6 +96,7 @@ const SceneStory = () => {
         else if (scene.nextScene && subsceneId === subscenes.length - 1) {
           animOut({
             sceneRef,
+            delay: 0,
             onComplete: () => {
               setSubsceneId(0);
               navigate(`/scene/${scene.nextScene}`);
