@@ -54,7 +54,6 @@ const SceneStory = () => {
         opacity: 0,
         y: 64,
         duration: 2.4,
-        delay: 0.6,
         ease: 'Power4.InOut',
         stagger: {
           each: 0.64,
@@ -96,7 +95,6 @@ const SceneStory = () => {
         else if (scene.nextScene && subsceneId === subscenes.length - 1) {
           animOut({
             sceneRef,
-            delay: 0,
             onComplete: () => {
               setSubsceneId(0);
               navigate(`/scene/${scene.nextScene}`);

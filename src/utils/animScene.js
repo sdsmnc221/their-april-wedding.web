@@ -1,6 +1,6 @@
 import gsap from 'gsap-bonus';
 
-const animOut = ({ sceneRef, el, delay = 0.6, onStart = () => undefined, onComplete = () => undefined }) => {
+const animOut = ({ sceneRef, el, delay = 0, onStart = () => undefined, onComplete = () => undefined }) => {
   if (el || sceneRef.current)
     gsap.to(el || [...sceneRef.current.children], {
       opacity: 0,
