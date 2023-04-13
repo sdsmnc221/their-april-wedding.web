@@ -17,7 +17,7 @@ const animOut = ({ sceneRef, el, onStart = () => undefined, onComplete = () => u
 const animIn = ({ sceneRef, el, onStart = () => undefined, onComplete = () => undefined }) => {
   if (el || sceneRef.current) {
     gsap.fromTo(
-      el || [...sceneRef.current.children].filter((child) => !child.classList.contains('touch-indicator')),
+      el || [...sceneRef.current.children].filter((child) => !child.classList.contains('touch-indicator ')),
       { opacity: 0, yPercent: 4 },
       {
         opacity: 1,
