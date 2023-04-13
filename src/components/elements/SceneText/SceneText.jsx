@@ -37,7 +37,7 @@ const onComplete = ({ el, animateEndingCTA, animateBackground, toNext }) => {
   }
 
   if (el.tagName !== 'H2' && !animateEndingCTA)
-    gsap.to(el, { opacity: 0, duration: 1.6, delay: 1, ease: 'Power4.InOut' });
+    gsap.to(el, { opacity: 0, duration: 1, delay: 0.4, ease: 'Power4.InOut' });
 };
 
 const resetTimeout = () => {
